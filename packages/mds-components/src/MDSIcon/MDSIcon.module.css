@@ -1,0 +1,34 @@
+/* packages/mds-components/src/MDSIcon/MDSIcon.module.css */
+
+.root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+  /* Colour intentionally omitted — flows from parent via `currentColor` (icons use fill="currentColor"). */
+}
+
+.root[data-size='medium'] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+
+.root[data-size='small'] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+
+.root[data-size='large'] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; animation: none; }
+}
+
+@media (forced-colors: active) {
+  .root {
+    /* Ensure the icon remains visible under forced-colors. */
+    color: CanvasText;
+  }
+}

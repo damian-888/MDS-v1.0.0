@@ -1,0 +1,29 @@
+/* src/MDSIcon/MDSIcon.module.css */
+.MDSIcon_root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+}
+.MDSIcon_root[data-size=medium] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSIcon_root[data-size=small] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSIcon_root[data-size=large] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSIcon_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSIcon_root {
+    color: CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

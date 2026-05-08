@@ -6,11 +6,13 @@ dist/
 packages/*/dist/
 storybook-static/
 
-# But SHIP the built tokens + icons so consumers can clone-and-go without rebuilding
+# But SHIP the built tokens + icons + react components so consumers can clone-and-go without rebuilding
 !packages/mds-tokens/dist
 !packages/mds-tokens/dist/**
 !packages/mds-icons/dist
 !packages/mds-icons/dist/**
+!packages/mds-components/dist
+!packages/mds-components/dist/**
 
 # Generated source
 packages/mds-icons/src/generated/

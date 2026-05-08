@@ -1,0 +1,154 @@
+/* src/MDSButton/MDSButton.module.css */
+.MDSButton_root {
+  --MDSButton-fill: var(--mds-colours-basic-accent-secondary);
+  --MDSButton-text-fill: var(--mds-colours-basic-text-on-accent-secondary);
+  --MDSButton-stroke: transparent;
+  --MDSButton-stroke-width: 0;
+  --MDSButton-corner-radius: var(--mds-radius-full);
+  --MDSButton-padding-horizontal: var(--mds-common-component-values-padding);
+  --MDSButton-min-height: var(--mds-common-component-values-height-large);
+  --MDSButton-min-width: var(--mds-number-ramp-100);
+  --MDSButton-item-spacing: var(--mds-number-ramp-4);
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--MDSButton-fill);
+  color: var(--MDSButton-text-fill);
+  border: var(--MDSButton-stroke-width) solid var(--MDSButton-stroke);
+  border-radius: var(--MDSButton-corner-radius);
+  padding-block: 0;
+  padding-inline: var(--MDSButton-padding-horizontal);
+  gap: var(--MDSButton-item-spacing);
+  min-height: var(--MDSButton-min-height);
+  min-width: var(--MDSButton-min-width);
+  font-family: var(--mds-typography-body-large-font-family);
+  font-size: var(--mds-typography-body-large-font-size);
+  font-weight: var(--mds-typography-body-large-font-weight);
+  line-height: var(--mds-typography-body-large-line-height);
+  cursor: pointer;
+  user-select: none;
+}
+.MDSButton_label {
+  white-space: nowrap;
+}
+.MDSButton_iconSlot {
+  display: inline-flex;
+  align-items: center;
+}
+.MDSButton_root[data-size=large] .MDSButton_iconSlot {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSButton_root[data-size=small] .MDSButton_iconSlot {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSButton_root[data-variant=primary] {
+  --MDSButton-fill: var(--mds-colours-basic-accent);
+  --MDSButton-text-fill: var(--mds-colours-basic-text-on-accent);
+}
+.MDSButton_root[data-variant=primary]:hover:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-hovered-accent-hovered);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-hovered-text-on-accent-hovered);
+}
+.MDSButton_root[data-variant=primary][data-pressed]:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-pressed-accent-pressed);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-pressed-text-on-accent-pressed);
+}
+.MDSButton_root[data-variant=secondary]:hover:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-hovered-accent-secondary-hovered);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-hovered-text-on-accent-secondary-hovered);
+}
+.MDSButton_root[data-variant=secondary][data-pressed]:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-pressed-accent-secondary-pressed);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-pressed-text-on-accent-secondary-pressed);
+}
+.MDSButton_root[data-variant=outline] {
+  --MDSButton-fill: transparent;
+  --MDSButton-text-fill: var(--mds-colours-basic-text);
+  --MDSButton-stroke: var(--mds-colours-basic-stroke);
+  --MDSButton-stroke-width: var(--mds-strokes-2);
+}
+.MDSButton_root[data-variant=outline]:hover:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+.MDSButton_root[data-variant=outline][data-pressed]:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+.MDSButton_root[data-variant=ghost] {
+  --MDSButton-fill: transparent;
+  --MDSButton-text-fill: var(--mds-colours-basic-text);
+}
+.MDSButton_root[data-variant=ghost]:hover:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+.MDSButton_root[data-variant=ghost][data-pressed]:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+.MDSButton_root[data-size=small] {
+  --MDSButton-min-height: var(--mds-common-component-values-height-small);
+  --MDSButton-min-width: var(--mds-number-ramp-80);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+}
+.MDSButton_root[data-icon-only] {
+  --MDSButton-min-width: var(--MDSButton-min-height);
+  padding-inline: 0;
+  aspect-ratio: 1 / 1;
+}
+.MDSButton_root[data-disabled] {
+  --MDSButton-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  --MDSButton-stroke: transparent;
+  --MDSButton-stroke-width: 0;
+  cursor: not-allowed;
+}
+.MDSButton_root:focus-visible {
+  outline: var(--mds-strokes-2) solid var(--mds-colours-basic-accent);
+  outline-offset: var(--mds-strokes-2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSButton_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSButton_root {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* src/MDSIcon/MDSIcon.module.css */
+.MDSIcon_root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+}
+.MDSIcon_root[data-size=medium] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSIcon_root[data-size=small] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSIcon_root[data-size=large] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSIcon_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSIcon_root {
+    color: CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

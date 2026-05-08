@@ -56,7 +56,7 @@ export async function setupStyleDictionary() {
     pattern: /\.json$/,
     parser: ({ contents }) => {
       const rewritten = contents
-        .replace(/"(\{[a-z0-9][a-z0-9.\-]*[^}"])"/g, '"$1}"')
+        .replace(/"(\{[a-z0-9][a-z0-9.-]*[^}"])"/g, '"$1}"')
         .replace(/"value"(\s*):/g, '"$value"$1:')
         .replace(/"type"(\s*):/g, '"$type"$1:');
       return JSON.parse(rewritten);

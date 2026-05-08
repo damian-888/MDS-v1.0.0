@@ -23,7 +23,7 @@
     "@changesets/cli": "^2.27.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
-    "eslint": "^9.21.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "prettier": "^3.5.2",

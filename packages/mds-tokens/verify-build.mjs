@@ -16,7 +16,7 @@ function read(relative) {
 }
 
 function assertNoUnresolvedRefs(css, file) {
-  const matches = css.match(/\{[a-z][a-z0-9.\-]*\}/g);
+  const matches = css.match(/\{[a-z][a-z0-9.-]*\}/g);
   assert.equal(matches, null, `dist/${file} has unresolved refs: ${matches?.slice(0, 3).join(', ')}`);
 }
 

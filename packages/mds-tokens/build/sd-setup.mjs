@@ -24,11 +24,69 @@ export async function setupStyleDictionary() {
     transform: (token) => `mds-${token.name}`,
   });
 
+  // 2b. Custom value transform: append `px` to dimensional number tokens.
+  //     Source `.core.json` types every dimensional token as `"type": "number"`,
+  //     so Tokens Studio's built-in `ts/size/px` transform (which only fires on
+  //     `dimension`/`sizing` types) doesn't apply. Without this, number-ramp,
+  //     strokes, font-size, line-height tokens emit as bare numbers — invalid CSS.
+  //
+  //     Filter: any token typed as `number` AND whose value is a numeric string
+  //     (or number). Excludes anything that turns out to be non-numeric (e.g.
+  //     formula expressions Tokens Studio sometimes emits — those would already
+  //     be normalised by sd-transforms upstream).
+  StyleDictionary.registerTransform({
+    name: 'mds/value/number-to-px',
+    type: 'value',
+    filter: (token) => token.type === 'number' || token.$type === 'number',
+    transform: (token) => {
+      const v = token.$value ?? token.value;
+      if (typeof v === 'number') return `${v}px`;
+      if (typeof v === 'string' && /^-?\d+(\.\d+)?$/.test(v.trim())) return `${v.trim()}px`;
+      return v; // Leave non-numeric values (refs, formulas, etc.) alone.
+    },
+  });
+
+  // 2c. Custom value transform: map font-weight names to CSS-valid numbers.
+  //     Source uses `"type": "text", "value": "Regular"` for the regular weight,
+  //     which is not valid CSS. Browsers fall back to the font's default. Map
+  //     well-known weight names to their numeric equivalents.
+  StyleDictionary.registerTransform({
+    name: 'mds/value/font-weight-name-to-number',
+    type: 'value',
+    filter: (token) => token.path.includes('font-weight'),
+    transform: (token) => {
+      const v = token.$value ?? token.value;
+      if (typeof v !== 'string') return v;
+      const lower = v.toLowerCase().trim();
+      const map = {
+        thin: '100',
+        hairline: '100',
+        extralight: '200',
+        ultralight: '200',
+        light: '300',
+        normal: '400',
+        regular: '400',
+        book: '400',
+        medium: '500',
+        semibold: '600',
+        demibold: '600',
+        bold: '700',
+        extrabold: '800',
+        ultrabold: '800',
+        black: '900',
+        heavy: '900',
+      };
+      return map[lower] ?? v;
+    },
+  });
+
   // 3. Custom transform groups
   StyleDictionary.registerTransformGroup({
     name: 'mds/css',
     transforms: [
       ...getTransforms({ platform: 'css' }),
+      'mds/value/number-to-px',
+      'mds/value/font-weight-name-to-number',
       'name/kebab',          // SD built-in: token.path → kebab-case name
       'name/mds-prefix',     // local: prepend 'mds-'
     ],
@@ -42,6 +100,8 @@ export async function setupStyleDictionary() {
     name: 'mds/js',
     transforms: [
       ...getTransforms({ platform: 'css' }),
+      'mds/value/number-to-px',
+      'mds/value/font-weight-name-to-number',
       'name/camel',          // SD built-in: token.path → camelCase name
     ],
   });

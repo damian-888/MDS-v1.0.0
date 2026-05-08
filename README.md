@@ -27,8 +27,11 @@ Per-package work:
 ```bash
 pnpm --filter @mds/tokens dev        # watch token rebuild
 pnpm --filter @mds/icons sync        # pull latest SVGs from Figma (requires .env)
-pnpm --filter @mds/react storybook   # component dev environment
+pnpm --filter @mds/react test        # run @mds/react tests
+pnpm --filter @mds/react build       # build @mds/react (tsup)
 ```
+
+Storybook lives in a future `@mds/guidelines` package — it is not wired up in `@mds/react`.
 
 ## Using the tokens
 

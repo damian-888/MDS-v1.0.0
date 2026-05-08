@@ -14,7 +14,7 @@
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "format": "prettier --write .",
-    "storybook": "pnpm --filter @mds/components storybook",
+    "storybook": "pnpm --filter @mds/guidelines dev",
     "changeset": "changeset",
     "release": "pnpm -r build && changeset publish",
     "clean": "pnpm -r exec rm -rf dist && rm -rf node_modules packages/*/node_modules"

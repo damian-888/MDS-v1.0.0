@@ -1,0 +1,36 @@
+{
+  "name": "@mds/react",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "echo '@mds/react has no source yet' && exit 0",
+    "dev": "echo '@mds/react has no source yet' && exit 0",
+    "clean": "rm -rf dist",
+    "test": "echo 'no react tests yet' && exit 0",
+    "lint": "echo 'no source to lint yet' && exit 0",
+    "typecheck": "echo 'no source to typecheck yet' && exit 0",
+    "storybook": "echo '@mds/react storybook not configured yet' && exit 0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@mds/tokens": "workspace:*",
+    "@mds/icons": "workspace:*"
+  }
+}

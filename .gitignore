@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+packages/*/dist/
+storybook-static/
+
+# Generated source
+packages/mds-icons/src/generated/
+
+# Local-only docs / scratch / audits (kept out of GitHub)
+docs/
+.audit-2026-04-24/
+audit-findings-2026-04-24/
+
+# Smoke-test / agent transients
+.playwright-mcp/
+.claude/
+
+# OS / editor
+.DS_Store
+*.log
+
+# Secrets — keep out of the repo at every level
+.env
+.env.local
+*.env

@@ -1,0 +1,19 @@
+{
+  "name": "@mds/agents",
+  "version": "0.0.0",
+  "description": "MDS LLM context, agent prompts, and design-system knowledge base.",
+  "files": [
+    "llms.txt",
+    "vault"
+  ],
+  "exports": {
+    "./llms.txt": "./llms.txt"
+  },
+  "scripts": {
+    "build": "echo 'no build step for @mds/agents (static docs only)' && exit 0",
+    "clean": "echo 'nothing to clean' && exit 0",
+    "test": "echo 'no agents tests' && exit 0",
+    "lint": "echo 'no source to lint' && exit 0",
+    "typecheck": "echo 'no source to typecheck' && exit 0"
+  }
+}

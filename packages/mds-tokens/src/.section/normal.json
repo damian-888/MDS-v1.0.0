@@ -1,0 +1,324 @@
+{
+  "section": {
+    "light": {
+      "colours": {
+        "basic": {
+          "background": {
+            "value": "{scheme.light.normal.colours.basic.background}",
+            "type": "color"
+          },
+          "accent": {
+            "value": "{scheme.light.normal.colours.basic.accent}",
+            "type": "color"
+          },
+          "accent-secondary": {
+            "value": "{scheme.light.normal.colours.basic.accent-secondary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{scheme.light.normal.colours.basic.text}",
+            "type": "color"
+          },
+          "text-secondary": {
+            "value": "{scheme.light.normal.colours.basic.text-secondary}",
+            "type": "color"
+          },
+          "link": {
+            "value": "{scheme.light.normal.colours.basic.link}",
+            "type": "color"
+          },
+          "text-on-accent": {
+            "value": "{scheme.light.normal.colours.basic.text-on-accent}",
+            "type": "color"
+          },
+          "text-on-accent-secondary": {
+            "value": "{scheme.light.normal.colours.basic.text-on-accent-secondary}",
+            "type": "color"
+          },
+          "stroke": {
+            "value": "{scheme.light.normal.colours.basic.stroke}",
+            "type": "color"
+          },
+          "stroke-secondary": {
+            "value": "{scheme.light.normal.colours.basic.stroke-secondary}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{scheme.light.normal.colours.basic.focus}",
+            "type": "color"
+          },
+          "scrim": {
+            "value": "{scheme.light.normal.colours.basic.scrim}",
+            "type": "color"
+          }
+        },
+        "interaction-states": {
+          "hovered": {
+            "background-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.background-hovered}",
+              "type": "color"
+            },
+            "accent-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.accent-hovered}",
+              "type": "color"
+            },
+            "accent-secondary-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.accent-secondary-hovered}",
+              "type": "color"
+            },
+            "text-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.text-hovered}",
+              "type": "color"
+            },
+            "text-secondary-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.text-secondary-hovered}",
+              "type": "color"
+            },
+            "link-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.link-hovered}",
+              "type": "color"
+            },
+            "text-on-accent-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.text-on-accent-hovered}",
+              "type": "color"
+            },
+            "text-on-accent-secondary-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.text-on-accent-secondary-hovered}",
+              "type": "color"
+            },
+            "stroke-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.stroke-hovered}",
+              "type": "color"
+            },
+            "stroke-secondary-hovered": {
+              "value": "{scheme.light.normal.colours.interaction-states.hovered.stroke-secondary-hovered}",
+              "type": "color"
+            }
+          },
+          "pressed": {
+            "background-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.background-pressed}",
+              "type": "color"
+            },
+            "accent-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.accent-pressed}",
+              "type": "color"
+            },
+            "accent-secondary-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.accent-secondary-pressed}",
+              "type": "color"
+            },
+            "text-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.text-pressed}",
+              "type": "color"
+            },
+            "text-secondary-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.text-secondary-pressed}",
+              "type": "color"
+            },
+            "link-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.link-pressed}",
+              "type": "color"
+            },
+            "text-on-accent-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.text-on-accent-pressed}",
+              "type": "color"
+            },
+            "text-on-accent-secondary-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.text-on-accent-secondary-pressed}",
+              "type": "color"
+            },
+            "stroke-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.stroke-pressed}",
+              "type": "color"
+            },
+            "stroke-secondary-pressed": {
+              "value": "{scheme.light.normal.colours.interaction-states.pressed.stroke-secondary-pressed}",
+              "type": "color"
+            }
+          },
+          "disabled": {
+            "background-disabled": {
+              "value": "{scheme.light.normal.colours.interaction-states.disabled.background-disabled}",
+              "type": "color"
+            },
+            "text-disabled": {
+              "value": "{scheme.light.normal.colours.interaction-states.disabled.text-disabled}",
+              "type": "color"
+            },
+            "stroke-disabled": {
+              "value": "{scheme.light.normal.colours.interaction-states.disabled.stroke-disabled}",
+              "type": "color"
+            }
+          },
+          "visited": {
+            "link-visited": {
+              "value": "{scheme.light.normal.colours.interaction-states.visited.link-visited}",
+              "type": "color"
+            }
+          }
+        }
+      }
+    },
+    "dark": {
+      "colours": {
+        "basic": {
+          "background": {
+            "value": "{scheme.dark.normal.colours.basic.background}",
+            "type": "color"
+          },
+          "accent": {
+            "value": "{scheme.dark.normal.colours.basic.accent}",
+            "type": "color"
+          },
+          "accent-secondary": {
+            "value": "{scheme.dark.normal.colours.basic.accent-secondary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{scheme.dark.normal.colours.basic.text}",
+            "type": "color"
+          },
+          "text-secondary": {
+            "value": "{scheme.dark.normal.colours.basic.text-secondary}",
+            "type": "color"
+          },
+          "link": {
+            "value": "{scheme.dark.normal.colours.basic.link}",
+            "type": "color"
+          },
+          "text-on-accent": {
+            "value": "{scheme.dark.normal.colours.basic.text-on-accent}",
+            "type": "color"
+          },
+          "text-on-accent-secondary": {
+            "value": "{scheme.dark.normal.colours.basic.text-on-accent-secondary}",
+            "type": "color"
+          },
+          "stroke": {
+            "value": "{scheme.dark.normal.colours.basic.stroke}",
+            "type": "color"
+          },
+          "stroke-secondary": {
+            "value": "{scheme.dark.normal.colours.basic.stroke-secondary}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{scheme.dark.normal.colours.basic.focus}",
+            "type": "color"
+          },
+          "scrim": {
+            "value": "{scheme.dark.normal.colours.basic.scrim}",
+            "type": "color"
+          }
+        },
+        "interaction-states": {
+          "hovered": {
+            "background-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.background-hovered}",
+              "type": "color"
+            },
+            "accent-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.accent-hovered}",
+              "type": "color"
+            },
+            "accent-secondary-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.accent-secondary-hovered}",
+              "type": "color"
+            },
+            "text-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.text-hovered}",
+              "type": "color"
+            },
+            "text-secondary-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.text-secondary-hovered}",
+              "type": "color"
+            },
+            "link-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.link-hovered}",
+              "type": "color"
+            },
+            "text-on-accent-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.text-on-accent-hovered}",
+              "type": "color"
+            },
+            "text-on-accent-secondary-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.text-on-accent-secondary-hovered}",
+              "type": "color"
+            },
+            "stroke-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.stroke-hovered}",
+              "type": "color"
+            },
+            "stroke-secondary-hovered": {
+              "value": "{scheme.dark.normal.colours.interaction-states.hovered.stroke-secondary-hovered}",
+              "type": "color"
+            }
+          },
+          "pressed": {
+            "background-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.background-pressed}",
+              "type": "color"
+            },
+            "accent-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.accent-pressed}",
+              "type": "color"
+            },
+            "accent-secondary-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.accent-secondary-pressed}",
+              "type": "color"
+            },
+            "text-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.text-pressed}",
+              "type": "color"
+            },
+            "text-secondary-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.text-secondary-pressed}",
+              "type": "color"
+            },
+            "link-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.link-pressed}",
+              "type": "color"
+            },
+            "text-on-accent-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.text-on-accent-pressed}",
+              "type": "color"
+            },
+            "text-on-accent-secondary-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.text-on-accent-secondary-pressed}",
+              "type": "color"
+            },
+            "stroke-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.stroke-pressed}",
+              "type": "color"
+            },
+            "stroke-secondary-pressed": {
+              "value": "{scheme.dark.normal.colours.interaction-states.pressed.stroke-secondary-pressed}",
+              "type": "color"
+            }
+          },
+          "disabled": {
+            "background-disabled": {
+              "value": "{scheme.dark.normal.colours.interaction-states.disabled.background-disabled}",
+              "type": "color"
+            },
+            "text-disabled": {
+              "value": "{scheme.dark.normal.colours.interaction-states.disabled.text-disabled}",
+              "type": "color"
+            },
+            "stroke-disabled": {
+              "value": "{scheme.dark.normal.colours.interaction-states.disabled.stroke-disabled}",
+              "type": "color"
+            }
+          },
+          "visited": {
+            "link-visited": {
+              "value": "{scheme.dark.normal.colours.interaction-states.visited.link-visited}",
+              "type": "color"
+            }
+          }
+        }
+      }
+    }
+  }
+}

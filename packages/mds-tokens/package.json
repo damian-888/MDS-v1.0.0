@@ -1,0 +1,36 @@
+{
+  "name": "@mds/tokens",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/tokens.js",
+  "types": "./dist/tokens.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./typography.css": "./dist/typography.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./fonts/*": "./dist/fonts/*",
+    "./chunks/*": "./dist/chunks/*"
+  },
+  "scripts": {
+    "build": "node scripts/build-fonts.mjs && node style-dictionary.config.mjs && node verify-build.mjs",
+    "dev": "node --watch style-dictionary.config.mjs",
+    "clean": "rm -rf dist",
+    "test": "echo 'no tokens tests' && exit 0",
+    "lint": "eslint . --ext .js,.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "style-dictionary": "^5.4.0"
+  }
+}

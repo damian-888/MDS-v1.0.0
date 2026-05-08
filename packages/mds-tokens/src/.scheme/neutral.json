@@ -1,0 +1,648 @@
+{
+  "scheme": {
+    "light": {
+      "normal": {
+        "colours": {
+          "basic": {
+            "background": {
+              "value": "{white.colours.basic.background}",
+              "type": "color"
+            },
+            "accent": {
+              "value": "{white.colours.basic.accent}",
+              "type": "color"
+            },
+            "accent-secondary": {
+              "value": "{white.colours.basic.accent-secondary}",
+              "type": "color"
+            },
+            "text": {
+              "value": "{white.colours.basic.text}",
+              "type": "color"
+            },
+            "text-secondary": {
+              "value": "{white.colours.basic.text-secondary}",
+              "type": "color"
+            },
+            "link": {
+              "value": "{white.colours.basic.link}",
+              "type": "color"
+            },
+            "text-on-accent": {
+              "value": "{white.colours.basic.text-on-accent}",
+              "type": "color"
+            },
+            "text-on-accent-secondary": {
+              "value": "{white.colours.basic.text-on-accent-secondary}",
+              "type": "color"
+            },
+            "stroke": {
+              "value": "{white.colours.basic.stroke}",
+              "type": "color"
+            },
+            "stroke-secondary": {
+              "value": "{white.colours.basic.stroke-secondary}",
+              "type": "color"
+            },
+            "focus": {
+              "value": "{white.colours.basic.focus}",
+              "type": "color"
+            },
+            "scrim": {
+              "value": "{white.colours.basic.scrim}",
+              "type": "color"
+            }
+          },
+          "interaction-states": {
+            "hovered": {
+              "background-hovered": {
+                "value": "{white.colours.interaction-states.hovered.background-hovered}",
+                "type": "color"
+              },
+              "accent-hovered": {
+                "value": "{white.colours.interaction-states.hovered.accent-hovered}",
+                "type": "color"
+              },
+              "accent-secondary-hovered": {
+                "value": "{white.colours.interaction-states.hovered.accent-secondary-hovered}",
+                "type": "color"
+              },
+              "text-hovered": {
+                "value": "{white.colours.interaction-states.hovered.text-hovered}",
+                "type": "color"
+              },
+              "text-secondary-hovered": {
+                "value": "{white.colours.interaction-states.hovered.text-secondary-hovered}",
+                "type": "color"
+              },
+              "link-hovered": {
+                "value": "{white.colours.interaction-states.hovered.link-hovered}",
+                "type": "color"
+              },
+              "text-on-accent-hovered": {
+                "value": "{white.colours.interaction-states.hovered.text-on-accent-hovered}",
+                "type": "color"
+              },
+              "text-on-accent-secondary-hovered": {
+                "value": "{white.colours.interaction-states.hovered.text-on-accent-secondary-hovered}",
+                "type": "color"
+              },
+              "stroke-hovered": {
+                "value": "{white.colours.interaction-states.hovered.stroke-hovered}",
+                "type": "color"
+              },
+              "stroke-secondary-hovered": {
+                "value": "{white.colours.interaction-states.hovered.stroke-secondary-hovered}",
+                "type": "color"
+              }
+            },
+            "pressed": {
+              "background-pressed": {
+                "value": "{white.colours.interaction-states.pressed.background-pressed}",
+                "type": "color"
+              },
+              "accent-pressed": {
+                "value": "{white.colours.interaction-states.pressed.accent-pressed}",
+                "type": "color"
+              },
+              "accent-secondary-pressed": {
+                "value": "{white.colours.interaction-states.pressed.accent-secondary-pressed}",
+                "type": "color"
+              },
+              "text-pressed": {
+                "value": "{white.colours.interaction-states.pressed.text-pressed}",
+                "type": "color"
+              },
+              "text-secondary-pressed": {
+                "value": "{white.colours.interaction-states.pressed.text-secondary-pressed}",
+                "type": "color"
+              },
+              "link-pressed": {
+                "value": "{white.colours.interaction-states.pressed.link-pressed}",
+                "type": "color"
+              },
+              "text-on-accent-pressed": {
+                "value": "{white.colours.interaction-states.pressed.text-on-accent-pressed}",
+                "type": "color"
+              },
+              "text-on-accent-secondary-pressed": {
+                "value": "{white.colours.interaction-states.pressed.text-on-accent-secondary-pressed}",
+                "type": "color"
+              },
+              "stroke-pressed": {
+                "value": "{white.colours.interaction-states.pressed.stroke-pressed}",
+                "type": "color"
+              },
+              "stroke-secondary-pressed": {
+                "value": "{white.colours.interaction-states.pressed.stroke-secondary-pressed}",
+                "type": "color"
+              }
+            },
+            "disabled": {
+              "background-disabled": {
+                "value": "{white.colours.interaction-states.disabled.background-disabled}",
+                "type": "color"
+              },
+              "text-disabled": {
+                "value": "{white.colours.interaction-states.disabled.text-disabled}",
+                "type": "color"
+              },
+              "stroke-disabled": {
+                "value": "{white.colours.interaction-states.disabled.stroke-disabled}",
+                "type": "color"
+              }
+            },
+            "visited": {
+              "link-visited": {
+                "value": "{white.colours.interaction-states.visited.link-visited}",
+                "type": "color"
+              }
+            }
+          }
+        }
+      },
+      "subtle": {
+        "colours": {
+          "basic": {
+            "background": {
+              "value": "{white-subtle.colours.basic.background}",
+              "type": "color"
+            },
+            "accent": {
+              "value": "{white-subtle.colours.basic.accent}",
+              "type": "color"
+            },
+            "accent-secondary": {
+              "value": "{white-subtle.colours.basic.accent-secondary}",
+              "type": "color"
+            },
+            "text": {
+              "value": "{white-subtle.colours.basic.text}",
+              "type": "color"
+            },
+            "text-secondary": {
+              "value": "{white-subtle.colours.basic.text-secondary}",
+              "type": "color"
+            },
+            "link": {
+              "value": "{white-subtle.colours.basic.link}",
+              "type": "color"
+            },
+            "text-on-accent": {
+              "value": "{white-subtle.colours.basic.text-on-accent}",
+              "type": "color"
+            },
+            "text-on-accent-secondary": {
+              "value": "{white-subtle.colours.basic.text-on-accent-secondary}",
+              "type": "color"
+            },
+            "stroke": {
+              "value": "{white-subtle.colours.basic.stroke}",
+              "type": "color"
+            },
+            "stroke-secondary": {
+              "value": "{white-subtle.colours.basic.stroke-secondary}",
+              "type": "color"
+            },
+            "focus": {
+              "value": "{white-subtle.colours.basic.focus}",
+              "type": "color"
+            },
+            "scrim": {
+              "value": "{white-subtle.colours.basic.scrim}",
+              "type": "color"
+            }
+          },
+          "interaction-states": {
+            "hovered": {
+              "background-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.background-hovered}",
+                "type": "color"
+              },
+              "accent-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.accent-hovered}",
+                "type": "color"
+              },
+              "accent-secondary-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.accent-secondary-hovered}",
+                "type": "color"
+              },
+              "text-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.text-hovered}",
+                "type": "color"
+              },
+              "text-secondary-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.text-secondary-hovered}",
+                "type": "color"
+              },
+              "link-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.link-hovered}",
+                "type": "color"
+              },
+              "text-on-accent-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.text-on-accent-hovered}",
+                "type": "color"
+              },
+              "text-on-accent-secondary-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.text-on-accent-secondary-hovered}",
+                "type": "color"
+              },
+              "stroke-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.stroke-hovered}",
+                "type": "color"
+              },
+              "stroke-secondary-hovered": {
+                "value": "{white-subtle.colours.interaction-states.hovered.stroke-secondary-hovered}",
+                "type": "color"
+              }
+            },
+            "pressed": {
+              "background-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.background-pressed}",
+                "type": "color"
+              },
+              "accent-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.accent-pressed}",
+                "type": "color"
+              },
+              "accent-secondary-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.accent-secondary-pressed}",
+                "type": "color"
+              },
+              "text-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.text-pressed}",
+                "type": "color"
+              },
+              "text-secondary-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.text-secondary-pressed}",
+                "type": "color"
+              },
+              "link-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.link-pressed}",
+                "type": "color"
+              },
+              "text-on-accent-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.text-on-accent-pressed}",
+                "type": "color"
+              },
+              "text-on-accent-secondary-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.text-on-accent-secondary-pressed}",
+                "type": "color"
+              },
+              "stroke-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.stroke-pressed}",
+                "type": "color"
+              },
+              "stroke-secondary-pressed": {
+                "value": "{white-subtle.colours.interaction-states.pressed.stroke-secondary-pressed}",
+                "type": "color"
+              }
+            },
+            "disabled": {
+              "background-disabled": {
+                "value": "{white-subtle.colours.interaction-states.disabled.background-disabled}",
+                "type": "color"
+              },
+              "text-disabled": {
+                "value": "{white-subtle.colours.interaction-states.disabled.text-disabled}",
+                "type": "color"
+              },
+              "stroke-disabled": {
+                "value": "{white-subtle.colours.interaction-states.disabled.stroke-disabled}",
+                "type": "color"
+              }
+            },
+            "visited": {
+              "link-visited": {
+                "value": "{white-subtle.colours.interaction-states.visited.link-visited}",
+                "type": "color"
+              }
+            }
+          }
+        }
+      }
+    },
+    "dark": {
+      "normal": {
+        "colours": {
+          "basic": {
+            "background": {
+              "value": "{black.colours.basic.background}",
+              "type": "color"
+            },
+            "accent": {
+              "value": "{black.colours.basic.accent}",
+              "type": "color"
+            },
+            "accent-secondary": {
+              "value": "{black.colours.basic.accent-secondary}",
+              "type": "color"
+            },
+            "text": {
+              "value": "{black.colours.basic.text}",
+              "type": "color"
+            },
+            "text-secondary": {
+              "value": "{black.colours.basic.text-secondary}",
+              "type": "color"
+            },
+            "link": {
+              "value": "{black.colours.basic.link}",
+              "type": "color"
+            },
+            "text-on-accent": {
+              "value": "{black.colours.basic.text-on-accent}",
+              "type": "color"
+            },
+            "text-on-accent-secondary": {
+              "value": "{black.colours.basic.text-on-accent-secondary}",
+              "type": "color"
+            },
+            "stroke": {
+              "value": "{black.colours.basic.stroke}",
+              "type": "color"
+            },
+            "stroke-secondary": {
+              "value": "{black.colours.basic.stroke-secondary}",
+              "type": "color"
+            },
+            "focus": {
+              "value": "{black.colours.basic.focus}",
+              "type": "color"
+            },
+            "scrim": {
+              "value": "{black.colours.basic.scrim}",
+              "type": "color"
+            }
+          },
+          "interaction-states": {
+            "hovered": {
+              "background-hovered": {
+                "value": "{black.colours.interaction-states.hovered.background-hovered}",
+                "type": "color"
+              },
+              "accent-hovered": {
+                "value": "{black.colours.interaction-states.hovered.accent-hovered}",
+                "type": "color"
+              },
+              "accent-secondary-hovered": {
+                "value": "{black.colours.interaction-states.hovered.accent-secondary-hovered}",
+                "type": "color"
+              },
+              "text-hovered": {
+                "value": "{black.colours.interaction-states.hovered.text-hovered}",
+                "type": "color"
+              },
+              "text-secondary-hovered": {
+                "value": "{black.colours.interaction-states.hovered.text-secondary-hovered}",
+                "type": "color"
+              },
+              "link-hovered": {
+                "value": "{black.colours.interaction-states.hovered.link-hovered}",
+                "type": "color"
+              },
+              "text-on-accent-hovered": {
+                "value": "{black.colours.interaction-states.hovered.text-on-accent-hovered}",
+                "type": "color"
+              },
+              "text-on-accent-secondary-hovered": {
+                "value": "{black.colours.interaction-states.hovered.text-on-accent-secondary-hovered}",
+                "type": "color"
+              },
+              "stroke-hovered": {
+                "value": "{black.colours.interaction-states.hovered.stroke-hovered}",
+                "type": "color"
+              },
+              "stroke-secondary-hovered": {
+                "value": "{black.colours.interaction-states.hovered.stroke-secondary-hovered}",
+                "type": "color"
+              }
+            },
+            "pressed": {
+              "background-pressed": {
+                "value": "{black.colours.interaction-states.pressed.background-pressed}",
+                "type": "color"
+              },
+              "accent-pressed": {
+                "value": "{black.colours.interaction-states.pressed.accent-pressed}",
+                "type": "color"
+              },
+              "accent-secondary-pressed": {
+                "value": "{black.colours.interaction-states.pressed.accent-secondary-pressed}",
+                "type": "color"
+              },
+              "text-pressed": {
+                "value": "{black.colours.interaction-states.pressed.text-pressed}",
+                "type": "color"
+              },
+              "text-secondary-pressed": {
+                "value": "{black.colours.interaction-states.pressed.text-secondary-pressed}",
+                "type": "color"
+              },
+              "link-pressed": {
+                "value": "{black.colours.interaction-states.pressed.link-pressed}",
+                "type": "color"
+              },
+              "text-on-accent-pressed": {
+                "value": "{black.colours.interaction-states.pressed.text-on-accent-pressed}",
+                "type": "color"
+              },
+              "text-on-accent-secondary-pressed": {
+                "value": "{black.colours.interaction-states.pressed.text-on-accent-secondary-pressed}",
+                "type": "color"
+              },
+              "stroke-pressed": {
+                "value": "{black.colours.interaction-states.pressed.stroke-pressed}",
+                "type": "color"
+              },
+              "stroke-secondary-pressed": {
+                "value": "{black.colours.interaction-states.pressed.stroke-secondary-pressed}",
+                "type": "color"
+              }
+            },
+            "disabled": {
+              "background-disabled": {
+                "value": "{black.colours.interaction-states.disabled.background-disabled}",
+                "type": "color"
+              },
+              "text-disabled": {
+                "value": "{black.colours.interaction-states.disabled.text-disabled}",
+                "type": "color"
+              },
+              "stroke-disabled": {
+                "value": "{black.colours.interaction-states.disabled.stroke-disabled}",
+                "type": "color"
+              }
+            },
+            "visited": {
+              "link-visited": {
+                "value": "{black.colours.interaction-states.visited.link-visited}",
+                "type": "color"
+              }
+            }
+          }
+        }
+      },
+      "subtle": {
+        "colours": {
+          "basic": {
+            "background": {
+              "value": "{black-subtle.colours.basic.background}",
+              "type": "color"
+            },
+            "accent": {
+              "value": "{black-subtle.colours.basic.accent}",
+              "type": "color"
+            },
+            "accent-secondary": {
+              "value": "{black-subtle.colours.basic.accent-secondary}",
+              "type": "color"
+            },
+            "text": {
+              "value": "{black-subtle.colours.basic.text}",
+              "type": "color"
+            },
+            "text-secondary": {
+              "value": "{black-subtle.colours.basic.text-secondary}",
+              "type": "color"
+            },
+            "link": {
+              "value": "{black-subtle.colours.basic.link}",
+              "type": "color"
+            },
+            "text-on-accent": {
+              "value": "{black-subtle.colours.basic.text-on-accent}",
+              "type": "color"
+            },
+            "text-on-accent-secondary": {
+              "value": "{black-subtle.colours.basic.text-on-accent-secondary}",
+              "type": "color"
+            },
+            "stroke": {
+              "value": "{black-subtle.colours.basic.stroke}",
+              "type": "color"
+            },
+            "stroke-secondary": {
+              "value": "{black-subtle.colours.basic.stroke-secondary}",
+              "type": "color"
+            },
+            "focus": {
+              "value": "{black-subtle.colours.basic.focus}",
+              "type": "color"
+            },
+            "scrim": {
+              "value": "{black-subtle.colours.basic.scrim}",
+              "type": "color"
+            }
+          },
+          "interaction-states": {
+            "hovered": {
+              "background-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.background-hovered}",
+                "type": "color"
+              },
+              "accent-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.accent-hovered}",
+                "type": "color"
+              },
+              "accent-secondary-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.accent-secondary-hovered}",
+                "type": "color"
+              },
+              "text-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.text-hovered}",
+                "type": "color"
+              },
+              "text-secondary-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.text-secondary-hovered}",
+                "type": "color"
+              },
+              "link-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.link-hovered}",
+                "type": "color"
+              },
+              "text-on-accent-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.text-on-accent-hovered}",
+                "type": "color"
+              },
+              "text-on-accent-secondary-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.text-on-accent-secondary-hovered}",
+                "type": "color"
+              },
+              "stroke-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.stroke-hovered}",
+                "type": "color"
+              },
+              "stroke-secondary-hovered": {
+                "value": "{black-subtle.colours.interaction-states.hovered.stroke-secondary-hovered}",
+                "type": "color"
+              }
+            },
+            "pressed": {
+              "background-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.background-pressed}",
+                "type": "color"
+              },
+              "accent-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.accent-pressed}",
+                "type": "color"
+              },
+              "accent-secondary-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.accent-secondary-pressed}",
+                "type": "color"
+              },
+              "text-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.text-pressed}",
+                "type": "color"
+              },
+              "text-secondary-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.text-secondary-pressed}",
+                "type": "color"
+              },
+              "link-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.link-pressed}",
+                "type": "color"
+              },
+              "text-on-accent-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.text-on-accent-pressed}",
+                "type": "color"
+              },
+              "text-on-accent-secondary-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.text-on-accent-secondary-pressed}",
+                "type": "color"
+              },
+              "stroke-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.stroke-pressed}",
+                "type": "color"
+              },
+              "stroke-secondary-pressed": {
+                "value": "{black-subtle.colours.interaction-states.pressed.stroke-secondary-pressed}",
+                "type": "color"
+              }
+            },
+            "disabled": {
+              "background-disabled": {
+                "value": "{black-subtle.colours.interaction-states.disabled.background-disabled}",
+                "type": "color"
+              },
+              "text-disabled": {
+                "value": "{black-subtle.colours.interaction-states.disabled.text-disabled}",
+                "type": "color"
+              },
+              "stroke-disabled": {
+                "value": "{black-subtle.colours.interaction-states.disabled.stroke-disabled}",
+                "type": "color"
+              }
+            },
+            "visited": {
+              "link-visited": {
+                "value": "{black-subtle.colours.interaction-states.visited.link-visited}",
+                "type": "color"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

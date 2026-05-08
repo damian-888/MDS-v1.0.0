@@ -33,6 +33,7 @@ const palette = {
   appBg: '#FFFFFF',          // --mds-colours-basic-background
   appContentBg: '#FFFFFF',   // page background under stories
   appPreviewBg: '#FFFFFF',   // iframe canvas background
+  appHoverBg: '#F5F5F5',     // sidebar / list hover
   appBorderColor: '#E5E5E5', // --mds-colours-basic-stroke-secondary
   appBorderRadius: 8,        // --mds-radius-medium
 
@@ -78,6 +79,7 @@ export const mdsTheme = create({
   appBg: palette.appBg,
   appContentBg: palette.appContentBg,
   appPreviewBg: palette.appPreviewBg,
+  appHoverBg: palette.appHoverBg,
   appBorderColor: palette.appBorderColor,
   appBorderRadius: palette.appBorderRadius,
 

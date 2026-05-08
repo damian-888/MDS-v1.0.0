@@ -1,0 +1,360 @@
+{
+  "main": {
+    "id": "3e9def6a9c60630e",
+    "type": "split",
+    "children": [
+      {
+        "id": "dbc1317347190aa4",
+        "type": "tabs",
+        "dimension": 63.13176895306859,
+        "children": [
+          {
+            "id": "8c86a4f12f778a9f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L3.Shadcn.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L3.Shadcn"
+            }
+          },
+          {
+            "id": "84995729b2344699",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L3.Shadcn.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L3.Shadcn"
+            }
+          },
+          {
+            "id": "8b902c0504699f39",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L3.Base UI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L3.Base UI"
+            }
+          },
+          {
+            "id": "2300b51daa9a8129",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L2.Libraries.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L2.Libraries"
+            }
+          },
+          {
+            "id": "ababdc1377fab7fb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L1.MDS Vault Index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L1.MDS Vault Index"
+            }
+          },
+          {
+            "id": "44ffdc393e1f3fb9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L2.MDS System.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L2.MDS System"
+            }
+          },
+          {
+            "id": "de177dcb69d47188",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L3.Foundation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L3.Foundation"
+            }
+          },
+          {
+            "id": "21c9a9c16e81acad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L3.Components.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L3.Components"
+            }
+          },
+          {
+            "id": "097f6c41bd700939",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L3.Icons.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L3.Icons"
+            }
+          },
+          {
+            "id": "f5bb276cca644f57",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L2.MDS System.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L2.MDS System"
+            }
+          },
+          {
+            "id": "1021903db5b145d3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "L1.MDS Vault Index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "L1.MDS Vault Index"
+            }
+          }
+        ],
+        "currentTab": 10
+      },
+      {
+        "id": "358e46418c751cbf",
+        "type": "tabs",
+        "dimension": 36.86823104693141,
+        "children": [
+          {
+            "id": "d701ece27de515d6",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "07abf563a4dafc10",
+    "type": "split",
+    "children": [
+      {
+        "id": "00f905ed5f24d728",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "04fac81c033b7496",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8742201a6238a782",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c9dd81d94a6e662d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "3391cbabfb47805a",
+    "type": "split",
+    "children": [
+      {
+        "id": "58af734bcfa205d5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "16cca9801609898a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "L1.MDS Vault Index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for L1.MDS Vault Index"
+            }
+          },
+          {
+            "id": "ae0dc6ec4f55b1e5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "L1.MDS Vault Index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from L1.MDS Vault Index"
+            }
+          },
+          {
+            "id": "f4e28df92ce35e2e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0f74823472c075b2",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "95e134f14a26cd3b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "L1.MDS Vault Index.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of L1.MDS Vault Index"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "1021903db5b145d3",
+  "lastOpenFiles": [
+    "L2.MDS System.md",
+    "L1.MDS Vault Index.md",
+    "L2.Libraries.md",
+    "L3.Shadcn.md",
+    "L3.Components.md",
+    "L3.Foundation.md",
+    "L3.Patterns.md",
+    "L3.Icons.md",
+    "L3.Documentation.md",
+    "L3.Base UI.md",
+    "llms.txt.md",
+    "Welcome.md"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@mds/guidelines",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MDS visual development + component documentation (Storybook).",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
+    "build": "storybook build -o storybook-static",
+    "clean": "rm -rf storybook-static node_modules/.cache",
+    "test": "echo 'no @mds/guidelines tests yet' && exit 0",
+    "lint": "echo 'no lint configured for @mds/guidelines yet' && exit 0",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mds/components": "workspace:*",
+    "@mds/tokens": "workspace:*"
+  },
+  "devDependencies": {}
+}

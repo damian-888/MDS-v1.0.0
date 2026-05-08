@@ -1,0 +1,21 @@
+/*
+ * MDS Storybook Docs — global styles for the autodocs page.
+ *
+ * The shared ComponentDocs template (src/docs-template/ComponentDocs.tsx)
+ * applies inline styles to its own <h2> headings, but Storybook's <Stories>
+ * block auto-injects per-story <h2> headings inside the Usage & API section
+ * that aren't reachable from the template. This file styles those.
+ */
+
+.sbdocs.sbdocs-content h2 {
+  font-family: var(--mds-typography-h2-font-family);
+  font-size: var(--mds-typography-h2-font-size);
+  line-height: var(--mds-typography-h2-line-height);
+  font-weight: var(--mds-typography-h2-font-weight);
+  letter-spacing: var(--mds-typography-h2-letter-spacing);
+  color: var(--mds-mode-colours-basic-text);
+  margin-top: var(--mds-spacing-extra-large);
+  margin-bottom: var(--mds-spacing-extra-small);
+  padding: 0;
+  border: none;
+}

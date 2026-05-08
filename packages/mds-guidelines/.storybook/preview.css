@@ -13,7 +13,7 @@
   line-height: var(--mds-typography-h2-line-height);
   font-weight: var(--mds-typography-h2-font-weight);
   letter-spacing: var(--mds-typography-h2-letter-spacing);
-  color: var(--mds-mode-colours-basic-text);
+  color: var(--mds-colours-basic-text);
   margin-top: var(--mds-spacing-extra-large);
   margin-bottom: var(--mds-spacing-extra-small);
   padding: 0;

@@ -15,6 +15,14 @@
   },
   "devDependencies": {
     "@mds/components": "workspace:*",
-    "@mds/tokens": "workspace:*"
+    "@mds/tokens": "workspace:*",
+    "@storybook/addon-docs": "^10",
+    "@storybook/react-vite": "^10",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^10",
+    "typescript": "^5.7.3"
   }
 }

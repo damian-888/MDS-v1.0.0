@@ -1,4 +1,4 @@
-// packages/mds-tokens/verify-build.mjs
+// packages/mds-tokens/scripts/verify-build.mjs
 //
 // Post-build assertions. Run after style-dictionary.config.mjs.
 // Exits 1 on any failed assertion.
@@ -7,7 +7,8 @@ import { strict as assert } from 'node:assert';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const DIST = new URL('./dist/', import.meta.url).pathname;
+// `../dist/` because this script lives in `scripts/` and dist is at the package root.
+const DIST = new URL('../dist/', import.meta.url).pathname;
 
 function read(relative) {
   const path = join(DIST, relative);
@@ -185,7 +186,7 @@ checks.push(() => {
 
 checks.push(() => {
   // Use dynamic import so we always read the latest build
-  return import(new URL('./dist/tokens.js', import.meta.url).href).then((m) => {
+  return import(new URL('../dist/tokens.js', import.meta.url).href).then((m) => {
     // Foundation refs are CSS var strings
     assert.equal(typeof m.colours, 'object', 'tokens.js missing colours export');
     assert.match(

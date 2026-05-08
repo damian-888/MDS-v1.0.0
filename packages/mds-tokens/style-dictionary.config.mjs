@@ -7,8 +7,8 @@
 
 import { mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import StyleDictionary from 'style-dictionary';
-import { setupStyleDictionary } from './build/sd-setup.mjs';
-import { buildLayer } from './build/build-layer.mjs';
+import { setupStyleDictionary } from './scripts/style-dictionary/setup.mjs';
+import { buildLayer } from './scripts/style-dictionary/build-layer.mjs';
 
 await setupStyleDictionary();
 

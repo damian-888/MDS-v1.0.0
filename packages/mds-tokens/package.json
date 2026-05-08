@@ -22,7 +22,7 @@
     "./chunks/*": "./dist/chunks/*"
   },
   "scripts": {
-    "build": "node scripts/build-fonts.mjs && node style-dictionary.config.mjs && node verify-build.mjs",
+    "build": "node scripts/build-fonts.mjs && node style-dictionary.config.mjs && node scripts/verify-build.mjs",
     "dev": "node --watch style-dictionary.config.mjs",
     "clean": "rm -rf dist",
     "test": "echo 'no tokens tests' && exit 0",

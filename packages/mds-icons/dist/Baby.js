@@ -1,0 +1,19 @@
+import { jsxs as m, jsx as d } from "react/jsx-runtime";
+import { forwardRef as n, useId as s } from "react";
+const c = n(({
+  size: o = "1em",
+  title: r,
+  titleId: e,
+  ...i
+}, l) => {
+  const t = s(), a = r ? e ?? t : void 0;
+  return /* @__PURE__ */ m("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", width: o, height: o, "aria-hidden": r ? void 0 : !0, role: r ? "img" : void 0, ref: l, "aria-labelledby": a, ...i, children: [
+    r ? /* @__PURE__ */ d("title", { id: a, children: r }) : null,
+    /* @__PURE__ */ d("path", { fill: "currentColor", d: "M8.625 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m6.75-3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-1.35 4.673a3.84 3.84 0 0 1-4.05 0 1.126 1.126 0 1 0-1.2 1.904 6.09 6.09 0 0 0 6.45 0 1.125 1.125 0 1 0-1.2-1.904m8.1-3.173A10.124 10.124 0 1 1 12 1.875 10.136 10.136 0 0 1 22.125 12m-2.25 0a7.88 7.88 0 0 0-7.687-7.87c-.887 1.33-.938 2.557-.938 2.625a.75.75 0 1 0 1.5-.005 1.125 1.125 0 1 1 2.25 0 3 3 0 0 1-6 0c0-.06.01-.982.469-2.205A7.875 7.875 0 1 0 19.875 12" })
+  ] });
+});
+c.displayName = "Baby";
+export {
+  c as Baby
+};
+//# sourceMappingURL=Baby.js.map

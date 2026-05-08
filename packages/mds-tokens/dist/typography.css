@@ -1,0 +1,123 @@
+:root {
+  --mds-typography-h1-font-size: var(--mds-breakpoint-typography-h1-font-size);
+  --mds-typography-h1-line-height: var(--mds-breakpoint-typography-h1-line-height);
+  --mds-typography-h1-letter-spacing: var(--mds-breakpoint-typography-h1-letter-spacing);
+  --mds-typography-h1-paragraph-spacing: var(--mds-breakpoint-typography-h1-paragraph-spacing);
+  --mds-typography-h1-font-family: var(--mds-breakpoint-typography-h1-font-family);
+  --mds-typography-h1-font-weight: var(--mds-breakpoint-typography-h1-font-weight);
+  --mds-typography-h1-text-decoration: var(--mds-breakpoint-typography-h1-text-decoration);
+  --mds-typography-h2-font-size: var(--mds-breakpoint-typography-h2-font-size);
+  --mds-typography-h2-line-height: var(--mds-breakpoint-typography-h2-line-height);
+  --mds-typography-h2-letter-spacing: var(--mds-breakpoint-typography-h2-letter-spacing);
+  --mds-typography-h2-paragraph-spacing: var(--mds-breakpoint-typography-h2-paragraph-spacing);
+  --mds-typography-h2-font-family: var(--mds-breakpoint-typography-h2-font-family);
+  --mds-typography-h2-font-weight: var(--mds-breakpoint-typography-h2-font-weight);
+  --mds-typography-h2-text-decoration: var(--mds-breakpoint-typography-h2-text-decoration);
+  --mds-typography-h3-font-size: var(--mds-breakpoint-typography-h3-font-size);
+  --mds-typography-h3-line-height: var(--mds-breakpoint-typography-h3-line-height);
+  --mds-typography-h3-letter-spacing: var(--mds-breakpoint-typography-h3-letter-spacing);
+  --mds-typography-h3-paragraph-spacing: var(--mds-breakpoint-typography-h3-paragraph-spacing);
+  --mds-typography-h3-font-family: var(--mds-breakpoint-typography-h3-font-family);
+  --mds-typography-h3-font-weight: var(--mds-breakpoint-typography-h3-font-weight);
+  --mds-typography-h3-text-decoration: var(--mds-breakpoint-typography-h3-text-decoration);
+  --mds-typography-body-large-font-size: var(--mds-breakpoint-typography-body-large-font-size);
+  --mds-typography-body-large-line-height: var(--mds-breakpoint-typography-body-large-line-height);
+  --mds-typography-body-large-letter-spacing: var(--mds-breakpoint-typography-body-large-letter-spacing);
+  --mds-typography-body-large-paragraph-spacing: var(--mds-breakpoint-typography-body-large-paragraph-spacing);
+  --mds-typography-body-large-font-family: var(--mds-breakpoint-typography-body-large-font-family);
+  --mds-typography-body-large-font-weight: var(--mds-breakpoint-typography-body-large-font-weight);
+  --mds-typography-body-large-text-decoration: var(--mds-breakpoint-typography-body-large-text-decoration);
+  --mds-typography-body-font-size: var(--mds-breakpoint-typography-body-font-size);
+  --mds-typography-body-line-height: var(--mds-breakpoint-typography-body-line-height);
+  --mds-typography-body-letter-spacing: var(--mds-breakpoint-typography-body-letter-spacing);
+  --mds-typography-body-paragraph-spacing: var(--mds-breakpoint-typography-body-paragraph-spacing);
+  --mds-typography-body-font-family: var(--mds-breakpoint-typography-body-font-family);
+  --mds-typography-body-font-weight: var(--mds-breakpoint-typography-body-font-weight);
+  --mds-typography-body-text-decoration: var(--mds-breakpoint-typography-body-text-decoration);
+  --mds-typography-body-bold-font-size: var(--mds-breakpoint-typography-body-bold-font-size);
+  --mds-typography-body-bold-line-height: var(--mds-breakpoint-typography-body-bold-line-height);
+  --mds-typography-body-bold-letter-spacing: var(--mds-breakpoint-typography-body-bold-letter-spacing);
+  --mds-typography-body-bold-paragraph-spacing: var(--mds-breakpoint-typography-body-bold-paragraph-spacing);
+  --mds-typography-body-bold-font-family: var(--mds-breakpoint-typography-body-bold-font-family);
+  --mds-typography-body-bold-font-weight: var(--mds-breakpoint-typography-body-bold-font-weight);
+  --mds-typography-body-bold-text-decoration: var(--mds-breakpoint-typography-body-bold-text-decoration);
+  --mds-typography-body-underline-font-size: var(--mds-breakpoint-typography-body-underline-font-size);
+  --mds-typography-body-underline-line-height: var(--mds-breakpoint-typography-body-underline-line-height);
+  --mds-typography-body-underline-letter-spacing: var(--mds-breakpoint-typography-body-underline-letter-spacing);
+  --mds-typography-body-underline-paragraph-spacing: var(--mds-breakpoint-typography-body-underline-paragraph-spacing);
+  --mds-typography-body-underline-font-family: var(--mds-breakpoint-typography-body-underline-font-family);
+  --mds-typography-body-underline-font-weight: var(--mds-breakpoint-typography-body-underline-font-weight);
+  --mds-typography-body-underline-text-decoration: var(--mds-breakpoint-typography-body-underline-text-decoration);
+  --mds-typography-microcopy-font-size: var(--mds-breakpoint-typography-microcopy-font-size);
+  --mds-typography-microcopy-line-height: var(--mds-breakpoint-typography-microcopy-line-height);
+  --mds-typography-microcopy-letter-spacing: var(--mds-breakpoint-typography-microcopy-letter-spacing);
+  --mds-typography-microcopy-paragraph-spacing: var(--mds-breakpoint-typography-microcopy-paragraph-spacing);
+  --mds-typography-microcopy-font-family: var(--mds-breakpoint-typography-microcopy-font-family);
+  --mds-typography-microcopy-font-weight: var(--mds-breakpoint-typography-microcopy-font-weight);
+  --mds-typography-microcopy-text-decoration: var(--mds-breakpoint-typography-microcopy-text-decoration);
+}
+
+.mds-typography-h1 {
+  font-size: var(--mds-typography-h1-font-size);
+  line-height: var(--mds-typography-h1-line-height);
+  letter-spacing: var(--mds-typography-h1-letter-spacing);
+  font-family: var(--mds-typography-h1-font-family);
+  font-weight: var(--mds-typography-h1-font-weight);
+  text-decoration: var(--mds-typography-h1-text-decoration);
+}
+.mds-typography-h2 {
+  font-size: var(--mds-typography-h2-font-size);
+  line-height: var(--mds-typography-h2-line-height);
+  letter-spacing: var(--mds-typography-h2-letter-spacing);
+  font-family: var(--mds-typography-h2-font-family);
+  font-weight: var(--mds-typography-h2-font-weight);
+  text-decoration: var(--mds-typography-h2-text-decoration);
+}
+.mds-typography-h3 {
+  font-size: var(--mds-typography-h3-font-size);
+  line-height: var(--mds-typography-h3-line-height);
+  letter-spacing: var(--mds-typography-h3-letter-spacing);
+  font-family: var(--mds-typography-h3-font-family);
+  font-weight: var(--mds-typography-h3-font-weight);
+  text-decoration: var(--mds-typography-h3-text-decoration);
+}
+.mds-typography-body-large {
+  font-size: var(--mds-typography-body-large-font-size);
+  line-height: var(--mds-typography-body-large-line-height);
+  letter-spacing: var(--mds-typography-body-large-letter-spacing);
+  font-family: var(--mds-typography-body-large-font-family);
+  font-weight: var(--mds-typography-body-large-font-weight);
+  text-decoration: var(--mds-typography-body-large-text-decoration);
+}
+.mds-typography-body {
+  font-size: var(--mds-typography-body-font-size);
+  line-height: var(--mds-typography-body-line-height);
+  letter-spacing: var(--mds-typography-body-letter-spacing);
+  font-family: var(--mds-typography-body-font-family);
+  font-weight: var(--mds-typography-body-font-weight);
+  text-decoration: var(--mds-typography-body-text-decoration);
+}
+.mds-typography-body-bold {
+  font-size: var(--mds-typography-body-bold-font-size);
+  line-height: var(--mds-typography-body-bold-line-height);
+  letter-spacing: var(--mds-typography-body-bold-letter-spacing);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  text-decoration: var(--mds-typography-body-bold-text-decoration);
+}
+.mds-typography-body-underline {
+  font-size: var(--mds-typography-body-underline-font-size);
+  line-height: var(--mds-typography-body-underline-line-height);
+  letter-spacing: var(--mds-typography-body-underline-letter-spacing);
+  font-family: var(--mds-typography-body-underline-font-family);
+  font-weight: var(--mds-typography-body-underline-font-weight);
+  text-decoration: var(--mds-typography-body-underline-text-decoration);
+}
+.mds-typography-microcopy {
+  font-size: var(--mds-typography-microcopy-font-size);
+  line-height: var(--mds-typography-microcopy-line-height);
+  letter-spacing: var(--mds-typography-microcopy-letter-spacing);
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-weight: var(--mds-typography-microcopy-font-weight);
+  text-decoration: var(--mds-typography-microcopy-text-decoration);
+}

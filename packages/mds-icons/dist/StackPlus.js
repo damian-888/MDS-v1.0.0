@@ -1,0 +1,19 @@
+import { jsxs as h, jsx as o } from "react/jsx-runtime";
+import { forwardRef as n, useId as s } from "react";
+const m = n(({
+  size: l = "1em",
+  title: a,
+  titleId: d,
+  ...e
+}, i) => {
+  const t = s(), r = a ? d ?? t : void 0;
+  return /* @__PURE__ */ h("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", width: l, height: l, "aria-hidden": a ? void 0 : !0, role: a ? "img" : void 0, ref: i, "aria-labelledby": r, ...e, children: [
+    a ? /* @__PURE__ */ o("title", { id: r, children: a }) : null,
+    /* @__PURE__ */ o("path", { fill: "currentColor", d: "M22.5 18.75a1.125 1.125 0 0 1-1.125 1.125h-.75v.75a1.125 1.125 0 1 1-2.25 0v-.75h-.75a1.125 1.125 0 1 1 0-2.25h.75v-.75a1.125 1.125 0 1 1 2.25 0v.75h.75A1.125 1.125 0 0 1 22.5 18.75m-2.062-7.722L12 15.948l-8.433-4.92a1.125 1.125 0 0 0-1.13 1.944l9 5.25a1.13 1.13 0 0 0 1.135 0l9-5.25a1.125 1.125 0 1 0-1.134-1.944M1.875 7.5a1.13 1.13 0 0 1 .563-.972l9-5.25a1.13 1.13 0 0 1 1.134 0l9 5.25a1.126 1.126 0 0 1 0 1.944l-9 5.25a1.13 1.13 0 0 1-1.134 0l-9-5.25a1.13 1.13 0 0 1-.563-.972m3.358 0L12 11.448 18.767 7.5 12 3.552zm7.705 12.403-.938.545-8.433-4.92a1.125 1.125 0 0 0-1.13 1.944l9 5.25a1.13 1.13 0 0 0 1.135 0l1.5-.876a1.126 1.126 0 0 0-1.134-1.943" })
+  ] });
+});
+m.displayName = "StackPlus";
+export {
+  m as StackPlus
+};
+//# sourceMappingURL=StackPlus.js.map

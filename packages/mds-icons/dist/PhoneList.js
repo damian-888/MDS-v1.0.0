@@ -1,0 +1,19 @@
+import { jsxs as h, jsx as e } from "react/jsx-runtime";
+import { forwardRef as n, useId as s } from "react";
+const m = n(({
+  size: o = "1em",
+  title: a,
+  titleId: i,
+  ...d
+}, l) => {
+  const t = s(), r = a ? i ?? t : void 0;
+  return /* @__PURE__ */ h("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", width: o, height: o, "aria-hidden": a ? void 0 : !0, role: a ? "img" : void 0, ref: l, "aria-labelledby": r, ...d, children: [
+    a ? /* @__PURE__ */ e("title", { id: r, children: a }) : null,
+    /* @__PURE__ */ e("path", { fill: "currentColor", d: "m20.25 15.262-4.415-1.978-.017-.008a1.87 1.87 0 0 0-1.886.242L11.841 15.3c-1.22-.661-2.478-1.91-3.14-3.114l1.787-2.124a1 1 0 0 0 .08-.108 1.87 1.87 0 0 0 .148-1.782L8.738 3.75a1.88 1.88 0 0 0-1.949-1.111 5.65 5.65 0 0 0-4.914 5.61c0 7.652 6.224 13.876 13.875 13.876a5.65 5.65 0 0 0 5.61-4.915 1.88 1.88 0 0 0-1.11-1.948m-4.5 4.613A11.64 11.64 0 0 1 4.125 8.25a3.4 3.4 0 0 1 2.67-3.331l1.764 3.937-1.796 2.138q-.044.051-.08.107a1.88 1.88 0 0 0-.12 1.844c.883 1.807 2.702 3.615 4.529 4.5a1.88 1.88 0 0 0 1.845-.136 1 1 0 0 0 .105-.08l2.102-1.788 3.938 1.764a3.4 3.4 0 0 1-3.332 2.67M12.375 6A1.125 1.125 0 0 1 13.5 4.875h6a1.125 1.125 0 1 1 0 2.25h-6A1.125 1.125 0 0 1 12.375 6m0 3.75A1.125 1.125 0 0 1 13.5 8.625h6a1.125 1.125 0 1 1 0 2.25h-6a1.125 1.125 0 0 1-1.125-1.125" })
+  ] });
+});
+m.displayName = "PhoneList";
+export {
+  m as PhoneList
+};
+//# sourceMappingURL=PhoneList.js.map

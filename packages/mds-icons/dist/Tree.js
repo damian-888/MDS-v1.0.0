@@ -1,0 +1,19 @@
+import { jsxs as n, jsx as l } from "react/jsx-runtime";
+import { forwardRef as v, useId as s } from "react";
+const c = v(({
+  size: e = "1em",
+  title: r,
+  titleId: o,
+  ...d
+}, i) => {
+  const t = s(), a = r ? o ?? t : void 0;
+  return /* @__PURE__ */ n("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", width: e, height: e, "aria-hidden": r ? void 0 : !0, role: r ? "img" : void 0, ref: i, "aria-labelledby": a, ...d, children: [
+    r ? /* @__PURE__ */ l("title", { id: a, children: r }) : null,
+    /* @__PURE__ */ l("path", { fill: "currentColor", d: "M18.86 5.589a7.5 7.5 0 0 0-13.72 0 7.125 7.125 0 0 0 5.735 13.031v3.13a1.125 1.125 0 1 0 2.25 0v-3.128a7.2 7.2 0 0 0 2.625.502h.18A7.125 7.125 0 0 0 18.86 5.59m-2.983 11.285a4.88 4.88 0 0 1-2.752-.77v-3.409l3.878-1.94a1.124 1.124 0 1 0-1.006-2.011l-2.872 1.435v-1.93a1.125 1.125 0 0 0-2.25 0v4.18l-2.872-1.436a1.126 1.126 0 0 0-1.006 2.012l3.878 1.94v1.16a4.9 4.9 0 0 1-2.752.77c-2.58-.065-4.755-2.303-4.748-4.888a4.86 4.86 0 0 1 3.057-4.51 1.13 1.13 0 0 0 .636-.655 5.25 5.25 0 0 1 9.864 0 1.13 1.13 0 0 0 .636.656 4.86 4.86 0 0 1 3.057 4.507c.008 2.584-2.167 4.823-4.748 4.89" })
+  ] });
+});
+c.displayName = "Tree";
+export {
+  c as Tree
+};
+//# sourceMappingURL=Tree.js.map

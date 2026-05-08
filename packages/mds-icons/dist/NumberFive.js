@@ -1,0 +1,19 @@
+import { jsxs as n, jsx as o } from "react/jsx-runtime";
+import { forwardRef as h, useId as m } from "react";
+const s = h(({
+  size: e = "1em",
+  title: r,
+  titleId: d,
+  ...l
+}, a) => {
+  const t = m(), i = r ? d ?? t : void 0;
+  return /* @__PURE__ */ n("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", width: e, height: e, "aria-hidden": r ? void 0 : !0, role: r ? "img" : void 0, ref: a, "aria-labelledby": i, ...l, children: [
+    r ? /* @__PURE__ */ o("title", { id: i, children: r }) : null,
+    /* @__PURE__ */ o("path", { fill: "currentColor", d: "M16.875 15A5.625 5.625 0 0 1 7.5 19.192 1.125 1.125 0 1 1 9 17.517a3.374 3.374 0 1 0 .064-5.088 1.125 1.125 0 0 1-1.831-1.078l1.413-7.07a1.125 1.125 0 0 1 1.104-.905h6a1.125 1.125 0 0 1 0 2.25h-5.078L9.89 9.543A5.625 5.625 0 0 1 16.875 15" })
+  ] });
+});
+s.displayName = "NumberFive";
+export {
+  s as NumberFive
+};
+//# sourceMappingURL=NumberFive.js.map

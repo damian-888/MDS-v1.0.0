@@ -1,0 +1,19 @@
+import { jsxs as n, jsx as h } from "react/jsx-runtime";
+import { forwardRef as t, useId as s } from "react";
+const g = t(({
+  size: l = "1em",
+  title: a,
+  titleId: i,
+  ...o
+}, d) => {
+  const e = s(), r = a ? i ?? e : void 0;
+  return /* @__PURE__ */ n("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", width: l, height: l, "aria-hidden": a ? void 0 : !0, role: a ? "img" : void 0, ref: d, "aria-labelledby": r, ...o, children: [
+    a ? /* @__PURE__ */ h("title", { id: r, children: a }) : null,
+    /* @__PURE__ */ h("path", { fill: "currentColor", d: "M18.75 11.25a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M14.625 6h-3.75a1.125 1.125 0 0 0 0 2.25h3.75a1.125 1.125 0 0 0 0-2.25M24 10.5v3a2.625 2.625 0 0 1-2.582 2.625l-1.43 4.006a1.875 1.875 0 0 1-1.767 1.244H17.03a1.875 1.875 0 0 1-1.767-1.244l-.093-.256h-4.84l-.094.256a1.875 1.875 0 0 1-1.764 1.244H7.28a1.875 1.875 0 0 1-1.766-1.244L4.359 16.9a8.6 8.6 0 0 1-1.945-3.982 1.1 1.1 0 0 0-.164.581 1.125 1.125 0 0 1-2.25 0 3.38 3.38 0 0 1 2.303-3.2 8.637 8.637 0 0 1 8.572-7.675h9.75a1.125 1.125 0 0 1 0 2.25h-.937a8.6 8.6 0 0 1 2.107 2.948l.04.094A2.63 2.63 0 0 1 24 10.5m-2.25 0a.375.375 0 0 0-.375-.375h-.343a1.125 1.125 0 0 1-1.074-.788 6.375 6.375 0 0 0-6.083-4.462h-3a6.375 6.375 0 0 0-4.7 10.682c.1.11.179.24.23.38l1.138 3.188h.664l.269-.75a1.125 1.125 0 0 1 1.06-.75h6.429a1.125 1.125 0 0 1 1.06.75l.268.75h.664l1.609-4.5a1.125 1.125 0 0 1 1.059-.75h.75a.375.375 0 0 0 .375-.375z" })
+  ] });
+});
+g.displayName = "PiggyBank";
+export {
+  g as PiggyBank
+};
+//# sourceMappingURL=PiggyBank.js.map

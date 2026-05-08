@@ -1,0 +1,19 @@
+import { jsxs as v, jsx as e } from "react/jsx-runtime";
+import { forwardRef as n, useId as t } from "react";
+const m = n(({
+  size: r = "1em",
+  title: a,
+  titleId: l,
+  ...o
+}, h) => {
+  const i = t(), d = a ? l ?? i : void 0;
+  return /* @__PURE__ */ v("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", width: r, height: r, "aria-hidden": a ? void 0 : !0, role: a ? "img" : void 0, ref: h, "aria-labelledby": d, ...o, children: [
+    a ? /* @__PURE__ */ e("title", { id: d, children: a }) : null,
+    /* @__PURE__ */ e("path", { fill: "currentColor", d: "M19.5 2.625h-1.875V2.25a1.125 1.125 0 1 0-2.25 0v.375h-6.75V2.25a1.125 1.125 0 0 0-2.25 0v.375H4.5A1.875 1.875 0 0 0 2.625 4.5v15A1.875 1.875 0 0 0 4.5 21.375h15a1.875 1.875 0 0 0 1.875-1.875v-15A1.875 1.875 0 0 0 19.5 2.625M6.375 4.875a1.125 1.125 0 0 0 2.25 0h6.75a1.125 1.125 0 1 0 2.25 0h1.5v2.25H4.875v-2.25zm-1.5 14.25v-9.75h14.25v9.75zm5.625-7.5v5.25a1.125 1.125 0 1 1-2.25 0v-3.439a1.125 1.125 0 0 1-.878-2.062l1.5-.75a1.125 1.125 0 0 1 1.628 1.001m5.765 3.176-.9.949h.385a1.125 1.125 0 1 1 0 2.25h-3a1.126 1.126 0 0 1-.817-1.898l2.64-2.79a.375.375 0 1 0-.648-.374 1.125 1.125 0 0 1-1.948-1.126 2.624 2.624 0 0 1 4.898 1.313 2.6 2.6 0 0 1-.529 1.58 1 1 0 0 1-.081.096" })
+  ] });
+});
+m.displayName = "Calendar";
+export {
+  m as Calendar
+};
+//# sourceMappingURL=Calendar.js.map

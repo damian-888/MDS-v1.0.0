@@ -1,0 +1,20 @@
+import { jsxs as h, jsx as r } from "react/jsx-runtime";
+import { forwardRef as t, useId as s } from "react";
+const c = t(({
+  size: d = "1em",
+  title: i,
+  titleId: l,
+  ...a
+}, o) => {
+  const n = s(), e = i ? l ?? n : void 0;
+  return /* @__PURE__ */ h("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", width: d, height: d, "aria-hidden": i ? void 0 : !0, role: i ? "img" : void 0, ref: o, "aria-labelledby": e, ...a, children: [
+    i ? /* @__PURE__ */ r("title", { id: e, children: i }) : null,
+    /* @__PURE__ */ r("g", { clipPath: "url(#a)", children: /* @__PURE__ */ r("path", { fill: "currentColor", d: "M24 12.749a1.125 1.125 0 0 1-1.125 1.125h-3.75a1.125 1.125 0 1 1 0-2.25h3.75A1.125 1.125 0 0 1 24 12.749m-5.138 5.276a1.126 1.126 0 0 1-1.723 1.448c-1.284-1.528-3.545-3.35-7.014-3.35-2.708 0-5.2 1.19-7.013 3.35a1.125 1.125 0 0 1-1.723-1.448 11.6 11.6 0 0 1 4.564-3.351 6.75 6.75 0 1 1 8.344 0 11.6 11.6 0 0 1 4.565 3.351m-8.737-4.151a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9" }) }),
+    /* @__PURE__ */ r("defs", { children: /* @__PURE__ */ r("clipPath", { id: "a", children: /* @__PURE__ */ r("path", { fill: "currentColor", d: "M0 0h24v24H0z" }) }) })
+  ] });
+});
+c.displayName = "UserMinus";
+export {
+  c as UserMinus
+};
+//# sourceMappingURL=UserMinus.js.map

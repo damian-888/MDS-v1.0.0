@@ -14,23 +14,42 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./MDSButton": {
+      "types": "./dist/MDSButton/index.d.ts",
+      "import": "./dist/MDSButton/index.js"
+    },
+    "./*.css": "./dist/*.css"
   },
   "scripts": {
-    "build": "echo '@mds/react has no source yet' && exit 0",
-    "dev": "echo '@mds/react has no source yet' && exit 0",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "clean": "rm -rf dist",
-    "test": "echo 'no react tests yet' && exit 0",
-    "lint": "echo 'no source to lint yet' && exit 0",
-    "typecheck": "echo 'no source to typecheck yet' && exit 0",
-    "storybook": "echo '@mds/react storybook not configured yet' && exit 0"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "echo 'no lint configured for @mds/react yet' && exit 0",
+    "typecheck": "tsc --noEmit",
+    "storybook": "echo '@mds/react storybook lives in @mds/guidelines (future package)' && exit 0"
   },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
   },
   "dependencies": {
-    "@mds/tokens": "workspace:*",
-    "@mds/icons": "workspace:*"
+    "@base-ui-components/react": "1.0.0-rc.0",
+    "@mds/icons": "workspace:*",
+    "@mds/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "jsdom": "^29.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.5.1",
+    "vitest": "^4.1.5"
   }
 }

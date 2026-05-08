@@ -13,9 +13,8 @@
     "lint": "echo 'no lint configured for @mds/guidelines yet' && exit 0",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
+  "devDependencies": {
     "@mds/components": "workspace:*",
     "@mds/tokens": "workspace:*"
-  },
-  "devDependencies": {}
+  }
 }

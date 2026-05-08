@@ -80,7 +80,7 @@ async function buildAll() {
 
   // Build the lazy registry. Each icon is a dynamic import so consumers
   // get per-icon chunks (the consumer-facing wrapper MDSIcon lives in
-  // @mds/react). The single public artifact here is `registry` + `MDSIconName`.
+  // @mds/components). The single public artifact here is `registry` + `MDSIconName`.
   const lazyDecls = built
     .map(({ componentName }) => `const ${componentName} = lazy(() => import('./${componentName}').then(m => ({ default: m.${componentName} })));`)
     .join('\n');

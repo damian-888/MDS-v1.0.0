@@ -8,13 +8,13 @@
     "pnpm": ">=9"
   },
   "scripts": {
-    "build": "pnpm -r --filter @mds/tokens build && pnpm -r --filter @mds/icons build && pnpm -r --filter @mds/react build && pnpm -r --filter @mds/agents build",
+    "build": "pnpm -r --filter @mds/tokens build && pnpm -r --filter @mds/icons build && pnpm -r --filter @mds/components build && pnpm -r --filter @mds/agents build",
     "dev": "pnpm -r --parallel dev",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "format": "prettier --write .",
-    "storybook": "pnpm --filter @mds/react storybook",
+    "storybook": "pnpm --filter @mds/components storybook",
     "changeset": "changeset",
     "release": "pnpm -r build && changeset publish",
     "clean": "pnpm -r exec rm -rf dist && rm -rf node_modules packages/*/node_modules"

@@ -12,15 +12,15 @@ Living technical reference for the MDS design system's React implementation. Arc
 packages/
 ├── mds-tokens/      # @mds/tokens  — DTCG JSON → CSS vars + TS types
 ├── mds-icons/       # @mds/icons   — SVGs → per-icon chunks + lazy registry
-├── mds-components/  # @mds/react   — UI components (MDS-prefixed), depends on tokens + icons
+├── mds-components/  # @mds/components   — UI components (MDS-prefixed), depends on tokens + icons
 └── mds-agents/      # @mds/agents  — LLM context + design-system knowledge base
 ```
 
-**Dependency graph:** `@mds/react` → `@mds/tokens` + `@mds/icons`. Tokens and icons do not depend on each other. The consumer-facing `MDSIcon` component lives in `@mds/react`, not `@mds/icons` — `@mds/icons` ships only the lazy icon registry that `MDSIcon` consumes.
+**Dependency graph:** `@mds/components` → `@mds/tokens` + `@mds/icons`. Tokens and icons do not depend on each other. The consumer-facing `MDSIcon` component lives in `@mds/components`, not `@mds/icons` — `@mds/icons` ships only the lazy icon registry that `MDSIcon` consumes.
 
 **Source of truth:** Figma. Tokens authored in Figma Tokens Studio. Icons authored as components on a dedicated icons page. Components authored in the Figma components library.
 
-**`@mds/react` component layer:** components are built on [Base UI](https://base-ui.com) (MUI team) as the sole headless primitive layer — imported as a runtime dependency. [shadcn/ui](https://ui.shadcn.com) (Base UI flavor) is used as a copy-paste recipe source during scaffolding, not a runtime dependency. Styling is CSS Modules referencing `@mds/tokens` CSS variables — no CSS-in-JS, no Tailwind. Variants and states are expressed via data-attributes on the component root (`data-variant`, `data-size`, plus Base UI's runtime attrs `data-pressed`, `data-disabled`, etc.).
+**`@mds/components` component layer:** components are built on [Base UI](https://base-ui.com) (MUI team) as the sole headless primitive layer — imported as a runtime dependency. [shadcn/ui](https://ui.shadcn.com) (Base UI flavor) is used as a copy-paste recipe source during scaffolding, not a runtime dependency. Styling is CSS Modules referencing `@mds/tokens` CSS variables — no CSS-in-JS, no Tailwind. Variants and states are expressed via data-attributes on the component root (`data-variant`, `data-size`, plus Base UI's runtime attrs `data-pressed`, `data-disabled`, etc.).
 
 ---
 
@@ -130,7 +130,7 @@ dist/
 
 Cascade order in `tokens.css`: core → schemes → sections → modes → breakpoints → foundation. Foundation must come last because it references the layers above.
 
-Consumed by `@mds/react` components via CSS var names (no JS import needed) and by consuming apps via `import '@mds/tokens/tokens.css'` once at root.
+Consumed by `@mds/components` components via CSS var names (no JS import needed) and by consuming apps via `import '@mds/tokens/tokens.css'` once at root.
 
 ### JS / TS exports
 
@@ -191,10 +191,10 @@ A page with `<html>` and no token-related markup renders correctly with light/no
 
 ## Icon system
 
-**Public API: one component, one import.** Consumers use `<MDSIcon name="..." />` from `@mds/react`. The `name` prop autocompletes to every available icon name (kebab-case).
+**Public API: one component, one import.** Consumers use `<MDSIcon name="..." />` from `@mds/components`. The `name` prop autocompletes to every available icon name (kebab-case).
 
 ```tsx
-import { MDSIcon } from '@mds/react';
+import { MDSIcon } from '@mds/components';
 
 <MDSIcon name="chevron-down" size="small" />             // 16px
 <MDSIcon name="warning" size="medium" title="Invalid input" />  // 24px, accessible
@@ -224,7 +224,7 @@ This rule applies inside the component's render code AND inside any consumer wir
    - `src/generated/index.ts` — barrel exporting `iconRegistry`, `MDSIconName`, `MDSIconProps`
 3. **Build** (`pnpm --filter @mds/icons build`) — runs `generate`, then Vite lib mode builds with `preserveModules: true` so each icon lands at `dist/<PascalCase>.js` as a separate chunk (required for the dynamic imports to code-split in consumers). Registry + barrel are emitted alongside.
 
-### MDSIcon props (in `@mds/react`)
+### MDSIcon props (in `@mds/components`)
 
 - `name: MDSIconName` — required. Kebab-case literal union covering every registered icon; full autocomplete.
 - `size?: 'small' | 'medium' | 'large' | number` — default `'medium'`. T-shirt names map to `16 | 24 | 32` px and emit a `data-size` attribute the CSS Module uses to set `--MDSIcon-size`. A numeric value is written to `--MDSIcon-size` via inline `style` instead. See [Size rule](#size-rule-mandatory-when-sourcing-from-figma) above for when to use which.
@@ -239,7 +239,7 @@ This rule applies inside the component's render code AND inside any consumer wir
 1. Add the icon to the Figma icons library as a component.
 2. Run `pnpm --filter @mds/icons sync` (pulls the new SVG into `src/svg/`).
 3. Run `pnpm --filter @mds/icons build` (regenerates per-icon chunks + registry).
-4. Use in code: `<MDSIcon name="<kebab-case-name>" />` (imported from `@mds/react`).
+4. Use in code: `<MDSIcon name="<kebab-case-name>" />` (imported from `@mds/components`).
 
 ---
 
@@ -333,7 +333,7 @@ src/MDS<Component>/
 └── index.ts
 ```
 
-No stories file in `@mds/react`. Stories live in a future `@mds/guidelines` package.
+No stories file in `@mds/components`. Stories live in a future `@mds/guidelines` package.
 
 ### CSS Module conventions
 
@@ -378,7 +378,7 @@ No stories file in `@mds/react`. Stories live in a future `@mds/guidelines` pack
 
 ## Build system
 
-- **`@mds/react`** uses **tsup** (esbuild under the hood). ESM-only output. Per-component entries (`index`, `MDSButton/index`, `MDSIcon/index`). CSS Modules via `loader: { '.css': 'local-css' }`. `'use client'` banner injected into every JS file via `esbuildOptions.banner`. Externals: `react`, `react-dom`, `@base-ui-components/react`, `@mds/icons`. `@mds/tokens` is a `peerDependency` (consumers install it themselves and know to import its CSS).
+- **`@mds/components`** uses **tsup** (esbuild under the hood). ESM-only output. Per-component entries (`index`, `MDSButton/index`, `MDSIcon/index`). CSS Modules via `loader: { '.css': 'local-css' }`. `'use client'` banner injected into every JS file via `esbuildOptions.banner`. Externals: `react`, `react-dom`, `@base-ui-components/react`, `@mds/icons`. `@mds/tokens` is a `peerDependency` (consumers install it themselves and know to import its CSS).
 - **`@mds/icons`** uses Vite lib mode with `preserveModules: true` (rooted at `src/generated`) so each icon lands at its own `dist/<PascalCase>.js` chunk — required for `React.lazy(() => import('./Acorn'))` to actually code-split in consumers.
 - **`@mds/tokens`** uses Style Dictionary as described in the Token system section above.
 - `sideEffects` set correctly per package for tree-shaking: `false` for icons, `["**/*.css"]` for tokens and react.
@@ -391,8 +391,8 @@ No stories file in `@mds/react`. Stories live in a future `@mds/guidelines` pack
 pnpm install                        # install across workspace
 pnpm -r build                       # build all packages in dep order
 pnpm -r test                        # run all tests
-pnpm --filter @mds/react test       # run @mds/react tests
-pnpm --filter @mds/react build      # build @mds/react (tsup)
+pnpm --filter @mds/components test       # run @mds/components tests
+pnpm --filter @mds/components build      # build @mds/components (tsup)
 pnpm --filter @mds/tokens dev       # watch token rebuild
 pnpm changeset                      # record a version bump
 pnpm -r lint
@@ -403,9 +403,9 @@ pnpm -r typecheck
 
 1. Start tokens watch (if editing tokens): `pnpm --filter @mds/tokens dev`
 2. Edit component + test
-3. `pnpm --filter @mds/react test` before committing
+3. `pnpm --filter @mds/components test` before committing
 
-Storybook does not live in `@mds/react`. Visual development will live in a future `@mds/guidelines` package.
+Storybook does not live in `@mds/components`. Visual development will live in a future `@mds/guidelines` package.
 
 ---
 
@@ -435,7 +435,7 @@ Registry and publish config TBD.
 - **Three layers change at runtime — mode, section, and scheme.** Plus breakpoints via `@media`. Don't assume only mode swaps. Foundation tokens are re-declared on every override scope (`:root, [data-mode], [data-section], [data-scheme]`) so the var() chain re-resolves at the right element; this is non-obvious — see `style-dictionary.config.mjs` lines 26-49 for the rationale.
 - **Component-scoped vars are the consumer override API.** Components should never reference `--mds-*` token vars directly in rules — always go through the component var layer (`--MDSX-*`). Consumers can override any `--MDSButton-*` var on any ancestor node.
 - **Icon sizes are 16 / 24 / 32 px** for `small` / `medium` / `large`. Numeric sizes are the documented escape hatch for off-spec values — pass `size={n}` to set `--MDSIcon-size` via inline style. The t-shirt names are preferred when the Figma spec uses 16, 24, or 32.
-- **`MDSIcon` lives in `@mds/react`, not `@mds/icons`.** `@mds/icons` ships only the lazy registry + `MDSIconName` union. Always import `MDSIcon` from `@mds/react`.
+- **`MDSIcon` lives in `@mds/components`, not `@mds/icons`.** `@mds/icons` ships only the lazy registry + `MDSIconName` union. Always import `MDSIcon` from `@mds/components`.
 - **Icons tree-shake via dynamic imports.** Consumers ship only the icons they actually use at runtime (each resolved via `React.lazy`), wrapped in a `<Suspense>` with a same-sized placeholder. There is no visible layout shift; the first render of any given icon name shows the placeholder for a tick before the chunk resolves.
 - **MDSButton icon-only mode is enforced at the type level.** When `iconOnly: true`, TypeScript requires both `icon` and `aria-label`. `children` is forbidden. The discriminated union in `MDSButtonProps` means an inaccessible icon-only button cannot compile.
-- **`@mds/tokens` is a peer dependency of `@mds/react`.** Consumers must install it and import `@mds/tokens/tokens.css` at the app root. Making it a peer ensures consumers know they own this import — if it were a hidden `dependency`, the CSS import could be silently skipped.
+- **`@mds/tokens` is a peer dependency of `@mds/components`.** Consumers must install it and import `@mds/tokens/tokens.css` at the app root. Making it a peer ensures consumers know they own this import — if it were a hidden `dependency`, the CSS import could be silently skipped.

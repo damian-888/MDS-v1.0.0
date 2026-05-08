@@ -30,9 +30,9 @@
     "clean": "rm -rf dist",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "echo 'no lint configured for @mds/react yet' && exit 0",
+    "lint": "echo 'no lint configured for @mds/components yet' && exit 0",
     "typecheck": "tsc --noEmit",
-    "storybook": "echo '@mds/react storybook lives in @mds/guidelines (future package)' && exit 0"
+    "storybook": "echo '@mds/components storybook lives in @mds/guidelines (future package)' && exit 0"
   },
   "peerDependencies": {
     "react": ">=18",

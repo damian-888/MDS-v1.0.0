@@ -10,7 +10,7 @@ The token layer is the foundation — every component, theme, and consumer pulls
 |---|---|
 | [`@mds/tokens`](packages/mds-tokens/) | Design tokens — CSS variables + TypeScript types, generated from a Tokens Studio source. |
 | [`@mds/icons`](packages/mds-icons/) | Icon library — per-icon code-split chunks with a lazy registry. |
-| [`@mds/react`](packages/mds-components/) | React UI components, MDS-prefixed, consuming tokens + icons. |
+| [`@mds/components`](packages/mds-components/) | React UI components, MDS-prefixed, consuming tokens + icons. |
 | [`@mds/agents`](packages/mds-agents/) | LLM context, agent prompts, and design-system knowledge base. |
 
 ## Quick start
@@ -27,11 +27,11 @@ Per-package work:
 ```bash
 pnpm --filter @mds/tokens dev        # watch token rebuild
 pnpm --filter @mds/icons sync        # pull latest SVGs from Figma (requires .env)
-pnpm --filter @mds/react test        # run @mds/react tests
-pnpm --filter @mds/react build       # build @mds/react (tsup)
+pnpm --filter @mds/components test        # run @mds/components tests
+pnpm --filter @mds/components build       # build @mds/components (tsup)
 ```
 
-Storybook lives in a future `@mds/guidelines` package — it is not wired up in `@mds/react`.
+Storybook lives in a future `@mds/guidelines` package — it is not wired up in `@mds/components`.
 
 ## Using the tokens
 

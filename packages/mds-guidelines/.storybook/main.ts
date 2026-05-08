@@ -9,7 +9,6 @@ const config: StorybookConfig = {
   addons: ['@storybook/addon-docs'],
   docs: { defaultName: 'Docs' },
   typescript: {
-    check: false,
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,

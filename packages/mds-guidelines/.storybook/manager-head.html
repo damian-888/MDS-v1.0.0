@@ -1,0 +1,42 @@
+<!--
+  MDS Storybook manager-head — loads MDS fonts into the manager iframe.
+
+  These @font-face declarations live in raw HTML (not in manager.css) because
+  Storybook's manager bundler (esbuild) tries to resolve url(...) references
+  at build time and has no .otf loader. Putting them here bypasses the
+  bundler entirely; the browser fetches the font files at runtime from the
+  /fonts/* path that main.ts maps via staticDirs.
+-->
+<style>
+  @font-face {
+    font-family: 'Akkurat Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('/fonts/AkkuratPro-Regular.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'Akkurat Pro';
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url('/fonts/AkkuratPro-Bold.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'Manyone';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('/fonts/Manyone-Regular.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'Manyone';
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+    src: url('/fonts/Manyone-RegularItalic.otf') format('opentype');
+  }
+</style>

@@ -1,57 +1,18 @@
 /*
- * MDS Storybook manager UI styles.
+ * MDS Storybook manager UI overrides.
  *
- * The manager iframe runs OUTSIDE the docs preview, so it doesn't get
- * @mds/tokens/fonts.css from preview.ts. The manager bundler (esbuild via
- * @storybook/manager-builder) also has no .otf loader, so we can't import
- * fonts.css here either. Solution: main.ts maps packages/mds-tokens/dist/fonts
- * to /fonts/* via staticDirs, and we declare @font-face rules with absolute
- * URLs into that served path.
+ * Font @font-face declarations live in manager-head.html (the manager
+ * bundler can't resolve their url() references). This file holds rules
+ * that reference fonts by family name only — bundler-safe.
  *
  * Currently:
  * - Sidebar brand title ("MDS") uses Manyone at h3-ish size.
- * - Akkurat Pro is loaded so theme.ts's fontBase actually resolves to the
- *   real face (was silently falling back to system-ui before).
- */
-
-@font-face {
-  font-family: 'Akkurat Pro';
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url('/fonts/AkkuratPro-Regular.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Akkurat Pro';
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  src: url('/fonts/AkkuratPro-Bold.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Manyone';
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url('/fonts/Manyone-Regular.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Manyone';
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-  src: url('/fonts/Manyone-RegularItalic.otf') format('opentype');
-}
-
-/*
- * Brand title font override.
+ *
  * Selectors target Storybook v10's sidebar-header brand mark. The
  * `[class*=...]` patterns target emotion-hashed class names (the
  * `sidebar-header`/`sidebar-subheading` substrings are stable).
  */
+
 .sidebar-header a,
 .sidebar-header a span,
 [class*="sidebar-header"] a,

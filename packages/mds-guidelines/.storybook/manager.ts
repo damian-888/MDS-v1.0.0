@@ -1,7 +1,6 @@
 import { addons } from 'storybook/manager-api';
 import { mdsThemeLight, mdsThemeDark } from './theme';
 import './themeToolbar';
-import '@mds/tokens/fonts.css';
 import './manager.css';
 
 type ThemePref = 'light' | 'dark' | 'auto';

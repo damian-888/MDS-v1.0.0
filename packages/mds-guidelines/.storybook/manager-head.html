@@ -1,11 +1,19 @@
 <!--
-  MDS Storybook manager-head — loads MDS fonts into the manager iframe.
+  MDS Storybook manager-head — manager iframe fonts + chrome overrides.
 
-  These @font-face declarations live in raw HTML (not in manager.css) because
-  Storybook's manager bundler (esbuild) tries to resolve url(...) references
-  at build time and has no .otf loader. Putting them here bypasses the
-  bundler entirely; the browser fetches the font files at runtime from the
-  /fonts/* path that main.ts maps via staticDirs.
+  Single source of truth for manager-iframe styling:
+
+  1. @font-face declarations live here (not in a CSS file imported by
+     manager.ts) because Storybook's manager bundler (esbuild) tries to
+     resolve url(...) references at build time and has no .otf loader.
+     Raw HTML bypasses the bundler; the browser fetches the font files
+     at runtime from the /fonts/* path that main.ts maps via staticDirs.
+
+  2. Selectors that override Storybook's chrome (currently: sidebar
+     brand title font / size) live here too. They reference fonts by
+     family name only — no url() references — so they would survive
+     the bundler, but keeping all manager-iframe styling in one file
+     is simpler than splitting between an HTML head and a CSS module.
 -->
 <style>
   @font-face {
@@ -38,5 +46,22 @@
     font-style: italic;
     font-display: swap;
     src: url('/fonts/Manyone-RegularItalic.otf') format('opentype');
+  }
+
+  /*
+   * Sidebar brand title — Manyone at h3-ish size.
+   * Selectors target Storybook v10's emotion-hashed class names; the
+   * `sidebar-header` / `sidebar-subheading` substrings are stable.
+   */
+  .sidebar-header a,
+  .sidebar-header a span,
+  [class*="sidebar-header"] a,
+  [class*="sidebar-header"] a span,
+  .sidebar-subheading,
+  [class*="sidebar-subheading"] {
+    font-family: 'Manyone', system-ui, sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em;
   }
 </style>

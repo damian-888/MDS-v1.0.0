@@ -21,7 +21,7 @@ const TOOL_ID = `${ADDON_ID}/tool`;
 type ThemePref = 'light' | 'dark' | 'auto';
 
 function readPref(): ThemePref {
-  const v = (typeof window !== 'undefined' ? window.localStorage.getItem(STORAGE_KEY) : null);
+  const v = window.localStorage.getItem(STORAGE_KEY);
   return v === 'light' || v === 'dark' || v === 'auto' ? v : 'auto';
 }
 
@@ -78,7 +78,7 @@ const ThemeTool: FC = () => {
     window.location.reload();
   };
   return (
-    <IconButton key={TOOL_ID} title={TITLES[pref]} onClick={handleClick}>
+    <IconButton ariaLabel={TITLES[pref]} onClick={handleClick}>
       <Icon />
     </IconButton>
   );

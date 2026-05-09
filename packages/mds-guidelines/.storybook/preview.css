@@ -1,12 +1,17 @@
 /*
  * MDS Storybook Docs — global styles for the autodocs page.
  *
- * The shared ComponentDocs template (src/docs-template/ComponentDocs.tsx)
- * applies inline styles to its own <h2> headings, but Storybook's <Stories>
- * block auto-injects per-story <h2> headings inside the Usage & API section
- * that aren't reachable from the template. This file styles those.
+ * Single source of truth for the docs-iframe visual identity.
+ * Every rule is scoped under .sbdocs.sbdocs-content (Storybook's docs-page
+ * wrapper) so nothing leaks into the manager UI or the per-story canvas.
+ *
+ * Block-component classes use the `mds-` prefix to namespace cleanly
+ * against Storybook's own `sb-`/`sbdocs-` classes.
  */
 
+/* ---------- Section headings (h2) ---------- */
+/* Covers both Storybook's auto-injected per-story h2s and the manually
+   rendered <h2>Playground</h2> etc. in ComponentDocs.tsx. */
 .sbdocs.sbdocs-content h2 {
   font-family: var(--mds-typography-h2-font-family);
   font-size: var(--mds-typography-h2-font-size);
@@ -18,4 +23,122 @@
   margin-bottom: var(--mds-spacing-extra-small);
   padding: 0;
   border: none;
+}
+
+/* ---------- SummaryBlock ---------- */
+.sbdocs.sbdocs-content .mds-summary {
+  font-family: var(--mds-typography-body-large-font-family);
+  font-size: var(--mds-typography-body-large-font-size);
+  line-height: var(--mds-typography-body-large-line-height);
+  color: var(--mds-colours-basic-text-secondary);
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* ---------- GuidelinesBlock ---------- */
+.sbdocs.sbdocs-content .mds-guidelines {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--mds-spacing-extra-large);
+  margin-top: 0;
+}
+
+.sbdocs.sbdocs-content .mds-guidelines-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--mds-spacing-small);
+  margin: 0;
+  font-family: var(--mds-typography-h3-font-family);
+  font-size: var(--mds-typography-h3-font-size);
+  line-height: var(--mds-typography-h3-line-height);
+  font-weight: var(--mds-typography-h3-font-weight);
+  color: var(--mds-colours-basic-text);
+}
+
+.sbdocs.sbdocs-content .mds-guidelines-icon {
+  color: var(--mds-colours-basic-accent);
+  flex-shrink: 0;
+}
+
+.sbdocs.sbdocs-content .mds-guidelines-list {
+  margin-top: var(--mds-spacing-small);
+  margin-bottom: 0;
+  padding-left: var(--mds-spacing-medium);
+  font-family: var(--mds-typography-body-font-family);
+  font-size: var(--mds-typography-body-font-size);
+  line-height: var(--mds-typography-body-line-height);
+  color: var(--mds-colours-basic-text);
+}
+
+.sbdocs.sbdocs-content .mds-guidelines-list li {
+  margin-top: var(--mds-spacing-small);
+}
+
+/* ---------- DetailsBlock ---------- */
+.sbdocs.sbdocs-content .mds-details {
+  display: grid;
+  gap: var(--mds-spacing-large);
+  margin-top: 0;
+}
+
+.sbdocs.sbdocs-content .mds-details-label {
+  margin: 0;
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  line-height: var(--mds-typography-microcopy-line-height);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mds-colours-basic-text-secondary);
+}
+
+.sbdocs.sbdocs-content .mds-details-body {
+  margin: 0;
+  margin-top: var(--mds-spacing-small);
+  white-space: pre-wrap;
+  font-family: var(--mds-typography-body-font-family);
+  font-size: var(--mds-typography-body-font-size);
+  line-height: var(--mds-typography-body-line-height);
+  color: var(--mds-colours-basic-text);
+}
+
+/* ---------- RelatedBlock ---------- */
+.sbdocs.sbdocs-content .mds-related {
+  margin-top: var(--mds-spacing-extra-large);
+  padding-top: var(--mds-spacing-large);
+  border-top: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke-secondary);
+}
+
+.sbdocs.sbdocs-content .mds-related-label {
+  margin: 0;
+  margin-bottom: var(--mds-spacing-small);
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  line-height: var(--mds-typography-microcopy-line-height);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mds-colours-basic-text-secondary);
+}
+
+.sbdocs.sbdocs-content .mds-related-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: var(--mds-spacing-small);
+  flex-wrap: wrap;
+}
+
+.sbdocs.sbdocs-content .mds-related-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--mds-spacing-extra-small) var(--mds-spacing-small);
+  border-radius: var(--mds-radius-full);
+  border: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke-secondary);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  line-height: var(--mds-typography-body-bold-line-height);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  color: var(--mds-colours-basic-text);
+  text-decoration: none;
+  transition: background-color 120ms ease, border-color 120ms ease;
 }

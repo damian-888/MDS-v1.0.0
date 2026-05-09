@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 
+import '@mds/tokens/fonts.css';
 import '@mds/tokens/tokens.css';
 import './preview.css';
 

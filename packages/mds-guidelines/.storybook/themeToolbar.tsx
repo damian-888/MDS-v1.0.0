@@ -10,7 +10,11 @@
  * for a docs site.
  */
 
-import { type FC } from 'react';
+// React must be in scope: Storybook's manager bundler uses the classic JSX
+// transform (compiles <X /> to React.createElement(X)) regardless of tsconfig
+// `jsx: "react-jsx"`. The namespace import + React.FC type usage keeps both
+// the bundler and `noUnusedLocals` happy.
+import * as React from 'react';
 import { addons, types } from 'storybook/manager-api';
 import { IconButton } from 'storybook/internal/components';
 
@@ -37,7 +41,7 @@ const TITLES: Record<ThemePref, string> = {
   dark: 'Theme: dark',
 };
 
-const Icons: Record<ThemePref, FC> = {
+const Icons: Record<ThemePref, React.FC> = {
   auto: () => (
     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden focusable={false}>
       <circle cx="7" cy="7" r="6" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -69,7 +73,7 @@ const Icons: Record<ThemePref, FC> = {
   ),
 };
 
-const ThemeTool: FC = () => {
+const ThemeTool: React.FC = () => {
   const pref = readPref();
   const Icon = Icons[pref];
   const handleClick = () => {

@@ -2,101 +2,55 @@
  * MDS Storybook manager theme.
  *
  * Storybook's manager UI runs OUTSIDE the iframe where @mds/tokens/tokens.css
- * is loaded, so the values below cannot reference CSS custom properties.
- * Plain hex / px strings are duplicated here from the MDS token set.
+ * is loaded, so values cannot be CSS custom properties. We import the
+ * `palettes` JS export from @mds/tokens — a build-resolved object whose
+ * leaves are real hex strings — per the documented escape hatch in
+ * SYSTEM.md ("places where CSS vars don't fit").
  *
- * Edit this file to tune the chrome (sidebar, top bar, brand) of Storybook.
- * Single source of truth for the manager theme — wired via .storybook/manager.ts.
+ * To swap the chrome to dark or brand-tinted, change which palette is
+ * pinned to `surface` and `surfaceHover` below.
  */
 
+import { palettes } from '@mds/tokens';
 import { create } from 'storybook/theming';
 
 // ---------- Editable surface ----------
-// Tweak these to match the MDS visual identity. Stay in sync with @mds/tokens.
-
-const brand = {
-  title: 'MDS',
-  url: '#',
-  // Brand mark image. Drop a logo into .storybook/assets/ and import it
-  // here, e.g. `import logo from './assets/mds-logo.svg'` and use `image: logo`.
-  image: undefined as string | undefined,
-  target: '_self' as const,
-};
-
-const palette = {
-  // Brand / accent — maps to --mds-colours-basic-accent
-  primary: '#0A0A0A',
-  // Secondary action accent — maps to --mds-colours-basic-accent-secondary
-  secondary: '#737373',
-
-  // Surfaces
-  appBg: '#FFFFFF',          // --mds-colours-basic-background
-  appContentBg: '#FFFFFF',   // page background under stories
-  appPreviewBg: '#FFFFFF',   // iframe canvas background
-  appHoverBg: '#F5F5F5',     // sidebar / list hover
-  appBorderColor: '#E5E5E5', // --mds-colours-basic-stroke-secondary
-  appBorderRadius: 8,        // --mds-radius-medium
-
-  // Text
-  textColor: '#0A0A0A',          // --mds-colours-basic-text
-  textInverseColor: '#FFFFFF',   // --mds-colours-basic-text-on-accent
-  textMutedColor: '#737373',     // --mds-colours-basic-text-secondary
-
-  // Toolbar
-  barTextColor: '#0A0A0A',
-  barSelectedColor: '#0A0A0A',
-  barHoverColor: '#0A0A0A',
-  barBg: '#FFFFFF',
-
-  // Form inputs (search, controls)
-  inputBg: '#FFFFFF',
-  inputBorder: '#E5E5E5',
-  inputTextColor: '#0A0A0A',
-  inputBorderRadius: 8,
-};
-
-const fonts = {
-  // Base UI font — keep in sync with --mds-typography-body-font-family
-  base: '"TeleNeoWeb", "Helvetica Neue", Arial, sans-serif',
-  // Code blocks in docs / args
-  code: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
-};
+// Pin which palette the chrome draws from. `palettes` keys are kebab-case.
+const surface = palettes['white'].colours.basic;
+const surfaceHover = palettes['white-subtle'].colours.basic;
 
 // ---------- Theme assembly ----------
-// You shouldn't need to edit below this line for routine tuning.
+// All values below come from `surface` / `surfaceHover`. The two numeric
+// fields (appBorderRadius, inputBorderRadius) are required by Storybook's
+// type as `number`; `8` matches --mds-radius-medium per Tokens Studio.
 
 export const mdsTheme = create({
   base: 'light',
 
-  brandTitle: brand.title,
-  brandUrl: brand.url,
-  brandImage: brand.image,
-  brandTarget: brand.target,
+  brandTitle: 'MDS',
+  brandUrl: '#',
 
-  colorPrimary: palette.primary,
-  colorSecondary: palette.secondary,
+  colorPrimary: surface.accent,
+  colorSecondary: surface['accent-secondary'],
 
-  appBg: palette.appBg,
-  appContentBg: palette.appContentBg,
-  appPreviewBg: palette.appPreviewBg,
-  appHoverBg: palette.appHoverBg,
-  appBorderColor: palette.appBorderColor,
-  appBorderRadius: palette.appBorderRadius,
+  appBg: surface.background,
+  appContentBg: surface.background,
+  appPreviewBg: surface.background,
+  appHoverBg: surfaceHover.background,
+  appBorderColor: surface['stroke-secondary'],
+  appBorderRadius: 8, // --mds-radius-medium
 
-  textColor: palette.textColor,
-  textInverseColor: palette.textInverseColor,
-  textMutedColor: palette.textMutedColor,
+  textColor: surface.text,
+  textInverseColor: surface['text-on-accent'],
+  textMutedColor: surface['text-secondary'],
 
-  barTextColor: palette.barTextColor,
-  barSelectedColor: palette.barSelectedColor,
-  barHoverColor: palette.barHoverColor,
-  barBg: palette.barBg,
+  barTextColor: surface.text,
+  barSelectedColor: surface.text,
+  barHoverColor: surface.text,
+  barBg: surface.background,
 
-  inputBg: palette.inputBg,
-  inputBorder: palette.inputBorder,
-  inputTextColor: palette.inputTextColor,
-  inputBorderRadius: palette.inputBorderRadius,
-
-  fontBase: fonts.base,
-  fontCode: fonts.code,
+  inputBg: surface.background,
+  inputBorder: surface['stroke-secondary'],
+  inputTextColor: surface.text,
+  inputBorderRadius: 8, // --mds-radius-medium
 });

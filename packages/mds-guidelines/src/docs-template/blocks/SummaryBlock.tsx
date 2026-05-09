@@ -12,18 +12,5 @@ export function SummaryBlock() {
 
   if (!summary) return null;
 
-  return (
-    <p
-      style={{
-        fontFamily: 'var(--mds-typography-body-large-font-family)',
-        fontSize: 'var(--mds-typography-body-large-font-size)',
-        lineHeight: 'var(--mds-typography-body-large-line-height)',
-        color: 'var(--mds-colours-basic-text-secondary)',
-        marginTop: 4,
-        marginBottom: 24,
-      }}
-    >
-      {summary}
-    </p>
-  );
+  return <p className="mds-summary">{summary}</p>;
 }

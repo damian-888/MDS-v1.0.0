@@ -1,0 +1,24 @@
+/*
+ * MDS Storybook manager UI overrides.
+ *
+ * fontBase in theme.ts pins Akkurat Pro across the chrome. This file overrides
+ * specific elements that should use a different MDS font. Currently:
+ * - Sidebar brand title ("MDS") uses Manyone at h3-ish size.
+ *
+ * Selectors target Storybook v10's sidebar-header brand mark. They use the
+ * `[class*=...]` attribute pattern because Storybook's emotion-generated
+ * class names are hashed; the `sidebar-header`/`sidebar-subheading` substrings
+ * are stable across hash changes.
+ */
+
+.sidebar-header a,
+.sidebar-header a span,
+[class*="sidebar-header"] a,
+[class*="sidebar-header"] a span,
+.sidebar-subheading,
+[class*="sidebar-subheading"] {
+  font-family: 'Manyone', system-ui, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em;
+}

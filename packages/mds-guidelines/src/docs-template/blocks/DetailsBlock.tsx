@@ -1,5 +1,4 @@
 import { useOf } from '@storybook/addon-docs/blocks';
-import type { CSSProperties } from 'react';
 import type { MDSDocsParams } from '../types';
 
 const LABELS: Record<keyof NonNullable<MDSDocsParams['details']>, string> = {
@@ -16,26 +15,6 @@ const ORDER: Array<keyof NonNullable<MDSDocsParams['details']>> = [
   'gotchas',
 ];
 
-const labelStyle: CSSProperties = {
-  margin: 0,
-  fontFamily: 'var(--mds-typography-microcopy-font-family)',
-  fontSize: 'var(--mds-typography-microcopy-font-size)',
-  lineHeight: 'var(--mds-typography-microcopy-line-height)',
-  letterSpacing: '0.08em',
-  textTransform: 'uppercase',
-  color: 'var(--mds-colours-basic-text-secondary)',
-};
-
-const bodyStyle: CSSProperties = {
-  margin: 0,
-  marginTop: 'var(--mds-spacing-small)',
-  whiteSpace: 'pre-wrap',
-  fontFamily: 'var(--mds-typography-body-font-family)',
-  fontSize: 'var(--mds-typography-body-font-size)',
-  lineHeight: 'var(--mds-typography-body-line-height)',
-  color: 'var(--mds-colours-basic-text)',
-};
-
 export function DetailsBlock() {
   const resolved = useOf('meta', ['meta']);
   const mds = (resolved.preparedMeta.parameters as { mds?: { docs?: MDSDocsParams } })?.mds;
@@ -49,17 +28,11 @@ export function DetailsBlock() {
   if (populated.length === 0) return null;
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        gap: 'var(--mds-spacing-large)',
-        marginTop: 0,
-      }}
-    >
+    <div className="mds-details">
       {populated.map((key) => (
         <section key={key}>
-          <h4 style={labelStyle}>{LABELS[key]}</h4>
-          <p style={bodyStyle}>{details[key]}</p>
+          <h4 className="mds-details-label">{LABELS[key]}</h4>
+          <p className="mds-details-body">{details[key]}</p>
         </section>
       ))}
     </div>

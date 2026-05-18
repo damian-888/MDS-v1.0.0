@@ -1,38 +1,28 @@
-import { useOf } from '@storybook/addon-docs/blocks';
-import { MDSIcon } from '@mds/components';
-import type { MDSDocsParams } from '../types';
+import { useMDSDocs } from '../useMDSDocs';
 
 export function GuidelinesBlock() {
-  const resolved = useOf('meta', ['meta']);
-  const mds = (resolved.preparedMeta.parameters as { mds?: { docs?: MDSDocsParams } })?.mds;
-  const guidelines = mds?.docs?.guidelines;
-
+  const docs = useMDSDocs();
+  const guidelines = docs?.guidelines;
   if (!guidelines) return null;
 
   return (
-    <div className="mds-guidelines">
+    <>
       <section>
-        <h4 className="mds-guidelines-heading">
-          <MDSIcon name="check" size="small" aria-hidden className="mds-guidelines-icon" />
-          When to use
-        </h4>
-        <ul className="mds-guidelines-list">
+        <h3>When to use</h3>
+        <ul>
           {guidelines.use.map((line) => (
             <li key={line}>{line}</li>
           ))}
         </ul>
       </section>
       <section>
-        <h4 className="mds-guidelines-heading">
-          <MDSIcon name="x" size="small" aria-hidden className="mds-guidelines-icon" />
-          When NOT to use
-        </h4>
-        <ul className="mds-guidelines-list">
+        <h3>When NOT to use</h3>
+        <ul>
           {guidelines.avoid.map((line) => (
             <li key={line}>{line}</li>
           ))}
         </ul>
       </section>
-    </div>
+    </>
   );
 }

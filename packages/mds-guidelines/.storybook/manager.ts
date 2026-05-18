@@ -1,6 +1,7 @@
 import { addons } from 'storybook/manager-api';
 import { mdsThemeLight, mdsThemeDark } from './theme';
 import './themeToolbar';
+import { installAccentContrast } from './accentContrast';
 
 type ThemePref = 'light' | 'dark' | 'auto';
 const STORAGE_KEY = 'mds-theme';
@@ -19,3 +20,5 @@ function resolveTheme() {
 }
 
 addons.setConfig({ theme: resolveTheme() });
+
+installAccentContrast();

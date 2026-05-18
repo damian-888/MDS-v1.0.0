@@ -1,17 +1,17 @@
 import { Source, useOf } from '@storybook/addon-docs/blocks';
-import type { MDSDocsParams } from '../types';
+import { useMDSDocs } from '../useMDSDocs';
 
 export function UsageImportBlock() {
+  const docs = useMDSDocs();
+  // Component name comes from the resolved meta — useMDSDocs doesn't expose
+  // it because it's not part of the MDSDocsParams contract.
   const resolved = useOf('meta', ['meta']);
-  const mds = (resolved.preparedMeta.parameters as { mds?: { docs?: MDSDocsParams } })?.mds;
-  const importFrom = mds?.docs?.usage?.importFrom;
   const component = resolved.preparedMeta.component as
     | { displayName?: string; name?: string }
     | undefined;
   const componentName = component?.displayName ?? component?.name ?? 'Component';
 
-  if (!importFrom) return null;
-
-  const code = `import { ${componentName} } from '${importFrom}';`;
+  if (!docs?.usage?.importFrom) return null;
+  const code = `import { ${componentName} } from '${docs.usage.importFrom}';`;
   return <Source code={code} language="tsx" />;
 }

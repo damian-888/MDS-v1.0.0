@@ -4,8 +4,8 @@
  * Storybook's manager UI runs OUTSIDE the iframe where @mds/tokens/tokens.css
  * is loaded, so values cannot be CSS custom properties. We import the
  * `palettes` JS export from @mds/tokens — a build-resolved object whose
- * leaves are real hex strings — per the documented escape hatch in
- * SYSTEM.md ("places where CSS vars don't fit").
+ * leaves are real hex strings — as the documented escape hatch for places
+ * where CSS vars don't fit.
  *
  * Exports two themes (light + dark) so the manager can pick one based on
  * the user's preference. To swap which palette either theme draws from,
@@ -16,9 +16,11 @@
 import { palettes } from '@mds/tokens';
 import { create } from 'storybook/theming';
 
-// `fontBase` must be a literal string (manager iframe doesn't load tokens.css).
-// Matches the value emitted at --mds-core-typography-font-families-akkurat.
+// `fontBase` / `fontCode` must be literal strings (manager iframe doesn't
+// load tokens.css). FONT_BASE matches --mds-core-typography-font-families-akkurat.
+// FONT_CODE is a system stack — @mds/tokens has no monospace family.
 const FONT_BASE = '"Akkurat Pro", system-ui, sans-serif';
+const FONT_CODE = 'ui-monospace, SFMono-Regular, Menlo, monospace';
 
 function mdsTheme(
   mode: 'light' | 'dark',
@@ -38,7 +40,7 @@ function mdsTheme(
     appContentBg: surface.background,
     appPreviewBg: surface.background,
     appHoverBg: surfaceHover.background,
-    appBorderColor: surface['stroke-secondary'],
+    appBorderColor: surface.stroke,
     appBorderRadius: 8, // --mds-radius-medium
 
     textColor: surface.text,
@@ -46,16 +48,25 @@ function mdsTheme(
     textMutedColor: surface['text-secondary'],
 
     barTextColor: surface.text,
-    barSelectedColor: surface.text,
+    barSelectedColor: surface.accent,
     barHoverColor: surface.text,
     barBg: surface.background,
 
+    buttonBg: surface.accent,
+    buttonBorder: surface.stroke,
+
+    booleanBg: surface.background,
+    booleanSelectedBg: surface.accent,
+
     inputBg: surface.background,
-    inputBorder: surface['stroke-secondary'],
+    inputBorder: surface.stroke,
     inputTextColor: surface.text,
     inputBorderRadius: 8, // --mds-radius-medium
 
     fontBase: FONT_BASE,
+    fontCode: FONT_CODE,
+
+    gridCellSize: 8, // --mds-radius-medium
   });
 }
 

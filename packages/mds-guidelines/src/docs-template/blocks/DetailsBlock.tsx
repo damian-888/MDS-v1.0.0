@@ -1,4 +1,4 @@
-import { useOf } from '@storybook/addon-docs/blocks';
+import { useMDSDocs } from '../useMDSDocs';
 import type { MDSDocsParams } from '../types';
 
 const LABELS: Record<keyof NonNullable<MDSDocsParams['details']>, string> = {
@@ -16,10 +16,8 @@ const ORDER: Array<keyof NonNullable<MDSDocsParams['details']>> = [
 ];
 
 export function DetailsBlock() {
-  const resolved = useOf('meta', ['meta']);
-  const mds = (resolved.preparedMeta.parameters as { mds?: { docs?: MDSDocsParams } })?.mds;
-  const details = mds?.docs?.details;
-
+  const docs = useMDSDocs();
+  const details = docs?.details;
   if (!details) return null;
 
   const populated = ORDER.filter(
@@ -28,13 +26,13 @@ export function DetailsBlock() {
   if (populated.length === 0) return null;
 
   return (
-    <div className="mds-details">
+    <>
       {populated.map((key) => (
         <section key={key}>
-          <h4 className="mds-details-label">{LABELS[key]}</h4>
-          <p className="mds-details-body">{details[key]}</p>
+          <h4>{LABELS[key]}</h4>
+          <p>{details[key]}</p>
         </section>
       ))}
-    </div>
+    </>
   );
 }

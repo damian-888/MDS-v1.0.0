@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react-vite';
-import type { ComponentType } from 'react';
+import type { ComponentType, ComponentProps } from 'react';
 
 /**
  * Structured content fields for the shared MDS Storybook Docs template.
@@ -56,7 +56,10 @@ export type MDSTitle =
  * factory is rejected by the indexer ("CSF: default export must be an object").
  * The `satisfies` operator gives us type enforcement without breaking that.
  */
-export type MDSMeta<TComponent extends ComponentType<any>> = Meta<TComponent> & {
+export type MDSMeta<
+  TComponent extends ComponentType<any>,
+  TExtraArgs extends object = {},
+> = Meta<ComponentProps<TComponent> & TExtraArgs> & {
   title: MDSTitle;
   tags: ['autodocs'];
   parameters: {

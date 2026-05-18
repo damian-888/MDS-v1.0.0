@@ -1,144 +1,516 @@
 /*
- * MDS Storybook Docs — global styles for the autodocs page.
+ * MDS Storybook iframe global styles.
  *
- * Single source of truth for the docs-iframe visual identity.
- * Every rule is scoped under .sbdocs.sbdocs-content (Storybook's docs-page
- * wrapper) so nothing leaks into the manager UI or the per-story canvas.
+ * Loaded by `.storybook/preview.ts` and applies inside the canvas + docs
+ * iframe. The Storybook manager (toolbar/sidebar) runs in a separate window
+ * and never sees this file — its styling lives in `theme.ts` and
+ * `manager-head.html`.
  *
- * Block-component classes use the `mds-` prefix to namespace cleanly
- * against Storybook's own `sb-`/`sbdocs-` classes.
+ * ─── CSS isolation contract ───
+ * 1. Iframe-surface rules (`:root`, `body`, image defaults) and rules that
+ *    combine with `[data-mode]` on <html> live OUTSIDE @scope. Everything
+ *    else is wrapped in `@scope (.sbdocs.sbdocs-content) to (.sb-story)`,
+ *    which structurally halts at any `.sb-story` boundary. Chrome theming
+ *    therefore CANNOT reach into a rendered component.
+ * 2. Storybook's own `.sb-unstyled` class on `.sb-story` already excludes
+ *    story descendants from Storybook's emotion-injected docs-prose styles,
+ *    so emotion does not bleed into components either. The investigation in
+ *    docs/superpowers/specs/2026-05-13-storybook-css-isolation-design.md
+ *    confirmed that no Storybook prose rule reaches into the story tree;
+ *    our @scope handles the matching half (our preview.css cannot leak in
+ *    either direction).
+ * 3. Component CSS Modules never use bare tag selectors (per the
+ *    css-modules convention). That is the component-side half of the
+ *    bidirectional contract.
+ *
+ * Inside @scope, prose selectors use the `:scope:scope X` pattern.
+ * Each `:scope` contributes (0,1,0) specificity (Chrome's `&` inside
+ * @scope is zero-specificity, and bare `.sbdocs.sbdocs-content X`
+ * selectors are interpreted as scope-relative — looking for ANOTHER
+ * wrapper inside the scope root). The doubled `:scope:scope X` form
+ * yields specificity (0,2,1), beating Storybook's class-scoped
+ * emotion rules (`.css-XXXX :where(X:not(...))`, specificity 0,1,1)
+ * deterministically. For chrome rules targeting docblock classes
+ * (`.docblock-source`, `.docblock-argstable`, etc.), bare class
+ * selectors are used — @scope's `to (.sb-story)` boundary ensures
+ * they cannot reach into a rendered component regardless.
+ *
+ * Every value below comes from `@mds/tokens` — no hardcoded colours,
+ * radii, spacing, or font families. The one exception is the Prism
+ * syntax-highlighting palette near the bottom: those colours mirror
+ * GitHub's syntax theme (WCAG-AA on the matching bg) and aren't covered
+ * by the general design tokens.
  */
 
-/* ---------- Section headings (h2) ---------- */
-/* Covers both Storybook's auto-injected per-story h2s and the manually
-   rendered <h2>Playground</h2> etc. in ComponentDocs.tsx. */
-.sbdocs.sbdocs-content h2 {
-  font-family: var(--mds-typography-h2-font-family);
-  font-size: var(--mds-typography-h2-font-size);
-  line-height: var(--mds-typography-h2-line-height);
-  font-weight: var(--mds-typography-h2-font-weight);
-  letter-spacing: var(--mds-typography-h2-letter-spacing);
+/* ============================================================
+ * Color scheme — tells the browser what mode native UI should
+ * paint in (scrollbars, native form controls, default link color).
+ * The actual mode is selected by data-mode on <html>, set in preview.ts.
+ * ============================================================ */
+:root {
+  color-scheme: light dark;
+}
+
+/* ============================================================
+ * Iframe surface — applies to BOTH the canvas iframe (single-story
+ * view; no .sbdocs-content wrapper) and the docs iframe.
+ *
+ * `color` is set from the mode-aware token so any component that
+ * intentionally inherits `color` (MDSText via its typography utility,
+ * MDSIcon via `currentColor`, MDSAccordion's panel content) renders
+ * against the active `data-mode`. Without this, `color-scheme: light dark`
+ * makes the browser use the OS `prefers-color-scheme` for `canvastext`,
+ * which can disagree with our explicit `data-mode` (e.g. light-mode
+ * Storybook on a dark-mode OS) — text comes out white on white.
+ *
+ * Setting `color` does NOT undo the "components own their typography"
+ * rule: a component that sets its own `color` (MDSButton, MDSCard,
+ * MDSChipDismissible, …) still wins via the closer rule. We deliberately
+ * keep `font-family` and `font-size` unset so components remain the sole
+ * source of those. Docs-prose typography is handled inside @scope on the
+ * .sbdocs-content wrapper.
+ * ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--mds-colours-basic-background);
   color: var(--mds-colours-basic-text);
-  margin-top: var(--mds-spacing-extra-large);
-  margin-bottom: var(--mds-spacing-extra-small);
-  padding: 0;
-  border: none;
-}
-
-/* ---------- SummaryBlock ---------- */
-.sbdocs.sbdocs-content .mds-summary {
-  font-family: var(--mds-typography-body-large-font-family);
-  font-size: var(--mds-typography-body-large-font-size);
-  line-height: var(--mds-typography-body-large-line-height);
-  color: var(--mds-colours-basic-text-secondary);
-  margin-top: 4px;
-  margin-bottom: 24px;
-}
-
-/* ---------- GuidelinesBlock ---------- */
-.sbdocs.sbdocs-content .mds-guidelines {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--mds-spacing-extra-large);
-  margin-top: 0;
-}
-
-.sbdocs.sbdocs-content .mds-guidelines-heading {
-  display: flex;
-  align-items: center;
-  gap: var(--mds-spacing-small);
   margin: 0;
-  font-family: var(--mds-typography-h3-font-family);
-  font-size: var(--mds-typography-h3-font-size);
-  line-height: var(--mds-typography-h3-line-height);
-  font-weight: var(--mds-typography-h3-font-weight);
-  color: var(--mds-colours-basic-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-.sbdocs.sbdocs-content .mds-guidelines-icon {
-  color: var(--mds-colours-basic-accent);
-  flex-shrink: 0;
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-.sbdocs.sbdocs-content .mds-guidelines-list {
-  margin-top: var(--mds-spacing-small);
-  margin-bottom: 0;
-  padding-left: var(--mds-spacing-medium);
-  font-family: var(--mds-typography-body-font-family);
-  font-size: var(--mds-typography-body-font-size);
-  line-height: var(--mds-typography-body-line-height);
-  color: var(--mds-colours-basic-text);
+/* ============================================================
+ * .sb-story padding — .sb-story is the @scope BOUNDARY, so we
+ * cannot style the element itself inside the @scope block (its
+ * descendants are out of scope; the boundary element itself is
+ * excluded too). Pulled out here. Class-only target; cannot
+ * leak (no story renders a `.sbdocs-preview .sb-story` selector
+ * match in its own subtree).
+ * ============================================================ */
+.sbdocs-preview .sb-story {
+  padding-block-start: var(--mds-spacing-large) !important;
+  padding-block-end: var(--mds-spacing-large) !important;
 }
 
-.sbdocs.sbdocs-content .mds-guidelines-list li {
-  margin-top: var(--mds-spacing-small);
+/* ============================================================
+ * Everything below is bounded by the docs-content area, stopping
+ * at the .sb-story preview wrapper. Native @scope guarantees
+ * these rules cannot reach into any rendered component, so no
+ * `:not(.sb-story *)` exclusions are needed inside.
+ * ============================================================ */
+@scope (.sbdocs.sbdocs-content) to (.sb-story) {
+
+  /* ---- Headings ---- */
+  :scope:scope h1 {
+    font-family: var(--mds-typography-h1-font-family);
+    font-size: var(--mds-typography-h1-font-size);
+    line-height: var(--mds-typography-h1-line-height);
+    font-weight: var(--mds-typography-h1-font-weight);
+    letter-spacing: var(--mds-typography-h1-letter-spacing);
+    color: var(--mds-colours-basic-text);
+    margin: 0;
+    margin-block-end: var(--mds-spacing-extra-small);
+  }
+
+  :scope:scope h2 {
+    font-family: var(--mds-typography-h2-font-family);
+    font-size: var(--mds-typography-h2-font-size);
+    line-height: var(--mds-typography-h2-line-height);
+    font-weight: var(--mds-typography-h2-font-weight);
+    letter-spacing: var(--mds-typography-h2-letter-spacing);
+    color: var(--mds-colours-basic-text);
+    margin: 0;
+    margin-block-start: var(--mds-spacing-large);
+    margin-block-end: var(--mds-spacing-extra-small);
+    /* Nuke Storybook's emotion-injected border-bottom divider. */
+    border-block-end: 0;
+    padding-block-end: 0;
+  }
+
+  /* h3 and h4 share the h3 type token — no h4 token in @mds/tokens. */
+  :scope:scope h3,
+  :scope:scope h4 {
+    font-family: var(--mds-typography-h3-font-family);
+    font-size: var(--mds-typography-h3-font-size);
+    line-height: var(--mds-typography-h3-line-height);
+    font-weight: var(--mds-typography-h3-font-weight);
+    letter-spacing: var(--mds-typography-h3-letter-spacing);
+    color: var(--mds-colours-basic-text);
+    margin: 0;
+    margin-block-start: var(--mds-spacing-medium);
+    margin-block-end: var(--mds-spacing-extra-small);
+  }
+
+  /* ---- Body prose ----
+     Storybook's docs CSS forces `font-family` on .sbdocs-content <p> and a
+     few other inline elements via emotion. The `:scope:scope X` pattern
+     gets specificity (0,2,1) — the doubled `:scope` (each contributes
+     0,1,0) beats emotion's class-scoped (0,1,1) `.css-XXX :where(X...)`
+     rule deterministically. `&` inside @scope is zero-specificity in
+     Chrome, and bare `.sbdocs.sbdocs-content X` selectors are interpreted
+     as scope-relative (looking for another wrapper INSIDE the scope root,
+     which doesn't exist), so `:scope:scope X` is the working pattern. */
+  :scope:scope p,
+  :scope:scope li,
+  :scope:scope a {
+    font-family: var(--mds-typography-body-font-family);
+    font-size: var(--mds-typography-body-font-size);
+    line-height: var(--mds-typography-body-line-height);
+    color: var(--mds-colours-basic-text);
+  }
+
+  :scope:scope p {
+    margin: 0;
+    margin-block-start: var(--mds-spacing-extra-small);
+  }
+
+  /* SummaryBlock — the first <p> directly under the docs-content root,
+     sitting under the h1 title. Bumped to body-large for a "lead"
+     paragraph feel that distinguishes the summary from regular prose. */
+  :scope:scope > p:first-of-type {
+    font-family: var(--mds-typography-body-large-font-family);
+    font-size: var(--mds-typography-body-large-font-size);
+    line-height: var(--mds-typography-body-large-line-height);
+    font-weight: var(--mds-typography-body-large-font-weight);
+    letter-spacing: var(--mds-typography-body-large-letter-spacing);
+  }
+
+  /* ---- Lists ---- */
+  :scope:scope ul,
+  :scope:scope ol {
+    margin: 0;
+    margin-block-start: var(--mds-spacing-extra-small);
+    padding: 0;
+    padding-inline-start: var(--mds-spacing-medium);
+  }
+
+  :scope:scope li {
+    margin: 0;
+    margin-block-start: var(--mds-spacing-extra-small);
+  }
+
+  :scope:scope section + section {
+    margin-block-start: var(--mds-spacing-medium);
+  }
+
+  /* ---- Links ---- */
+  :scope:scope a {
+    color: var(--mds-colours-basic-link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  :scope:scope a:hover {
+    color: var(--mds-colours-interaction-states-hovered-link-hovered);
+  }
+
+  /* MDSButton rendered as <a> inside docs blocks (e.g. RelatedBlock).
+     Keep its undecorated appearance regardless of placement. */
+  :scope:scope a.MDSButton_root {
+    text-decoration: none;
+  }
+
+  /* ============================================================
+   * Storybook preview frames — the framed cards from <Primary />
+   * and each item in <Stories />.
+   *
+   * Border + foreground come from the docs theme (set in preview.ts
+   * via `parameters.docs.theme`). The background is driven from the
+   * live token instead of the theme's baked hex so the section axis
+   * can flip it. preview.ts stamps `data-section="subtle"` on every
+   * `.sbdocs-preview`, which re-resolves `--mds-colours-basic-background`
+   * to the subtle palette (e.g. grey-100 in light/neutral) at that
+   * element. A global decorator inside each `.sb-story` re-anchors
+   * `data-section="normal"` so the rendered component (e.g. an
+   * MDSCard with a white fill) sits against the subtle page surface
+   * with visible contrast.
+   * ============================================================ */
+  .sbdocs-preview {
+    background-color: var(--mds-colours-basic-background) !important;
+    border: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke) !important;
+    border-radius: var(--mds-radius-medium) !important;
+  }
+
+  /* ============================================================
+   * Source code blocks (UsageImportBlock import snippet, the
+   * "Show code" panel under each preview).
+   * ============================================================ */
+  .docblock-source,
+  .docblock-source div,
+  .docblock-source pre,
+  .docblock-source code {
+    background-color: var(--mds-colours-basic-background) !important;
+    color: var(--mds-colours-basic-text) !important;
+  }
+
+  .docblock-source {
+    border: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke) !important;
+    border-radius: var(--mds-radius-medium) !important;
+  }
+
+  /* ============================================================
+   * Docs chrome buttons — zoom +/-/reset, external link, "Show
+   * code" / "Copy code", and the small "Copy" inside the source
+   * panel. Class-targeted; @scope's `to (.sb-story)` boundary
+   * means none of these can match a <button> rendered by a story.
+   * ============================================================ */
+  .sbdocs-preview button,
+  .docblock-code-toggle,
+  .docblock-source button,
+  .sbdocs-preview + div button {
+    background-color: transparent !important;
+    color: var(--mds-colours-basic-text) !important;
+  }
+
+  /* ============================================================
+   * Args table (Controls block) — the props/args grid below the
+   * playground.
+   * ============================================================ */
+  .docblock-argstable {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke) !important;
+    border-radius: var(--mds-radius-medium) !important;
+    overflow: hidden !important;
+  }
+
+  .docblock-argstable th,
+  .docblock-argstable td {
+    border: 0 !important;
+    border-block-end: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke) !important;
+    font-family: var(--mds-typography-body-font-family) !important;
+    font-size: var(--mds-typography-body-font-size) !important;
+    line-height: var(--mds-typography-body-line-height) !important;
+    color: var(--mds-colours-basic-text) !important;
+  }
+
+  .docblock-argstable tbody tr:last-child td {
+    border-block-end: 0 !important;
+  }
+
+  .docblock-argstable th {
+    font-weight: var(--mds-typography-body-bold-font-weight) !important;
+  }
+
+  .docblock-argstable td p,
+  .docblock-argstable td div,
+  .docblock-argstable td span:not(code):not([class^="css-"]) {
+    font-family: var(--mds-typography-body-font-family) !important;
+    font-size: var(--mds-typography-body-font-size) !important;
+    line-height: var(--mds-typography-body-line-height) !important;
+    color: var(--mds-colours-basic-text) !important;
+  }
+
+  /* Inline code + type pills in arg descriptions.
+     The bare `code` rule here is safe — @scope halts at .sb-story so a
+     <code> rendered by a component is unreachable. */
+  :scope:scope code,
+  .docblock-argstable td:nth-child(2) span[class^="css-"]:not(.sb-sr-only) {
+    background-color: var(--mds-colours-interaction-states-disabled-background-disabled) !important;
+    color: var(--mds-colours-basic-text) !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important;
+    font-size: 0.9em !important;
+    padding-block: 2px !important;
+    padding-inline: 6px !important;
+    border-radius: var(--mds-radius-extra-small) !important;
+  }
+
+  /* Form controls inside the args table */
+  .docblock-argstable input[type="text"],
+  .docblock-argstable textarea,
+  .docblock-argstable select {
+    background-color: var(--mds-colours-basic-background) !important;
+    color: var(--mds-colours-basic-text) !important;
+    border: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke) !important;
+    border-radius: var(--mds-radius-extra-small) !important;
+    font-family: var(--mds-typography-body-font-family) !important;
+    font-size: var(--mds-typography-body-font-size) !important;
+    padding-block: var(--mds-number-ramp-8) !important;
+    padding-inline: var(--mds-number-ramp-12) !important;
+    height: auto !important;
+  }
+
+  .docblock-argstable input[type="radio"],
+  .docblock-argstable input[type="checkbox"] {
+    accent-color: var(--mds-colours-basic-accent);
+  }
+
+  .docblock-argstable th button {
+    background-color: transparent !important;
+    color: var(--mds-colours-basic-text) !important;
+  }
+
+  /* Category divider row */
+  .docblock-argstable tr[title] td span {
+    text-transform: none !important;
+    letter-spacing: var(--mds-typography-body-bold-letter-spacing) !important;
+  }
+
+  /* ============================================================
+   * Boolean toggle pill in the args table.
+   * Active span = the one matching the checkbox state.
+   * ============================================================ */
+  .docblock-argstable label input[type="checkbox"][role="switch"]:checked ~ span:nth-of-type(2),
+  .docblock-argstable label input[type="checkbox"][role="switch"]:not(:checked) ~ span:nth-of-type(1) {
+    background-color: var(--mds-colours-basic-accent) !important;
+    color: var(--mds-colours-basic-text-on-accent) !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    outline: none !important;
+  }
+
+  /* "Set boolean / Set Date / Set Object / …" pre-set button. Storybook
+     renders an outline-variant Button when a non-text arg is undefined;
+     that variant paints `theme.button.background` (= buttonBg = accent)
+     for the surface and `theme.input.color` (= inputTextColor = basic text)
+     for the label. In dark mode the accent is a light lavender and the
+     text is near-white, so the label vanishes. The manager iframe handles
+     this dynamically via `accentContrast.ts`; the preview iframe needs
+     the CSS analogue. All setter buttons share `id="set-<argName>"`. */
+  .docblock-argstable button[id^="set-"] {
+    color: var(--mds-colours-basic-text-on-accent) !important;
+  }
 }
 
-/* ---------- DetailsBlock ---------- */
-.sbdocs.sbdocs-content .mds-details {
-  display: grid;
-  gap: var(--mds-spacing-large);
-  margin-top: 0;
+/* ============================================================
+ * Code panel surfaces — dark-mode behaviour.
+ * Cannot live inside the @scope block because their selectors
+ * start at <html>[data-mode] which is outside .sbdocs-content.
+ * Class-only targeting (`.sbdocs.sbdocs-content`, `pre.prismjs`,
+ * `.docblock-source`) means these still cannot reach stories.
+ * ============================================================ */
+[data-mode="dark"] .sbdocs.sbdocs-content pre.prismjs,
+[data-mode="dark"] .sbdocs.sbdocs-content pre.prismjs code {
+  background-color: var(--mds-colours-basic-text) !important;
+  color: var(--mds-colours-basic-background) !important;
 }
 
-.sbdocs.sbdocs-content .mds-details-label {
-  margin: 0;
-  font-family: var(--mds-typography-microcopy-font-family);
-  font-size: var(--mds-typography-microcopy-font-size);
-  line-height: var(--mds-typography-microcopy-line-height);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--mds-colours-basic-text-secondary);
+/* Usage & API stays theme-aware in dark mode. */
+[data-mode="dark"] .sbdocs.sbdocs-content .docblock-source,
+[data-mode="dark"] .sbdocs.sbdocs-content .docblock-source pre.prismjs,
+[data-mode="dark"] .sbdocs.sbdocs-content .docblock-source pre.prismjs code {
+  background-color: var(--mds-colours-basic-background) !important;
+  color: var(--mds-colours-basic-text) !important;
 }
 
-.sbdocs.sbdocs-content .mds-details-body {
-  margin: 0;
-  margin-top: var(--mds-spacing-small);
-  white-space: pre-wrap;
-  font-family: var(--mds-typography-body-font-family);
-  font-size: var(--mds-typography-body-font-size);
-  line-height: var(--mds-typography-body-line-height);
-  color: var(--mds-colours-basic-text);
+/* ============================================================
+ * Prism syntax token palette — unchanged from previous version.
+ * Class-targeted selectors with [data-mode] context; cannot
+ * reach .sb-story descendants because all targets carry
+ * .prismjs or .docblock-source classes that only exist in the
+ * docs page.
+ * ============================================================ */
+
+/* keyword */
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.keyword,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.builtin,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.module,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.keyword,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.builtin,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.module {
+  color: #d73a49 !important;
+}
+/* string */
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.string,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.attr-value,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.string,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.attr-value {
+  color: #032f62 !important;
+}
+/* function/class */
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.function,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.class-name,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.maybe-class-name,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.attr-name,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.function,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.class-name,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.maybe-class-name,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.attr-name {
+  color: #6f42c1 !important;
+}
+/* punctuation */
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.punctuation,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.imports,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.punctuation,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.imports {
+  color: #24292e !important;
+}
+/* comment */
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.comment,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.comment {
+  color: #6a737d !important;
+}
+/* number/boolean/operator */
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.number,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.boolean,
+[data-mode="light"] .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.operator,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.number,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.boolean,
+[data-mode="dark"]  .sbdocs.sbdocs-content pre.prismjs .token.operator {
+  color: #005cc5 !important;
 }
 
-/* ---------- RelatedBlock ---------- */
-.sbdocs.sbdocs-content .mds-related {
-  margin-top: var(--mds-spacing-extra-large);
-  padding-top: var(--mds-spacing-large);
-  border-top: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke-secondary);
-}
+/* on-dark token colors — same hue family as on-light, brightness shifted
+   for legibility on dark surfaces. */
 
-.sbdocs.sbdocs-content .mds-related-label {
-  margin: 0;
-  margin-bottom: var(--mds-spacing-small);
-  font-family: var(--mds-typography-microcopy-font-family);
-  font-size: var(--mds-typography-microcopy-font-size);
-  line-height: var(--mds-typography-microcopy-line-height);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--mds-colours-basic-text-secondary);
+/* keyword */
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.keyword,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.builtin,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.module,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.keyword,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.builtin,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.module {
+  color: #ff7b72 !important;
 }
-
-.sbdocs.sbdocs-content .mds-related-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  gap: var(--mds-spacing-small);
-  flex-wrap: wrap;
+/* string */
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.string,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.attr-value,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.string,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.attr-value {
+  color: #a5d6ff !important;
 }
-
-.sbdocs.sbdocs-content .mds-related-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--mds-spacing-extra-small) var(--mds-spacing-small);
-  border-radius: var(--mds-radius-full);
-  border: var(--mds-strokes-1) solid var(--mds-colours-basic-stroke-secondary);
-  font-family: var(--mds-typography-body-bold-font-family);
-  font-size: var(--mds-typography-body-bold-font-size);
-  line-height: var(--mds-typography-body-bold-line-height);
-  font-weight: var(--mds-typography-body-bold-font-weight);
-  color: var(--mds-colours-basic-text);
-  text-decoration: none;
-  transition: background-color 120ms ease, border-color 120ms ease;
+/* function/class */
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.function,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.class-name,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.maybe-class-name,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.attr-name,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.function,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.class-name,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.maybe-class-name,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.attr-name {
+  color: #d2a8ff !important;
+}
+/* punctuation */
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.punctuation,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.imports,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.punctuation,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.imports {
+  color: #c9d1d9 !important;
+}
+/* comment */
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.comment,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.comment {
+  color: #8b949e !important;
+}
+/* number/boolean/operator */
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.number,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.boolean,
+[data-mode="light"] .sbdocs.sbdocs-content pre.prismjs .token.operator,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.number,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.boolean,
+[data-mode="dark"]  .sbdocs.sbdocs-content .docblock-source pre.prismjs .token.operator {
+  color: #79c0ff !important;
 }

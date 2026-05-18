@@ -1,25 +1,30 @@
-import { useOf } from '@storybook/addon-docs/blocks';
-import type { MDSDocsParams } from '../types';
+import { MDSButton } from '@mds/components';
+import { useMDSDocs } from '../useMDSDocs';
 
 export function RelatedBlock() {
-  const resolved = useOf('meta', ['meta']);
-  const mds = (resolved.preparedMeta.parameters as { mds?: { docs?: MDSDocsParams } })?.mds;
-  const related = mds?.docs?.related;
-
+  const docs = useMDSDocs();
+  const related = docs?.related;
   if (!related || related.length === 0) return null;
 
   return (
-    <section className="mds-related">
-      <h4 className="mds-related-label">Related components</h4>
-      <ul className="mds-related-list">
-        {related.map((entry) => (
-          <li key={entry.href}>
-            <a href={entry.href} className="mds-related-pill">
-              {entry.name}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <section>
+      <h3>Related components</h3>
+      {related.map((entry) => (
+        <MDSButton
+          key={entry.href}
+          variant="outline"
+          size="small"
+          // Render as a real <a> so navigation + middle-click work,
+          // while still picking up the MDSButton outline styling.
+          // `nativeButton={false}` tells Base UI we are intentionally
+          // rendering a non-<button> element (silences its dev warning).
+          render={<a href={entry.href} />}
+          nativeButton={false}
+          style={{ marginInlineEnd: 'var(--mds-spacing-extra-small)' }}
+        >
+          {entry.name}
+        </MDSButton>
+      ))}
     </section>
   );
 }

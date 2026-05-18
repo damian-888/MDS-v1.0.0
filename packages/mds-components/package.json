@@ -15,14 +15,106 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./styles.css": "./dist/index.css",
     "./MDSButton": {
       "types": "./dist/MDSButton/index.d.ts",
       "import": "./dist/MDSButton/index.js"
     },
+    "./MDSButton/styles.css": "./dist/MDSButton/index.css",
     "./MDSIcon": {
       "types": "./dist/MDSIcon/index.d.ts",
       "import": "./dist/MDSIcon/index.js"
-    }
+    },
+    "./MDSIcon/styles.css": "./dist/MDSIcon/index.css",
+    "./MDSText": {
+      "types": "./dist/MDSText/index.d.ts",
+      "import": "./dist/MDSText/index.js"
+    },
+    "./MDSBadge": {
+      "types": "./dist/MDSBadge/index.d.ts",
+      "import": "./dist/MDSBadge/index.js"
+    },
+    "./MDSBadge/styles.css": "./dist/MDSBadge/index.css",
+    "./MDSAccordion": {
+      "types": "./dist/MDSAccordion/index.d.ts",
+      "import": "./dist/MDSAccordion/index.js"
+    },
+    "./MDSAccordion/styles.css": "./dist/MDSAccordion/index.css",
+    "./MDSBreadcrumb": {
+      "types": "./dist/MDSBreadcrumb/index.d.ts",
+      "import": "./dist/MDSBreadcrumb/index.js"
+    },
+    "./MDSBreadcrumb/styles.css": "./dist/MDSBreadcrumb/index.css",
+    "./MDSFlyout": {
+      "types": "./dist/MDSFlyout/index.d.ts",
+      "import": "./dist/MDSFlyout/index.js"
+    },
+    "./MDSFlyout/styles.css": "./dist/MDSFlyout/index.css",
+    "./MDSBottomNavigation": {
+      "types": "./dist/MDSBottomNavigation/index.d.ts",
+      "import": "./dist/MDSBottomNavigation/index.js"
+    },
+    "./MDSBottomNavigation/styles.css": "./dist/MDSBottomNavigation/index.css",
+    "./MDSImage": {
+      "types": "./dist/MDSImage/index.d.ts",
+      "import": "./dist/MDSImage/index.js"
+    },
+    "./MDSImage/styles.css": "./dist/MDSImage/index.css",
+    "./MDSCard": {
+      "types": "./dist/MDSCard/index.d.ts",
+      "import": "./dist/MDSCard/index.js"
+    },
+    "./MDSCard/styles.css": "./dist/MDSCard/index.css",
+    "./MDSCheckbox": {
+      "types": "./dist/MDSCheckbox/index.d.ts",
+      "import": "./dist/MDSCheckbox/index.js"
+    },
+    "./MDSCheckbox/styles.css": "./dist/MDSCheckbox/index.css",
+    "./MDSChipDismissible": {
+      "types": "./dist/MDSChipDismissible/index.d.ts",
+      "import": "./dist/MDSChipDismissible/index.js"
+    },
+    "./MDSChipDismissible/styles.css": "./dist/MDSChipDismissible/index.css",
+    "./MDSChipToggle": {
+      "types": "./dist/MDSChipToggle/index.d.ts",
+      "import": "./dist/MDSChipToggle/index.js"
+    },
+    "./MDSChipToggle/styles.css": "./dist/MDSChipToggle/index.css",
+    "./MDSChipFilter": {
+      "types": "./dist/MDSChipFilter/index.d.ts",
+      "import": "./dist/MDSChipFilter/index.js"
+    },
+    "./MDSChipFilter/styles.css": "./dist/MDSChipFilter/index.css",
+    "./MDSChatBubble": {
+      "types": "./dist/MDSChatBubble/index.d.ts",
+      "import": "./dist/MDSChatBubble/index.js"
+    },
+    "./MDSChatBubble/styles.css": "./dist/MDSChatBubble/index.css",
+    "./MDSDivider": {
+      "types": "./dist/MDSDivider/index.d.ts",
+      "import": "./dist/MDSDivider/index.js"
+    },
+    "./MDSDivider/styles.css": "./dist/MDSDivider/index.css",
+    "./MDSLink": {
+      "types": "./dist/MDSLink/index.d.ts",
+      "import": "./dist/MDSLink/index.js"
+    },
+    "./MDSLink/styles.css": "./dist/MDSLink/index.css",
+    "./MDSInputField": {
+      "types": "./dist/MDSInputField/index.d.ts",
+      "import": "./dist/MDSInputField/index.js"
+    },
+    "./MDSInputField/styles.css": "./dist/MDSInputField/index.css",
+    "./MDSDropdownSelect": {
+      "types": "./dist/MDSDropdownSelect/index.d.ts",
+      "import": "./dist/MDSDropdownSelect/index.js"
+    },
+    "./MDSDropdownSelect/styles.css": "./dist/MDSDropdownSelect/index.css",
+    "./MDSMenu": {
+      "types": "./dist/MDSMenu/index.d.ts",
+      "import": "./dist/MDSMenu/index.js"
+    },
+    "./MDSMenu/styles.css": "./dist/MDSMenu/index.css"
   },
   "scripts": {
     "build": "tsup",

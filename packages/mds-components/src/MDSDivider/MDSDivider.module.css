@@ -1,0 +1,40 @@
+/* packages/mds-components/src/MDSDivider/MDSDivider.module.css */
+
+/* ---- Base ----
+   The divider is a 1px line / column rendered with the basic stroke
+   colour. The pill-radius matches Figma's --radius/full so the cap is
+   round at any size. */
+
+.root {
+  --MDSDivider-fill: var(--mds-colours-basic-stroke);
+  --MDSDivider-thickness: var(--mds-strokes-1);
+  --MDSDivider-corner-radius: var(--mds-radius-full);
+
+  background: var(--MDSDivider-fill);
+  border: 0;
+  margin: 0;
+  border-radius: var(--MDSDivider-corner-radius);
+  flex-shrink: 0;
+}
+
+/* Horizontal: full width, 1px tall. */
+.root[data-orientation='horizontal'] {
+  display: block;
+  width: 100%;
+  height: var(--MDSDivider-thickness);
+}
+
+/* Vertical: full height, 1px wide. Parent must provide the height —
+   `align-self: stretch` inside a flex row covers most cases. */
+.root[data-orientation='vertical'] {
+  display: inline-block;
+  width: var(--MDSDivider-thickness);
+  height: 100%;
+  align-self: stretch;
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (forced-colors: active) {
+  .root { background: CanvasText; }
+}

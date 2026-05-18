@@ -1,0 +1,183 @@
+/* packages/mds-components/src/MDSChatBubble/MDSChatBubble.module.css */
+
+/* ---- Base ---- */
+
+.root {
+  --MDSChatBubble-fill: var(--mds-colours-basic-background);
+  --MDSChatBubble-text-fill: var(--mds-colours-basic-text);
+  --MDSChatBubble-timestamp-fill: var(--mds-colours-basic-text-secondary);
+  --MDSChatBubble-corner-radius: var(--mds-radius-medium);
+  --MDSChatBubble-padding: var(--mds-number-ramp-8);
+  --MDSChatBubble-max-width: var(--mds-number-ramp-260, 260px);
+  --MDSChatBubble-media-size: 260px;
+  --MDSChatBubble-avatar-size: var(--mds-number-ramp-24);
+  --MDSChatBubble-avatar-stroke-width: var(--mds-strokes-1);
+  --MDSChatBubble-avatar-stroke: var(--mds-colours-basic-background);
+  --MDSChatBubble-item-spacing: var(--mds-number-ramp-8);
+  --MDSChatBubble-stack-spacing: var(--mds-number-ramp-4);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--MDSChatBubble-item-spacing);
+}
+
+/* Incoming bubbles align left and reserve room for the avatar. */
+.root[data-alignment='incoming'] {
+  justify-content: flex-start;
+}
+
+/* Outgoing bubbles align right and have no avatar. */
+.root[data-alignment='outgoing'] {
+  justify-content: flex-end;
+}
+
+/* ---- Avatar ---- */
+
+.avatarContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--MDSChatBubble-avatar-size);
+  height: var(--MDSChatBubble-avatar-size);
+  border-radius: var(--mds-radius-full);
+  border: var(--MDSChatBubble-avatar-stroke-width) solid
+    var(--MDSChatBubble-avatar-stroke);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatarContainer > * {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--mds-radius-full);
+  object-fit: cover;
+}
+
+.avatarContainer:empty {
+  /* Reserve the 24px column so outgoing layout stays consistent in mixed
+     conversations where some incoming messages have no avatar. */
+  border: 0;
+}
+
+/* ---- Bubble + timestamp stack ---- */
+
+.bubbleContainer {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--MDSChatBubble-stack-spacing);
+  min-width: 0;
+}
+
+.root[data-alignment='incoming'] .bubbleContainer {
+  align-items: flex-start;
+}
+
+.root[data-alignment='outgoing'] .bubbleContainer {
+  align-items: flex-end;
+}
+
+/* ---- Bubble ---- */
+
+.bubble {
+  box-sizing: border-box;
+  display: inline-flex;
+  background: var(--MDSChatBubble-fill);
+  color: var(--MDSChatBubble-text-fill);
+  border-radius: var(--MDSChatBubble-corner-radius);
+  padding: var(--MDSChatBubble-padding);
+  max-width: var(--MDSChatBubble-max-width);
+  overflow: hidden;
+}
+
+/* Flat corner on the side the avatar sits — matches Figma per alignment. */
+.root[data-alignment='incoming'] .bubble {
+  border-start-start-radius: 0;
+}
+
+.root[data-alignment='outgoing'] .bubble {
+  border-start-end-radius: 0;
+}
+
+/* ---- Type: message ---- */
+
+.message {
+  min-width: 0;
+  word-break: break-word;
+}
+
+.root[data-alignment='outgoing'] .message {
+  text-align: end;
+}
+
+/* ---- Type: media ---- */
+
+.root[data-type='media'] .bubble {
+  width: var(--MDSChatBubble-media-size);
+  height: var(--MDSChatBubble-media-size);
+  padding: 0;
+  display: block;
+  /* The bubble's own background is irrelevant — the media fills it. The
+     border stays for the rounded mask. */
+  background: transparent;
+}
+
+.media {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.media > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Type: loading ---- */
+
+.loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--mds-number-ramp-24);
+  height: var(--mds-number-ramp-24);
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  animation: MDSChatBubble-spin 1.2s linear infinite;
+}
+
+@keyframes MDSChatBubble-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Background: secondary ---- */
+
+.root[data-background='secondary'] .bubble {
+  --MDSChatBubble-fill: var(--mds-colours-basic-accent-secondary);
+  --MDSChatBubble-text-fill: var(--mds-colours-basic-text-on-accent-secondary);
+}
+
+/* ---- Timestamp ---- */
+
+.timestamp {
+  color: var(--MDSChatBubble-timestamp-fill);
+}
+
+.root[data-alignment='incoming'] .timestamp {
+  padding-inline-start: var(--mds-number-ramp-8);
+}
+
+.root[data-alignment='outgoing'] .timestamp {
+  padding-inline-end: var(--mds-number-ramp-8);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .loader { animation: none; }
+}
+
+@media (forced-colors: active) {
+  .bubble { border: 1px solid CanvasText; }
+}

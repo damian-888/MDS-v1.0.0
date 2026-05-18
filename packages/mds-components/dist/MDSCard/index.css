@@ -1,0 +1,323 @@
+/* src/MDSButton/MDSButton.module.css */
+.MDSButton_root {
+  --MDSButton-fill: var(--mds-colours-basic-accent-secondary);
+  --MDSButton-text-fill: var(--mds-colours-basic-text-on-accent-secondary);
+  --MDSButton-stroke: transparent;
+  --MDSButton-stroke-width: 0;
+  --MDSButton-corner-radius: var(--mds-radius-full);
+  --MDSButton-padding-horizontal: var(--mds-common-component-values-padding);
+  --MDSButton-min-height: var(--mds-common-component-values-height-large);
+  --MDSButton-min-width: var(--mds-number-ramp-100);
+  --MDSButton-item-spacing: var(--mds-number-ramp-8);
+  --MDSButton-focus-ring-width: var(--mds-strokes-2);
+  --MDSButton-focus-ring-fill: var(--mds-colours-basic-accent);
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--MDSButton-fill);
+  color: var(--MDSButton-text-fill);
+  border: var(--MDSButton-stroke-width) solid var(--MDSButton-stroke);
+  border-radius: var(--MDSButton-corner-radius);
+  padding-block: 0;
+  padding-inline: var(--MDSButton-padding-horizontal);
+  gap: var(--MDSButton-item-spacing);
+  min-height: var(--MDSButton-min-height);
+  min-width: var(--MDSButton-min-width);
+  font-family: var(--mds-typography-body-large-font-family);
+  font-size: var(--mds-typography-body-large-font-size);
+  font-weight: var(--mds-typography-body-large-font-weight);
+  line-height: var(--mds-typography-body-large-line-height);
+  cursor: pointer;
+  user-select: none;
+}
+.MDSButton_label {
+  white-space: nowrap;
+}
+.MDSButton_iconSlot {
+  display: inline-flex;
+  align-items: center;
+}
+.MDSButton_root[data-size=large] .MDSButton_iconSlot {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSButton_root[data-size=small] .MDSButton_iconSlot {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSButton_root[data-variant=primary] {
+  --MDSButton-fill: var(--mds-colours-basic-accent);
+  --MDSButton-text-fill: var(--mds-colours-basic-text-on-accent);
+}
+.MDSButton_root[data-variant=primary]:hover:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-hovered-accent-hovered);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-hovered-text-on-accent-hovered);
+}
+.MDSButton_root[data-variant=primary][data-pressed]:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-pressed-accent-pressed);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-pressed-text-on-accent-pressed);
+}
+.MDSButton_root[data-variant=secondary]:hover:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-hovered-accent-secondary-hovered);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-hovered-text-on-accent-secondary-hovered);
+}
+.MDSButton_root[data-variant=secondary][data-pressed]:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-pressed-accent-secondary-pressed);
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-pressed-text-on-accent-secondary-pressed);
+}
+.MDSButton_root[data-variant=outline] {
+  --MDSButton-fill: transparent;
+  --MDSButton-text-fill: var(--mds-colours-basic-text);
+  --MDSButton-stroke: var(--mds-colours-basic-stroke);
+  --MDSButton-stroke-width: var(--mds-strokes-2);
+}
+.MDSButton_root[data-variant=outline]:hover:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+.MDSButton_root[data-variant=outline][data-pressed]:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+.MDSButton_root[data-variant=ghost] {
+  --MDSButton-fill: transparent;
+  --MDSButton-text-fill: var(--mds-colours-basic-text);
+}
+.MDSButton_root[data-variant=ghost]:hover:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+.MDSButton_root[data-variant=ghost][data-pressed]:not([data-disabled]) {
+  --MDSButton-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+.MDSButton_root[data-size=small] {
+  --MDSButton-min-height: var(--mds-common-component-values-height-small);
+  --MDSButton-min-width: var(--mds-number-ramp-80);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+}
+.MDSButton_root[data-icon-only] {
+  --MDSButton-min-width: var(--MDSButton-min-height);
+  padding-inline: 0;
+  aspect-ratio: 1 / 1;
+}
+.MDSButton_root[data-disabled] {
+  --MDSButton-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  --MDSButton-stroke: transparent;
+  --MDSButton-stroke-width: 0;
+  cursor: not-allowed;
+}
+.MDSButton_root:not([data-variant=ghost])[data-disabled] {
+  --MDSButton-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
+}
+.MDSButton_root:focus-visible {
+  outline: var(--MDSButton-focus-ring-width) solid var(--MDSButton-focus-ring-fill);
+  outline-offset: var(--MDSButton-focus-ring-width);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSButton_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSButton_root {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* src/MDSIcon/MDSIcon.module.css */
+.MDSIcon_root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+}
+.MDSIcon_root[data-size=medium] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSIcon_root[data-size=small] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSIcon_root[data-size=large] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSIcon_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSIcon_root {
+    color: CanvasText;
+  }
+}
+
+/* src/MDSCard/MDSCard.module.css */
+.MDSCard_root {
+  --MDSCard-fill: var(--mds-colours-basic-background);
+  --MDSCard-stroke: transparent;
+  --MDSCard-stroke-width: 0;
+  --MDSCard-corner-radius: var(--mds-common-component-values-radius);
+  --MDSCard-padding: var(--mds-common-component-values-padding);
+  --MDSCard-content-gap: var(--mds-spacing-extra-small);
+  --MDSCard-focus-ring-fill: var(--mds-colours-basic-accent);
+  --MDSCard-focus-ring-width: var(--mds-strokes-2);
+  --MDSCard-media-side-width: 136px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--MDSCard-content-gap);
+  position: relative;
+  width: 100%;
+  padding: var(--MDSCard-padding);
+  background: var(--MDSCard-fill);
+  color: var(--mds-colours-basic-text);
+  border: var(--MDSCard-stroke-width) solid var(--MDSCard-stroke);
+  border-radius: var(--MDSCard-corner-radius);
+  overflow: clip;
+  text-align: start;
+  text-decoration: none;
+}
+.MDSCard_root[data-has-media] {
+  flex-direction: column;
+  padding: 0;
+  gap: 0;
+}
+.MDSCard_root[data-has-media][data-image-alignment=right] {
+  flex-direction: row-reverse;
+}
+.MDSCard_root[data-has-media][data-image-alignment=left] {
+  flex-direction: row;
+}
+.MDSCard_root[data-has-media][data-image-alignment=top] {
+  flex-direction: column;
+}
+.MDSCard_media {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  overflow: clip;
+}
+.MDSCard_root[data-image-alignment=top] .MDSCard_media {
+  width: 100%;
+}
+.MDSCard_root[data-image-alignment=right] .MDSCard_media,
+.MDSCard_root[data-image-alignment=left] .MDSCard_media {
+  width: var(--MDSCard-media-side-width);
+  aspect-ratio: 1 / 1;
+  align-self: stretch;
+}
+.MDSCard_overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mds-colours-basic-scrim);
+  pointer-events: none;
+}
+.MDSCard_overlay > * {
+  pointer-events: auto;
+}
+.MDSCard_content {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--MDSCard-content-gap);
+  padding: var(--MDSCard-padding);
+}
+.MDSCard_root[data-outline] {
+  --MDSCard-stroke: var(--mds-colours-basic-stroke);
+  --MDSCard-stroke-width: var(--mds-strokes-1);
+}
+.MDSCard_root[data-selected] {
+  --MDSCard-stroke: var(--mds-colours-basic-accent);
+  --MDSCard-stroke-width: var(--mds-strokes-2);
+}
+.MDSCard_root[data-interactive] {
+  cursor: pointer;
+  user-select: none;
+}
+.MDSCard_root[data-interactive]:hover:not(:disabled):not([data-disabled]) {
+  --MDSCard-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+.MDSCard_root[data-interactive]:active:not(:disabled):not([data-disabled]) {
+  --MDSCard-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+.MDSCard_root[data-interactive]:focus-visible {
+  outline: var(--MDSCard-focus-ring-width) solid var(--MDSCard-focus-ring-fill);
+  outline-offset: var(--MDSCard-focus-ring-width);
+}
+.MDSCard_header {
+  --MDSCardHeader-gap: var(--mds-common-component-values-gap);
+  --MDSCardHeader-text-gap: var(--mds-number-ramp-8);
+  --MDSCardHeader-text-padding-y: var(--mds-number-ramp-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--MDSCardHeader-gap);
+  width: 100%;
+}
+.MDSCard_headerText {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--MDSCardHeader-text-gap);
+  padding-block: var(--MDSCardHeader-text-padding-y);
+}
+.MDSCard_headline {
+  margin: 0;
+}
+.MDSCard_tag {
+  --MDSCardHeader-tag-fill: var(--mds-colours-basic-background);
+  --MDSCardHeader-tag-text-fill: var(--mds-colours-basic-text);
+  --MDSCardHeader-tag-corner-radius: var(--mds-radius-extra-small);
+  --MDSCardHeader-tag-padding-x: var(--mds-number-ramp-4);
+  --MDSCardHeader-tag-padding-y: var(--mds-number-ramp-2);
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding-inline: var(--MDSCardHeader-tag-padding-x);
+  padding-block: var(--MDSCardHeader-tag-padding-y);
+  background: var(--MDSCardHeader-tag-fill);
+  color: var(--MDSCardHeader-tag-text-fill);
+  border-radius: var(--MDSCardHeader-tag-corner-radius);
+  white-space: nowrap;
+}
+.MDSCard_body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.MDSCard_actions {
+  --MDSCardActions-gap: var(--mds-common-component-values-gap);
+  --MDSCardActions-padding-top: var(--mds-spacing-extra-small);
+  --MDSCardActions-item-min-width: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--MDSCardActions-gap);
+  padding-top: var(--MDSCardActions-padding-top);
+  width: 100%;
+}
+.MDSCard_actions:has(> :nth-child(2)) > * {
+  flex: 1 1 0;
+  min-width: var(--MDSCardActions-item-min-width);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSCard_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSCard_root[data-outline],
+  .MDSCard_root[data-selected] {
+    border: 1px solid CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

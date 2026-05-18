@@ -1,0 +1,43 @@
+/* packages/mds-components/src/MDSImage/MDSImage.module.css */
+
+/* ---- Base ---- */
+
+.root {
+  --MDSImage-object-fit: cover;
+  --MDSImage-object-position: center;
+  --MDSImage-corner-radius: 0;
+
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: var(--MDSImage-object-fit);
+  object-position: var(--MDSImage-object-position);
+  border-radius: var(--MDSImage-corner-radius);
+  /* `aspect-ratio` is applied via inline style from the `aspectRatio` prop
+     so consumers can override per-instance without re-declaring CSS. */
+}
+
+/* ---- Object-fit selectors ---- */
+
+.root[data-object-fit='cover'] {
+  --MDSImage-object-fit: cover;
+}
+
+.root[data-object-fit='contain'] {
+  --MDSImage-object-fit: contain;
+}
+
+/* ---- Fill (ignore aspect-ratio, occupy parent on both axes) ---- */
+
+.root[data-fill] {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; animation: none; }
+}

@@ -1,0 +1,142 @@
+/* packages/mds-components/src/MDSChipFilter/MDSChipFilter.module.css */
+
+/* ---- Trigger (the chip itself) ---- */
+
+.trigger {
+  --MDSChipFilter-fill: var(--mds-colours-basic-background);
+  --MDSChipFilter-text-fill: var(--mds-colours-basic-text);
+  --MDSChipFilter-stroke: var(--mds-colours-basic-stroke);
+  --MDSChipFilter-stroke-width: var(--mds-strokes-1);
+  --MDSChipFilter-corner-radius: var(--mds-radius-full);
+  --MDSChipFilter-min-height: var(--mds-common-component-values-height-small);
+  --MDSChipFilter-padding-horizontal: var(--mds-common-component-values-padding);
+  --MDSChipFilter-padding-vertical: var(--mds-number-ramp-8);
+  --MDSChipFilter-item-spacing: var(--mds-common-component-values-gap);
+  --MDSChipFilter-focus-ring-width: var(--mds-strokes-2);
+  --MDSChipFilter-focus-ring-fill: var(--mds-colours-basic-accent);
+  --MDSChipFilter-caret-transition-duration: 200ms;
+
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--MDSChipFilter-item-spacing);
+  background: var(--MDSChipFilter-fill);
+  color: var(--MDSChipFilter-text-fill);
+  border: var(--MDSChipFilter-stroke-width) solid var(--MDSChipFilter-stroke);
+  border-radius: var(--MDSChipFilter-corner-radius);
+  min-height: var(--MDSChipFilter-min-height);
+  padding-inline: var(--MDSChipFilter-padding-horizontal);
+  padding-block: var(--MDSChipFilter-padding-vertical);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  cursor: pointer;
+  user-select: none;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.caretSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--mds-number-ramp-16);
+  height: var(--mds-number-ramp-16);
+  flex-shrink: 0;
+  --MDSIcon-size: var(--mds-number-ramp-16);
+  transition: transform var(--MDSChipFilter-caret-transition-duration);
+}
+
+/* ---- Selected state — chip with filters set, fill = accent. ---- */
+
+.trigger[data-selected] {
+  --MDSChipFilter-fill: var(--mds-colours-basic-accent);
+  --MDSChipFilter-text-fill: var(--mds-colours-basic-text-on-accent);
+}
+
+/* ---- Open state — flip the caret. Base UI emits data-popup-open on the
+   trigger while the menu is open. ---- */
+
+.trigger[data-popup-open] .caretSlot {
+  transform: rotate(180deg);
+}
+
+/* ---- Hover / pressed (use native pseudo-classes — MenuTrigger does
+   not emit data-pressed). ---- */
+
+.trigger:hover:not([data-disabled]):not([data-selected]) {
+  --MDSChipFilter-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+
+.trigger[data-selected]:hover:not([data-disabled]) {
+  --MDSChipFilter-fill: var(--mds-colours-interaction-states-hovered-accent-hovered);
+  --MDSChipFilter-text-fill: var(--mds-colours-interaction-states-hovered-text-on-accent-hovered);
+}
+
+.trigger:active:not([data-disabled]):not([data-selected]) {
+  --MDSChipFilter-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+
+.trigger[data-selected]:active:not([data-disabled]) {
+  --MDSChipFilter-fill: var(--mds-colours-interaction-states-pressed-accent-pressed);
+  --MDSChipFilter-text-fill: var(--mds-colours-interaction-states-pressed-text-on-accent-pressed);
+}
+
+/* ---- Disabled ---- */
+
+.trigger[data-disabled] {
+  --MDSChipFilter-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
+  --MDSChipFilter-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  --MDSChipFilter-stroke: var(--mds-colours-interaction-states-disabled-stroke-disabled);
+  cursor: not-allowed;
+}
+
+/* ---- Focus ---- */
+
+.trigger:focus-visible {
+  outline: var(--MDSChipFilter-focus-ring-width) solid var(--MDSChipFilter-focus-ring-fill);
+  outline-offset: var(--MDSChipFilter-focus-ring-width);
+}
+
+/* ---- Popup / Items — portalled, so component-scoped vars live here. ---- */
+
+.positioner {
+  z-index: 100;
+}
+
+.popup {
+  /* MDSFlyout handles its own appearance; just ensure z-index above the
+     trigger and provide an animation start for the open transition. */
+  min-width: 160px;
+}
+
+.item {
+  /* Inherits MDSFlyout.Item styling. The CheckboxItemIndicator is hidden
+     by Base UI when unchecked, so the icon slot collapses gracefully
+     to an empty container — matching the Figma "unchecked = no icon"
+     layout. */
+}
+
+.itemIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger { transition: none; }
+  .caretSlot { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .trigger { border: 1px solid CanvasText; }
+}

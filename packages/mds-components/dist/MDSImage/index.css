@@ -1,0 +1,31 @@
+/* src/MDSImage/MDSImage.module.css */
+.MDSImage_root {
+  --MDSImage-object-fit: cover;
+  --MDSImage-object-position: center;
+  --MDSImage-corner-radius: 0;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: var(--MDSImage-object-fit);
+  object-position: var(--MDSImage-object-position);
+  border-radius: var(--MDSImage-corner-radius);
+}
+.MDSImage_root[data-object-fit=cover] {
+  --MDSImage-object-fit: cover;
+}
+.MDSImage_root[data-object-fit=contain] {
+  --MDSImage-object-fit: contain;
+}
+.MDSImage_root[data-fill] {
+  height: 100%;
+  aspect-ratio: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSImage_root {
+    transition: none;
+    animation: none;
+  }
+}
+/*# sourceMappingURL=index.css.map */

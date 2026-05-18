@@ -1,0 +1,134 @@
+/* src/MDSIcon/MDSIcon.module.css */
+.MDSIcon_root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+}
+.MDSIcon_root[data-size=medium] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSIcon_root[data-size=small] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSIcon_root[data-size=large] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSIcon_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSIcon_root {
+    color: CanvasText;
+  }
+}
+
+/* src/MDSMenu/MDSMenu.module.css */
+.MDSMenu_trigger {
+}
+.MDSMenu_positioner {
+  z-index: 50;
+}
+.MDSMenu_popup {
+  --MDSMenuPopup-fill: var(--mds-colours-basic-background);
+  --MDSMenuPopup-stroke: var(--mds-colours-basic-stroke);
+  --MDSMenuPopup-stroke-width: var(--mds-strokes-1);
+  --MDSMenuPopup-corner-radius: var(--mds-common-component-values-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: var(--MDSMenuPopup-fill);
+  border: var(--MDSMenuPopup-stroke-width) solid var(--MDSMenuPopup-stroke);
+  border-radius: var(--MDSMenuPopup-corner-radius);
+  overflow: hidden;
+  outline: none;
+  min-width: var(--anchor-width, 200px);
+  max-height: var(--available-height, none);
+  padding: 0;
+  margin: 0;
+}
+.MDSMenu_item {
+  --MDSMenuItem-min-height: var(--mds-common-component-values-minimum-tappable-area);
+  --MDSMenuItem-min-width: var(--mds-number-ramp-100);
+  --MDSMenuItem-corner-radius: var(--mds-common-component-values-radius);
+  --MDSMenuItem-padding-left: var(--mds-common-component-values-padding);
+  --MDSMenuItem-padding-right: var(--mds-number-ramp-20);
+  --MDSMenuItem-gap: var(--mds-common-component-values-gap);
+  --MDSMenuItem-text-fill: var(--mds-colours-basic-text);
+  --MDSMenuItem-fill-hovered: var(--mds-colours-interaction-states-hovered-background-hovered);
+  --MDSMenuItem-fill-pressed: var(--mds-colours-interaction-states-pressed-background-pressed);
+  --MDSMenuItem-focus-ring-width: var(--mds-strokes-2);
+  --MDSMenuItem-focus-ring-fill: var(--mds-colours-basic-accent);
+  display: flex;
+  align-items: center;
+  gap: var(--MDSMenuItem-gap);
+  min-height: var(--MDSMenuItem-min-height);
+  min-width: var(--MDSMenuItem-min-width);
+  padding-inline: var(--MDSMenuItem-padding-left) var(--MDSMenuItem-padding-right);
+  border-radius: var(--MDSMenuItem-corner-radius);
+  color: var(--MDSMenuItem-text-fill);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  text-align: start;
+  user-select: none;
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  letter-spacing: var(--mds-typography-body-bold-letter-spacing);
+  outline: none;
+}
+.MDSMenu_item[data-highlighted] {
+  background: var(--MDSMenuItem-fill-hovered);
+}
+.MDSMenu_item:active:not([data-disabled]) {
+  background: var(--MDSMenuItem-fill-pressed);
+}
+.MDSMenu_item[data-disabled] {
+  color: var(--mds-colours-interaction-states-disabled-text-disabled);
+  cursor: not-allowed;
+}
+.MDSMenu_itemLabel {
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.MDSMenu_itemLeftIcon,
+.MDSMenu_itemIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--mds-number-ramp-16);
+  height: var(--mds-number-ramp-16);
+  --MDSIcon-size: var(--mds-number-ramp-16);
+  color: inherit;
+}
+.MDSMenu_item:focus-visible {
+  outline: var(--MDSMenuItem-focus-ring-width) solid var(--MDSMenuItem-focus-ring-fill);
+  outline-offset: calc(-1 * var(--MDSMenuItem-focus-ring-width));
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSMenu_item {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSMenu_popup {
+    border: 1px solid CanvasText;
+  }
+  .MDSMenu_item {
+    color: CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

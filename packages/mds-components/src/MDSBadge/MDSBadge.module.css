@@ -1,0 +1,92 @@
+/* packages/mds-components/src/MDSBadge/MDSBadge.module.css */
+
+/* ---- Base ---- */
+
+.root {
+  --MDSBadge-fill: var(--mds-colours-basic-accent);
+  --MDSBadge-text-fill: var(--mds-colours-basic-text-on-accent);
+  --MDSBadge-stroke: var(--mds-colours-basic-background);
+  --MDSBadge-stroke-width: var(--mds-strokes-1);
+  --MDSBadge-corner-radius: var(--mds-radius-full);
+  --MDSBadge-min-size: var(--mds-number-ramp-32);
+  --MDSBadge-padding-horizontal: var(--mds-number-ramp-4);
+  --MDSBadge-icon-fill: var(--mds-colours-basic-accent);
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--MDSBadge-fill);
+  color: var(--MDSBadge-text-fill);
+  border: var(--MDSBadge-stroke-width) solid var(--MDSBadge-stroke);
+  border-radius: var(--MDSBadge-corner-radius);
+  min-width: var(--MDSBadge-min-size);
+  min-height: var(--MDSBadge-min-size);
+  padding-inline: var(--MDSBadge-padding-horizontal);
+  font-family: var(--mds-typography-body-font-family);
+  font-size: var(--mds-typography-body-font-size);
+  font-weight: var(--mds-typography-body-font-weight);
+  line-height: var(--mds-typography-body-line-height);
+  user-select: none;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.iconSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Icon size = 16px inside medium/large badges per Figma. */
+  --MDSIcon-size: var(--mds-number-ramp-16);
+  color: var(--MDSBadge-icon-fill);
+}
+
+/* ---- Sizes ---- */
+
+/* Medium uses Microcopy typography per Figma — the smaller surface needs
+   the 12px / 100% type style, not the default body 16px / 20px. Typography
+   sub-vars are referenced directly (documented exception to the two-layer
+   indirection rule — see conventions/css-modules in the vault). */
+.root[data-size='medium'] {
+  --MDSBadge-min-size: var(--mds-number-ramp-24);
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  font-weight: var(--mds-typography-microcopy-font-weight);
+  line-height: var(--mds-typography-microcopy-line-height);
+}
+
+.root[data-size='small'] {
+  --MDSBadge-min-size: var(--mds-number-ramp-10);
+  --MDSBadge-stroke-width: 0;
+  --MDSBadge-padding-horizontal: 0;
+}
+
+.root[data-size='small'] .label,
+.root[data-size='small'] .iconSlot {
+  display: none;
+}
+
+/* ---- Section: subtle (success/error at medium + large) ----
+   When the discriminated union sets data-section="subtle", the badge sits
+   on the subtle palette: the surface (`basic-background`) is the pale
+   tint and `basic-accent` is the saturated colour. We want a pale circle
+   with a saturated glyph, not a saturated circle on a saturated glyph
+   (which is what the default `--MDSBadge-fill: basic-accent` would
+   produce when both vars resolve to the same scheme accent). */
+
+.root[data-section='subtle'] {
+  --MDSBadge-fill: var(--mds-colours-basic-background);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; animation: none; }
+}
+
+@media (forced-colors: active) {
+  /* Keep the dot/border visible on forced-colors systems. */
+  .root { border: 1px solid CanvasText; }
+}

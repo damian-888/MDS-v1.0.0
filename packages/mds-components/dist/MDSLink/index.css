@@ -1,0 +1,136 @@
+/* src/MDSIcon/MDSIcon.module.css */
+.MDSIcon_root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+}
+.MDSIcon_root[data-size=medium] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSIcon_root[data-size=small] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSIcon_root[data-size=large] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSIcon_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSIcon_root {
+    color: CanvasText;
+  }
+}
+
+/* src/MDSLink/MDSLink.module.css */
+.MDSLink_root {
+  --MDSLink-text-fill: var(--mds-colours-basic-link);
+  --MDSLink-text-fill-hovered: var(--mds-colours-interaction-states-hovered-link-hovered);
+  --MDSLink-text-fill-pressed: var(--mds-colours-interaction-states-pressed-link-pressed);
+  --MDSLink-text-fill-visited: var(--mds-colours-interaction-states-visited-link-visited);
+  --MDSLink-min-height: var(--mds-common-component-values-minimum-tappable-area);
+  --MDSLink-min-width: var(--mds-common-component-values-minimum-tappable-area);
+  --MDSLink-gap: var(--mds-number-ramp-4);
+  --MDSLink-underline-thickness: var(--mds-strokes-1);
+  --MDSLink-underline-thickness-hovered: var(--mds-strokes-2);
+  --MDSLink-focus-ring-width: var(--mds-strokes-2);
+  --MDSLink-focus-ring-fill: var(--mds-colours-basic-accent);
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--MDSLink-min-height);
+  min-width: var(--MDSLink-min-width);
+  color: var(--MDSLink-text-fill);
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  letter-spacing: var(--mds-typography-body-bold-letter-spacing);
+}
+.MDSLink_root[data-alignment=left] {
+  align-items: flex-start;
+}
+.MDSLink_root[data-alignment=center] {
+  align-items: center;
+}
+.MDSLink_root[data-alignment=right] {
+  align-items: flex-end;
+}
+.MDSLink_container {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--MDSLink-gap);
+}
+.MDSLink_label {
+  text-decoration: underline solid var(--MDSLink-text-fill);
+  text-decoration-thickness: var(--MDSLink-underline-thickness);
+  text-underline-offset: var(--mds-number-ramp-2);
+  white-space: nowrap;
+}
+.MDSLink_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--mds-number-ramp-16);
+  height: var(--mds-number-ramp-16);
+  color: inherit;
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSLink_root:visited {
+  color: var(--MDSLink-text-fill-visited);
+}
+.MDSLink_root:visited .MDSLink_label {
+  text-decoration-color: var(--MDSLink-text-fill-visited);
+}
+.MDSLink_root:hover:not([aria-disabled=true]) {
+  color: var(--MDSLink-text-fill-hovered);
+}
+.MDSLink_root:hover:not([aria-disabled=true]) .MDSLink_label {
+  text-decoration-color: var(--MDSLink-text-fill-hovered);
+  text-decoration-thickness: var(--MDSLink-underline-thickness-hovered);
+}
+.MDSLink_root:active:not([aria-disabled=true]) {
+  color: var(--MDSLink-text-fill-pressed);
+}
+.MDSLink_root:active:not([aria-disabled=true]) .MDSLink_label {
+  text-decoration-color: var(--MDSLink-text-fill-pressed);
+  text-decoration-thickness: var(--MDSLink-underline-thickness-hovered);
+}
+.MDSLink_root[aria-disabled=true] {
+  color: var(--mds-colours-interaction-states-disabled-text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.MDSLink_root[aria-disabled=true] .MDSLink_label {
+  text-decoration-color: var(--mds-colours-interaction-states-disabled-text-disabled);
+}
+.MDSLink_root:focus-visible {
+  outline: var(--MDSLink-focus-ring-width) solid var(--MDSLink-focus-ring-fill);
+  outline-offset: var(--MDSLink-focus-ring-width);
+  border-radius: var(--mds-number-ramp-4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSLink_root {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSLink_root {
+    color: LinkText;
+  }
+  .MDSLink_root:visited {
+    color: VisitedText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

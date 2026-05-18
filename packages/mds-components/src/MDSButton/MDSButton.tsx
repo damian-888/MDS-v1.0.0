@@ -33,37 +33,47 @@ export type MDSButtonProps =
       children?: React.ReactNode;
     });
 
-export function MDSButton({
-  variant = 'secondary',
-  size = 'large',
-  iconOnly = false,
-  icon,
-  children,
-  className,
-  ...props
-}: MDSButtonProps) {
-  return (
-    <BaseButton
-      {...props}
-      className={[styles.root, className].filter(Boolean).join(' ')}
-      data-variant={variant}
-      data-size={size}
-      data-icon-only={iconOnly || undefined}
-    >
-      {iconOnly ? (
-        <span className={styles.iconSlot} aria-hidden="true">{icon}</span>
-      ) : (
-        <>
-          {children != null && <span className={styles.label}>{children}</span>}
-          {icon != null && (
-            <span className={styles.iconSlot} aria-hidden="true">
-              {icon}
-            </span>
-          )}
-        </>
-      )}
-    </BaseButton>
-  );
-}
-
-MDSButton.displayName = 'MDSButton';
+// MDSButton uses `forwardRef` — a deliberate deviation from the
+// no-forwardRef rule in the component contract. The deviation is
+// scoped to components that are frequently used as Base UI `render`
+// targets (e.g. `<MDSMenu.Trigger render={<MDSButton />}`), where
+// Base UI's cloneElement-based ref attachment fails without
+// forwardRef. See conventions/component-contract.md §5.
+export const MDSButton = React.forwardRef<HTMLButtonElement, MDSButtonProps>(
+  function MDSButton(
+    {
+      variant = 'secondary',
+      size = 'large',
+      iconOnly = false,
+      icon,
+      children,
+      className,
+      ...props
+    },
+    ref,
+  ) {
+    return (
+      <BaseButton
+        ref={ref}
+        {...props}
+        className={[styles.root, className].filter(Boolean).join(' ')}
+        data-variant={variant}
+        data-size={size}
+        data-icon-only={iconOnly || undefined}
+      >
+        {iconOnly ? (
+          <span className={styles.iconSlot} aria-hidden="true">{icon}</span>
+        ) : (
+          <>
+            {children != null && <span className={styles.label}>{children}</span>}
+            {icon != null && (
+              <span className={styles.iconSlot} aria-hidden="true">
+                {icon}
+              </span>
+            )}
+          </>
+        )}
+      </BaseButton>
+    );
+  },
+);

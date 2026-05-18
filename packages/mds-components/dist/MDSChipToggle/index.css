@@ -1,0 +1,141 @@
+/* src/MDSIcon/MDSIcon.module.css */
+.MDSIcon_root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+}
+.MDSIcon_root[data-size=medium] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSIcon_root[data-size=small] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSIcon_root[data-size=large] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSIcon_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSIcon_root {
+    color: CanvasText;
+  }
+}
+
+/* src/MDSChipToggle/MDSChipToggle.module.css */
+.MDSChipToggle_root {
+  --MDSChipToggle-fill: var(--mds-colours-basic-background);
+  --MDSChipToggle-text-fill: var(--mds-colours-basic-text);
+  --MDSChipToggle-stroke: var(--mds-colours-basic-stroke);
+  --MDSChipToggle-stroke-width: var(--mds-strokes-1);
+  --MDSChipToggle-corner-radius: var(--mds-radius-full);
+  --MDSChipToggle-min-height: var(--mds-common-component-values-height-small);
+  --MDSChipToggle-padding-horizontal: var(--mds-common-component-values-padding);
+  --MDSChipToggle-padding-with-avatar: var(--mds-number-ramp-4);
+  --MDSChipToggle-item-spacing: var(--mds-number-ramp-4);
+  --MDSChipToggle-avatar-size: var(--mds-number-ramp-40);
+  --MDSChipToggle-focus-ring-width: var(--mds-strokes-2);
+  --MDSChipToggle-focus-ring-fill: var(--mds-colours-basic-accent);
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--MDSChipToggle-item-spacing);
+  background: var(--MDSChipToggle-fill);
+  color: var(--MDSChipToggle-text-fill);
+  border: var(--MDSChipToggle-stroke-width) solid var(--MDSChipToggle-stroke);
+  border-radius: var(--MDSChipToggle-corner-radius);
+  min-height: var(--MDSChipToggle-min-height);
+  padding-inline: var(--MDSChipToggle-padding-horizontal);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  cursor: pointer;
+  user-select: none;
+}
+.MDSChipToggle_label {
+  white-space: nowrap;
+  padding-inline: var(--mds-number-ramp-4);
+}
+.MDSChipToggle_avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--MDSChipToggle-avatar-size);
+  height: var(--MDSChipToggle-avatar-size);
+  border-radius: var(--mds-radius-full);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.MDSChipToggle_avatar > * {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--mds-radius-full);
+  object-fit: cover;
+}
+.MDSChipToggle_checkSlot {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--mds-number-ramp-16);
+  height: var(--mds-number-ramp-16);
+  flex-shrink: 0;
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSChipToggle_root[data-has-avatar] {
+  padding-inline-start: var(--MDSChipToggle-padding-with-avatar);
+}
+.MDSChipToggle_root[data-pressed]:not([data-disabled]) {
+  --MDSChipToggle-fill: var(--mds-colours-basic-accent);
+  --MDSChipToggle-text-fill: var(--mds-colours-basic-text-on-accent);
+  --MDSChipToggle-stroke: var(--mds-colours-basic-accent);
+}
+.MDSChipToggle_root[data-pressed]:not([data-disabled]) .MDSChipToggle_checkSlot {
+  display: inline-flex;
+}
+.MDSChipToggle_root:hover:not([data-disabled]):not([data-pressed]) {
+  --MDSChipToggle-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+.MDSChipToggle_root[data-pressed]:hover:not([data-disabled]) {
+  --MDSChipToggle-fill: var(--mds-colours-interaction-states-hovered-accent-hovered);
+  --MDSChipToggle-text-fill: var(--mds-colours-interaction-states-hovered-text-on-accent-hovered);
+  --MDSChipToggle-stroke: var(--mds-colours-interaction-states-hovered-accent-hovered);
+}
+.MDSChipToggle_root:active:not([data-disabled]):not([data-pressed]) {
+  --MDSChipToggle-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+.MDSChipToggle_root[data-pressed]:active:not([data-disabled]) {
+  --MDSChipToggle-fill: var(--mds-colours-interaction-states-pressed-accent-pressed);
+  --MDSChipToggle-text-fill: var(--mds-colours-interaction-states-pressed-text-on-accent-pressed);
+  --MDSChipToggle-stroke: var(--mds-colours-interaction-states-pressed-accent-pressed);
+}
+.MDSChipToggle_root[data-disabled] {
+  --MDSChipToggle-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
+  --MDSChipToggle-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  --MDSChipToggle-stroke: var(--mds-colours-interaction-states-disabled-stroke-disabled);
+  cursor: not-allowed;
+}
+.MDSChipToggle_root:focus-visible {
+  outline: var(--MDSChipToggle-focus-ring-width) solid var(--MDSChipToggle-focus-ring-fill);
+  outline-offset: var(--MDSChipToggle-focus-ring-width);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSChipToggle_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSChipToggle_root {
+    border: 1px solid CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

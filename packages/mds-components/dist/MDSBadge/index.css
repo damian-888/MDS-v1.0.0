@@ -1,0 +1,97 @@
+/* src/MDSIcon/MDSIcon.module.css */
+.MDSIcon_root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+}
+.MDSIcon_root[data-size=medium] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSIcon_root[data-size=small] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSIcon_root[data-size=large] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSIcon_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSIcon_root {
+    color: CanvasText;
+  }
+}
+
+/* src/MDSBadge/MDSBadge.module.css */
+.MDSBadge_root {
+  --MDSBadge-fill: var(--mds-colours-basic-accent);
+  --MDSBadge-text-fill: var(--mds-colours-basic-text-on-accent);
+  --MDSBadge-stroke: var(--mds-colours-basic-background);
+  --MDSBadge-stroke-width: var(--mds-strokes-1);
+  --MDSBadge-corner-radius: var(--mds-radius-full);
+  --MDSBadge-min-size: var(--mds-number-ramp-32);
+  --MDSBadge-padding-horizontal: var(--mds-number-ramp-4);
+  --MDSBadge-icon-fill: var(--mds-colours-basic-accent);
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--MDSBadge-fill);
+  color: var(--MDSBadge-text-fill);
+  border: var(--MDSBadge-stroke-width) solid var(--MDSBadge-stroke);
+  border-radius: var(--MDSBadge-corner-radius);
+  min-width: var(--MDSBadge-min-size);
+  min-height: var(--MDSBadge-min-size);
+  padding-inline: var(--MDSBadge-padding-horizontal);
+  font-family: var(--mds-typography-body-font-family);
+  font-size: var(--mds-typography-body-font-size);
+  font-weight: var(--mds-typography-body-font-weight);
+  line-height: var(--mds-typography-body-line-height);
+  user-select: none;
+}
+.MDSBadge_label {
+  white-space: nowrap;
+}
+.MDSBadge_iconSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  --MDSIcon-size: var(--mds-number-ramp-16);
+  color: var(--MDSBadge-icon-fill);
+}
+.MDSBadge_root[data-size=medium] {
+  --MDSBadge-min-size: var(--mds-number-ramp-24);
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  font-weight: var(--mds-typography-microcopy-font-weight);
+  line-height: var(--mds-typography-microcopy-line-height);
+}
+.MDSBadge_root[data-size=small] {
+  --MDSBadge-min-size: var(--mds-number-ramp-10);
+  --MDSBadge-stroke-width: 0;
+  --MDSBadge-padding-horizontal: 0;
+}
+.MDSBadge_root[data-size=small] .MDSBadge_label,
+.MDSBadge_root[data-size=small] .MDSBadge_iconSlot {
+  display: none;
+}
+.MDSBadge_root[data-section=subtle] {
+  --MDSBadge-fill: var(--mds-colours-basic-background);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSBadge_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSBadge_root {
+    border: 1px solid CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

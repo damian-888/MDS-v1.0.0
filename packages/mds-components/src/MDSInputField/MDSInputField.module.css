@@ -1,0 +1,293 @@
+/* packages/mds-components/src/MDSInputField/MDSInputField.module.css */
+
+/* ---- Wrapper ----
+   The wrapper owns the component-scoped vars and the focus / hover /
+   error state attributes. The `.field` element below is the visible
+   pill that paints the background, border, and contains the label and
+   value. */
+
+.root {
+  --MDSInputField-fill: var(--mds-colours-basic-background);
+  --MDSInputField-stroke: var(--mds-colours-basic-stroke);
+  --MDSInputField-stroke-width: var(--mds-strokes-1);
+  --MDSInputField-corner-radius: var(--mds-common-component-values-radius);
+  --MDSInputField-min-height: var(--mds-common-component-values-height-large);
+  --MDSInputField-padding-left: var(--mds-common-component-values-padding);
+  --MDSInputField-padding-right: var(--mds-number-ramp-16);
+  --MDSInputField-gap: var(--mds-common-component-values-gap);
+  --MDSInputField-text-fill: var(--mds-colours-basic-text);
+  --MDSInputField-label-fill: var(--mds-colours-basic-text-secondary);
+  --MDSInputField-required-fill: var(--mds-colours-basic-text-secondary);
+  --MDSInputField-error-message-fill: var(--mds-colours-basic-text);
+  --MDSInputField-focus-ring-width: var(--mds-strokes-2);
+  --MDSInputField-focus-ring-fill: var(--mds-colours-basic-accent);
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--MDSInputField-text-fill);
+}
+
+/* ---- Field chrome ---- */
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--MDSInputField-min-height);
+  padding-inline:
+    var(--MDSInputField-padding-left)
+    var(--MDSInputField-padding-right);
+  background: var(--MDSInputField-fill);
+  border: var(--MDSInputField-stroke-width) solid var(--MDSInputField-stroke);
+  border-radius: var(--MDSInputField-corner-radius);
+  overflow: hidden;
+  cursor: text;
+  transition: border-color 120ms, background-color 120ms;
+}
+
+/* The "Input Field + Button" variant tightens the right padding to 6 px
+   so the 48 × 48 button sits flush against the corner. */
+.root[data-has-action] .field {
+  --MDSInputField-padding-right: var(--mds-number-ramp-6);
+}
+
+/* ---- Content (label + value column) ----
+   Mirrors Figma's "Content" frame: flex column, items-start
+   (left-aligned), justify-content: center (vertically centered as a
+   group). When the value row collapses to height 0, the label fills
+   the centered slot at body-bold size. When the value row grows to
+   22 px, the label shrinks to microcopy and slides up as the column
+   re-centers itself within the 60 px field.
+
+   Per Figma the eyebrow and input row sit with no explicit gap — they
+   stack directly. The visible breathing room comes from the difference
+   between line-height and rendered glyph height. */
+
+.content {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-right: var(--MDSInputField-gap);
+}
+
+/* ---- Floating label ---- */
+
+.labelDisplay {
+  display: block;
+  max-width: 100%;
+  pointer-events: none;
+  color: var(--MDSInputField-label-fill);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  letter-spacing: var(--mds-typography-body-bold-letter-spacing);
+  transition:
+    font-size 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    line-height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.required {
+  color: var(--MDSInputField-required-fill);
+}
+
+.root[data-filled] .labelDisplay,
+.root[data-focused] .labelDisplay {
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  font-weight: var(--mds-typography-microcopy-font-weight);
+  line-height: var(--mds-typography-microcopy-line-height);
+  letter-spacing: var(--mds-typography-microcopy-letter-spacing);
+}
+
+/* ---- Value row ----
+   Collapses to height 0 when empty/unfocused so the label can claim
+   the full centered slot. Grows to Figma's 22 px "Input" min-height
+   when filled or focused. The flex column re-centers the pair as the
+   value row grows, producing the apparent "label slides up" effect. */
+
+.value {
+  display: flex;
+  align-items: center;
+  gap: var(--MDSInputField-gap);
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    height 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.root[data-filled] .value,
+.root[data-focused] .value {
+  /* Figma "Input" min-height is 22 px; closest token is the
+     body-bold line-height (20 px). 2 px breathing room comes from
+     the column's overall vertical centering inside the 60 px field. */
+  height: var(--mds-typography-body-bold-line-height);
+  opacity: 1;
+}
+
+/* ---- Input ---- */
+
+.input {
+  flex: 1 0 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--MDSInputField-text-fill);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  letter-spacing: var(--mds-typography-body-bold-letter-spacing);
+  caret-color: var(--mds-colours-basic-text);
+  width: 100%;
+}
+
+.input::placeholder {
+  color: var(--mds-colours-basic-text-secondary);
+}
+
+/* ---- Prefix / suffix ---- */
+
+.affix {
+  flex-shrink: 0;
+  color: var(--mds-colours-basic-text-secondary);
+  font-family: var(--mds-typography-body-font-family);
+  font-size: var(--mds-typography-body-font-size);
+  font-weight: var(--mds-typography-body-font-weight);
+  line-height: var(--mds-typography-body-line-height);
+  letter-spacing: var(--mds-typography-body-letter-spacing);
+  white-space: nowrap;
+}
+
+/* ---- Left icon (16 px) ---- */
+
+.leftIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--mds-number-ramp-16);
+  height: var(--mds-number-ramp-16);
+  --MDSIcon-size: var(--mds-number-ramp-16);
+  color: var(--MDSInputField-text-fill);
+}
+
+/* ---- Trailing slot ----
+   24 px icon by default; full-size button when `action` is set. */
+
+.trailing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline-start: var(--MDSInputField-gap);
+  width: var(--mds-number-ramp-24);
+  height: var(--mds-number-ramp-24);
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  color: var(--MDSInputField-text-fill);
+}
+
+.root[data-has-action] .trailing {
+  width: auto;
+  height: auto;
+}
+
+/* ---- Hover (no error, no disabled, no read-only) ---- */
+
+.root:not([data-disabled]):not([data-readonly]):not([data-error]) .field:hover {
+  --MDSInputField-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+  --MDSInputField-stroke: var(--mds-colours-interaction-states-hovered-stroke-hovered);
+}
+
+/* ---- Focused (Figma's "Pressed") ---- */
+
+.root[data-focused]:not([data-disabled]):not([data-readonly]):not([data-error]) .field {
+  --MDSInputField-stroke: var(--mds-colours-interaction-states-hovered-stroke-hovered);
+}
+
+/* ---- Error — 4 px stroke in the destructive palette. References
+   the scheme-prefixed tokens directly so the field background stays
+   white and the trailing slot (icon or action button) keeps its
+   normal colours — applying `data-scheme="error"` on the field would
+   cascade into the trailing slot and paint the action button red. */
+
+.root[data-error] .field {
+  --MDSInputField-stroke-width: var(--mds-strokes-4);
+  --MDSInputField-stroke: var(--mds-red-light-colours-basic-stroke);
+}
+
+.root[data-error]:not([data-disabled]):not([data-readonly]) .field:hover {
+  --MDSInputField-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+  --MDSInputField-stroke: var(--mds-red-light-colours-interaction-states-hovered-stroke-hovered);
+}
+
+/* ---- Disabled ---- */
+
+.root[data-disabled] {
+  --MDSInputField-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  --MDSInputField-label-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  cursor: not-allowed;
+}
+
+.root[data-disabled] .field {
+  --MDSInputField-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
+  --MDSInputField-stroke: var(--mds-colours-interaction-states-disabled-stroke-disabled);
+  cursor: not-allowed;
+}
+
+.root[data-disabled] .input { cursor: not-allowed; }
+
+.root[data-disabled] .leftIcon,
+.root[data-disabled] .trailing {
+  color: var(--mds-colours-interaction-states-disabled-text-disabled);
+}
+
+/* ---- Read-only ---- */
+
+.root[data-readonly] .input {
+  cursor: default;
+}
+
+/* ---- Error message ---- */
+
+.errorMessage {
+  margin-top: var(--mds-number-ramp-4);
+  color: var(--MDSInputField-error-message-fill);
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  font-weight: var(--mds-typography-microcopy-font-weight);
+  line-height: var(--mds-typography-microcopy-line-height);
+}
+
+/* ---- Focus ring ---- */
+
+.field:has(.input:focus-visible) {
+  outline: var(--MDSInputField-focus-ring-width) solid var(--MDSInputField-focus-ring-fill);
+  outline-offset: var(--MDSInputField-focus-ring-width);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .field,
+  .labelDisplay,
+  .value { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .field { border: 1px solid CanvasText; }
+}

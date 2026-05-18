@@ -1,7 +1,7 @@
 "use client";
 import {
   MDSButton
-} from "../chunk-IRUHO4QN.js";
+} from "../chunk-VJKUWQX5.js";
 export {
   MDSButton
 };

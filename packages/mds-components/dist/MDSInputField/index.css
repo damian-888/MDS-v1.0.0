@@ -1,0 +1,203 @@
+/* src/MDSInputField/MDSInputField.module.css */
+.MDSInputField_root {
+  --MDSInputField-fill: var(--mds-colours-basic-background);
+  --MDSInputField-stroke: var(--mds-colours-basic-stroke);
+  --MDSInputField-stroke-width: var(--mds-strokes-1);
+  --MDSInputField-corner-radius: var(--mds-common-component-values-radius);
+  --MDSInputField-min-height: var(--mds-common-component-values-height-large);
+  --MDSInputField-padding-left: var(--mds-common-component-values-padding);
+  --MDSInputField-padding-right: var(--mds-number-ramp-16);
+  --MDSInputField-gap: var(--mds-common-component-values-gap);
+  --MDSInputField-text-fill: var(--mds-colours-basic-text);
+  --MDSInputField-label-fill: var(--mds-colours-basic-text-secondary);
+  --MDSInputField-required-fill: var(--mds-colours-basic-text-secondary);
+  --MDSInputField-error-message-fill: var(--mds-colours-basic-text);
+  --MDSInputField-focus-ring-width: var(--mds-strokes-2);
+  --MDSInputField-focus-ring-fill: var(--mds-colours-basic-accent);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--MDSInputField-text-fill);
+}
+.MDSInputField_field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--MDSInputField-min-height);
+  padding-inline: var(--MDSInputField-padding-left) var(--MDSInputField-padding-right);
+  background: var(--MDSInputField-fill);
+  border: var(--MDSInputField-stroke-width) solid var(--MDSInputField-stroke);
+  border-radius: var(--MDSInputField-corner-radius);
+  overflow: hidden;
+  cursor: text;
+  transition: border-color 120ms, background-color 120ms;
+}
+.MDSInputField_root[data-has-action] .MDSInputField_field {
+  --MDSInputField-padding-right: var(--mds-number-ramp-6);
+}
+.MDSInputField_content {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-right: var(--MDSInputField-gap);
+}
+.MDSInputField_labelDisplay {
+  display: block;
+  max-width: 100%;
+  pointer-events: none;
+  color: var(--MDSInputField-label-fill);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  letter-spacing: var(--mds-typography-body-bold-letter-spacing);
+  transition: font-size 200ms cubic-bezier(0.4, 0, 0.2, 1), line-height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.MDSInputField_required {
+  color: var(--MDSInputField-required-fill);
+}
+.MDSInputField_root[data-filled] .MDSInputField_labelDisplay,
+.MDSInputField_root[data-focused] .MDSInputField_labelDisplay {
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  font-weight: var(--mds-typography-microcopy-font-weight);
+  line-height: var(--mds-typography-microcopy-line-height);
+  letter-spacing: var(--mds-typography-microcopy-letter-spacing);
+}
+.MDSInputField_value {
+  display: flex;
+  align-items: center;
+  gap: var(--MDSInputField-gap);
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 200ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.MDSInputField_root[data-filled] .MDSInputField_value,
+.MDSInputField_root[data-focused] .MDSInputField_value {
+  height: var(--mds-typography-body-bold-line-height);
+  opacity: 1;
+}
+.MDSInputField_input {
+  flex: 1 0 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--MDSInputField-text-fill);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  letter-spacing: var(--mds-typography-body-bold-letter-spacing);
+  caret-color: var(--mds-colours-basic-text);
+  width: 100%;
+}
+.MDSInputField_input::placeholder {
+  color: var(--mds-colours-basic-text-secondary);
+}
+.MDSInputField_affix {
+  flex-shrink: 0;
+  color: var(--mds-colours-basic-text-secondary);
+  font-family: var(--mds-typography-body-font-family);
+  font-size: var(--mds-typography-body-font-size);
+  font-weight: var(--mds-typography-body-font-weight);
+  line-height: var(--mds-typography-body-line-height);
+  letter-spacing: var(--mds-typography-body-letter-spacing);
+  white-space: nowrap;
+}
+.MDSInputField_leftIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--mds-number-ramp-16);
+  height: var(--mds-number-ramp-16);
+  --MDSIcon-size: var(--mds-number-ramp-16);
+  color: var(--MDSInputField-text-fill);
+}
+.MDSInputField_trailing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline-start: var(--MDSInputField-gap);
+  width: var(--mds-number-ramp-24);
+  height: var(--mds-number-ramp-24);
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  color: var(--MDSInputField-text-fill);
+}
+.MDSInputField_root[data-has-action] .MDSInputField_trailing {
+  width: auto;
+  height: auto;
+}
+.MDSInputField_root:not([data-disabled]):not([data-readonly]):not([data-error]) .MDSInputField_field:hover {
+  --MDSInputField-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+  --MDSInputField-stroke: var(--mds-colours-interaction-states-hovered-stroke-hovered);
+}
+.MDSInputField_root[data-focused]:not([data-disabled]):not([data-readonly]):not([data-error]) .MDSInputField_field {
+  --MDSInputField-stroke: var(--mds-colours-interaction-states-hovered-stroke-hovered);
+}
+.MDSInputField_root[data-error] .MDSInputField_field {
+  --MDSInputField-stroke-width: var(--mds-strokes-4);
+  --MDSInputField-stroke: var(--mds-red-light-colours-basic-stroke);
+}
+.MDSInputField_root[data-error]:not([data-disabled]):not([data-readonly]) .MDSInputField_field:hover {
+  --MDSInputField-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+  --MDSInputField-stroke: var(--mds-red-light-colours-interaction-states-hovered-stroke-hovered);
+}
+.MDSInputField_root[data-disabled] {
+  --MDSInputField-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  --MDSInputField-label-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  cursor: not-allowed;
+}
+.MDSInputField_root[data-disabled] .MDSInputField_field {
+  --MDSInputField-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
+  --MDSInputField-stroke: var(--mds-colours-interaction-states-disabled-stroke-disabled);
+  cursor: not-allowed;
+}
+.MDSInputField_root[data-disabled] .MDSInputField_input {
+  cursor: not-allowed;
+}
+.MDSInputField_root[data-disabled] .MDSInputField_leftIcon,
+.MDSInputField_root[data-disabled] .MDSInputField_trailing {
+  color: var(--mds-colours-interaction-states-disabled-text-disabled);
+}
+.MDSInputField_root[data-readonly] .MDSInputField_input {
+  cursor: default;
+}
+.MDSInputField_errorMessage {
+  margin-top: var(--mds-number-ramp-4);
+  color: var(--MDSInputField-error-message-fill);
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  font-weight: var(--mds-typography-microcopy-font-weight);
+  line-height: var(--mds-typography-microcopy-line-height);
+}
+.MDSInputField_field:has(.MDSInputField_input:focus-visible) {
+  outline: var(--MDSInputField-focus-ring-width) solid var(--MDSInputField-focus-ring-fill);
+  outline-offset: var(--MDSInputField-focus-ring-width);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSInputField_field,
+  .MDSInputField_labelDisplay,
+  .MDSInputField_value {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSInputField_field {
+    border: 1px solid CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

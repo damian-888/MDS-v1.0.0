@@ -1,0 +1,132 @@
+/* src/MDSIcon/MDSIcon.module.css */
+.MDSIcon_root {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+  display: inline-block;
+  width: var(--MDSIcon-size);
+  height: var(--MDSIcon-size);
+  flex-shrink: 0;
+}
+.MDSIcon_root[data-size=medium] {
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+.MDSIcon_root[data-size=small] {
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+.MDSIcon_root[data-size=large] {
+  --MDSIcon-size: var(--mds-number-ramp-32);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSIcon_root {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSIcon_root {
+    color: CanvasText;
+  }
+}
+
+/* src/MDSAccordion/MDSAccordion.module.css */
+.MDSAccordion_root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.MDSAccordion_item {
+  --MDSAccordion-item-gap: var(--mds-common-component-values-gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--MDSAccordion-item-gap);
+}
+.MDSAccordion_header {
+  margin: 0;
+}
+.MDSAccordion_trigger {
+  --MDSAccordion-trigger-fill: transparent;
+  --MDSAccordion-trigger-text-fill: var(--mds-colours-basic-text);
+  --MDSAccordion-trigger-corner-radius: var(--mds-common-component-values-radius);
+  --MDSAccordion-trigger-min-height: var(--mds-number-ramp-60);
+  --MDSAccordion-trigger-padding-horizontal: var(--mds-common-component-values-padding);
+  --MDSAccordion-trigger-padding-right: var(--mds-number-ramp-16);
+  --MDSAccordion-trigger-gap: var(--mds-common-component-values-gap);
+  --MDSAccordion-trigger-transition-duration: 150ms;
+  --MDSAccordion-focus-ring-width: var(--mds-strokes-2);
+  --MDSAccordion-focus-ring-fill: var(--mds-colours-basic-accent);
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--MDSAccordion-trigger-gap);
+  background: var(--MDSAccordion-trigger-fill);
+  color: var(--MDSAccordion-trigger-text-fill);
+  border: 0;
+  border-radius: var(--MDSAccordion-trigger-corner-radius);
+  min-height: var(--MDSAccordion-trigger-min-height);
+  padding-block: 0;
+  padding-inline: var(--MDSAccordion-trigger-padding-horizontal) var(--MDSAccordion-trigger-padding-right);
+  text-align: start;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--MDSAccordion-trigger-transition-duration);
+}
+.MDSAccordion_label {
+  flex: 1 0 0;
+  min-width: 0;
+}
+.MDSAccordion_chevronSlot {
+  --MDSAccordion-chevron-transition-duration: 200ms;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--MDSAccordion-chevron-transition-duration);
+}
+.MDSAccordion_trigger[data-panel-open] .MDSAccordion_chevronSlot {
+  transform: rotate(180deg);
+}
+.MDSAccordion_trigger:hover:not([data-disabled]) {
+  --MDSAccordion-trigger-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+.MDSAccordion_trigger:active:not([data-disabled]) {
+  --MDSAccordion-trigger-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+.MDSAccordion_trigger[data-disabled] {
+  --MDSAccordion-trigger-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  --MDSAccordion-trigger-fill: transparent;
+  cursor: not-allowed;
+}
+.MDSAccordion_panel {
+  --MDSAccordion-panel-height-closed: 0px;
+  --MDSAccordion-panel-transition-duration: 200ms;
+  overflow: hidden;
+  height: var(--accordion-panel-height);
+  transition: height var(--MDSAccordion-panel-transition-duration);
+}
+.MDSAccordion_panel[data-starting-style],
+.MDSAccordion_panel[data-ending-style] {
+  height: var(--MDSAccordion-panel-height-closed);
+}
+.MDSAccordion_trigger:focus-visible {
+  outline: var(--MDSAccordion-focus-ring-width) solid var(--MDSAccordion-focus-ring-fill);
+  outline-offset: var(--MDSAccordion-focus-ring-width);
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSAccordion_trigger {
+    transition: none;
+  }
+  .MDSAccordion_chevronSlot {
+    transition: none;
+  }
+  .MDSAccordion_panel {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSAccordion_trigger {
+    border: 1px solid CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

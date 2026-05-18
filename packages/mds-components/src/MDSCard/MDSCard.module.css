@@ -1,0 +1,213 @@
+/* packages/mds-components/src/MDSCard/MDSCard.module.css */
+
+/* ---- Base ---- */
+
+.root {
+  --MDSCard-fill: var(--mds-colours-basic-background);
+  --MDSCard-stroke: transparent;
+  --MDSCard-stroke-width: 0;
+  --MDSCard-corner-radius: var(--mds-common-component-values-radius);
+  --MDSCard-padding: var(--mds-common-component-values-padding);
+  --MDSCard-content-gap: var(--mds-spacing-extra-small);
+  --MDSCard-focus-ring-fill: var(--mds-colours-basic-accent);
+  --MDSCard-focus-ring-width: var(--mds-strokes-2);
+  --MDSCard-media-side-width: 136px;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--MDSCard-content-gap);
+  position: relative;
+  width: 100%;
+  padding: var(--MDSCard-padding);
+  background: var(--MDSCard-fill);
+  color: var(--mds-colours-basic-text);
+  border: var(--MDSCard-stroke-width) solid var(--MDSCard-stroke);
+  border-radius: var(--MDSCard-corner-radius);
+  overflow: clip;
+  text-align: start;
+  text-decoration: none;
+}
+
+/* ---- With-media layout — push padding/gap to .content; the root sits
+   flush against the image so the image touches the card edges. ---- */
+
+.root[data-has-media] {
+  flex-direction: column;
+  padding: 0;
+  gap: 0;
+}
+
+.root[data-has-media][data-image-alignment='right'] { flex-direction: row-reverse; }
+.root[data-has-media][data-image-alignment='left']  { flex-direction: row; }
+.root[data-has-media][data-image-alignment='top']   { flex-direction: column; }
+
+/* ---- Media slot ---- */
+
+.media {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  overflow: clip;
+}
+
+.root[data-image-alignment='top'] .media { width: 100%; }
+
+/* Side-aligned cards use a fixed 136 × 136 square media well — matches
+   the Figma spec (component-library node 6623:13935, side variants are
+   136h × 136w). The well stretches vertically when content makes the
+   card taller. */
+.root[data-image-alignment='right'] .media,
+.root[data-image-alignment='left']  .media {
+  width: var(--MDSCard-media-side-width);
+  aspect-ratio: 1 / 1;
+  align-self: stretch;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mds-colours-basic-scrim);
+  pointer-events: none;
+}
+.overlay > * { pointer-events: auto; }
+
+/* ---- Content slot (only present when media is) ---- */
+
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--MDSCard-content-gap);
+  padding: var(--MDSCard-padding);
+}
+
+/* ---- Outline ---- */
+
+.root[data-outline] {
+  --MDSCard-stroke: var(--mds-colours-basic-stroke);
+  --MDSCard-stroke-width: var(--mds-strokes-1);
+}
+
+/* ---- Selected ---- */
+
+.root[data-selected] {
+  --MDSCard-stroke: var(--mds-colours-basic-accent);
+  --MDSCard-stroke-width: var(--mds-strokes-2);
+}
+
+/* ---- Interactive ---- */
+
+.root[data-interactive] {
+  cursor: pointer;
+  user-select: none;
+}
+
+.root[data-interactive]:hover:not(:disabled):not([data-disabled]) {
+  --MDSCard-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+
+.root[data-interactive]:active:not(:disabled):not([data-disabled]) {
+  --MDSCard-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+
+/* Focus */
+.root[data-interactive]:focus-visible {
+  outline: var(--MDSCard-focus-ring-width) solid var(--MDSCard-focus-ring-fill);
+  outline-offset: var(--MDSCard-focus-ring-width);
+}
+
+/* ============================================================================
+ * Compound parts — preferred-content layout pieces.
+ * The root manages overall padding/gap; these are responsible only for their
+ * internal layout. Each carries its own component-scoped vars so consumers
+ * can override per-instance.
+ * ========================================================================= */
+
+/* ---- Header — Tag (optional) above Headline, Close (optional) to the right ---- */
+
+.header {
+  --MDSCardHeader-gap: var(--mds-common-component-values-gap);
+  --MDSCardHeader-text-gap: var(--mds-number-ramp-8);
+  --MDSCardHeader-text-padding-y: var(--mds-number-ramp-4);
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--MDSCardHeader-gap);
+  width: 100%;
+}
+
+.headerText {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--MDSCardHeader-text-gap);
+  padding-block: var(--MDSCardHeader-text-padding-y);
+}
+
+.headline {
+  margin: 0;
+}
+
+.tag {
+  --MDSCardHeader-tag-fill: var(--mds-colours-basic-background);
+  --MDSCardHeader-tag-text-fill: var(--mds-colours-basic-text);
+  --MDSCardHeader-tag-corner-radius: var(--mds-radius-extra-small);
+  --MDSCardHeader-tag-padding-x: var(--mds-number-ramp-4);
+  --MDSCardHeader-tag-padding-y: var(--mds-number-ramp-2);
+
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding-inline: var(--MDSCardHeader-tag-padding-x);
+  padding-block: var(--MDSCardHeader-tag-padding-y);
+  background: var(--MDSCardHeader-tag-fill);
+  color: var(--MDSCardHeader-tag-text-fill);
+  border-radius: var(--MDSCardHeader-tag-corner-radius);
+  white-space: nowrap;
+}
+
+/* ---- Body ---- */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ---- Actions — flex row; stretches children to equal width when 2+. ---- */
+
+.actions {
+  --MDSCardActions-gap: var(--mds-common-component-values-gap);
+  --MDSCardActions-padding-top: var(--mds-spacing-extra-small);
+  --MDSCardActions-item-min-width: 100px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--MDSCardActions-gap);
+  padding-top: var(--MDSCardActions-padding-top);
+  width: 100%;
+}
+
+/* Only stretch when there are 2+ action children — a single button stays
+   its natural size (matches the One-Button Figma variant). */
+.actions:has(> :nth-child(2)) > * {
+  flex: 1 1 0;
+  min-width: var(--MDSCardActions-item-min-width);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; animation: none; }
+}
+
+@media (forced-colors: active) {
+  .root[data-outline],
+  .root[data-selected] { border: 1px solid CanvasText; }
+}

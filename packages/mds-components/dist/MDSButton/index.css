@@ -8,7 +8,9 @@
   --MDSButton-padding-horizontal: var(--mds-common-component-values-padding);
   --MDSButton-min-height: var(--mds-common-component-values-height-large);
   --MDSButton-min-width: var(--mds-number-ramp-100);
-  --MDSButton-item-spacing: var(--mds-number-ramp-4);
+  --MDSButton-item-spacing: var(--mds-number-ramp-8);
+  --MDSButton-focus-ring-width: var(--mds-strokes-2);
+  --MDSButton-focus-ring-fill: var(--mds-colours-basic-accent);
   appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
@@ -101,15 +103,17 @@
   aspect-ratio: 1 / 1;
 }
 .MDSButton_root[data-disabled] {
-  --MDSButton-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
   --MDSButton-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
   --MDSButton-stroke: transparent;
   --MDSButton-stroke-width: 0;
   cursor: not-allowed;
 }
+.MDSButton_root:not([data-variant=ghost])[data-disabled] {
+  --MDSButton-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
+}
 .MDSButton_root:focus-visible {
-  outline: var(--mds-strokes-2) solid var(--mds-colours-basic-accent);
-  outline-offset: var(--mds-strokes-2);
+  outline: var(--MDSButton-focus-ring-width) solid var(--MDSButton-focus-ring-fill);
+  outline-offset: var(--MDSButton-focus-ring-width);
 }
 @media (prefers-reduced-motion: reduce) {
   .MDSButton_root {

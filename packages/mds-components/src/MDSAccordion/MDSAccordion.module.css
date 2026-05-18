@@ -1,0 +1,136 @@
+/* packages/mds-components/src/MDSAccordion/MDSAccordion.module.css */
+
+/* ---- Base: Root ---- */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item {
+  --MDSAccordion-item-gap: var(--mds-common-component-values-gap);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--MDSAccordion-item-gap);
+}
+
+/* ---- Base: Header ---- */
+
+.header {
+  margin: 0;
+}
+
+/* ---- Base: Trigger ---- */
+
+.trigger {
+  --MDSAccordion-trigger-fill: transparent;
+  --MDSAccordion-trigger-text-fill: var(--mds-colours-basic-text);
+  --MDSAccordion-trigger-corner-radius: var(--mds-common-component-values-radius);
+  --MDSAccordion-trigger-min-height: var(--mds-number-ramp-60);
+  --MDSAccordion-trigger-padding-horizontal: var(--mds-common-component-values-padding);
+  --MDSAccordion-trigger-padding-right: var(--mds-number-ramp-16);
+  --MDSAccordion-trigger-gap: var(--mds-common-component-values-gap);
+  /* Animation duration: literal ms value — @mds/tokens has no motion duration tokens yet. */
+  --MDSAccordion-trigger-transition-duration: 150ms;
+  --MDSAccordion-focus-ring-width: var(--mds-strokes-2);
+  --MDSAccordion-focus-ring-fill: var(--mds-colours-basic-accent);
+
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--MDSAccordion-trigger-gap);
+  background: var(--MDSAccordion-trigger-fill);
+  color: var(--MDSAccordion-trigger-text-fill);
+  border: 0;
+  border-radius: var(--MDSAccordion-trigger-corner-radius);
+  min-height: var(--MDSAccordion-trigger-min-height);
+  padding-block: 0;
+  padding-inline:
+    var(--MDSAccordion-trigger-padding-horizontal)
+    var(--MDSAccordion-trigger-padding-right);
+  text-align: start;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--MDSAccordion-trigger-transition-duration);
+}
+
+.label {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.chevronSlot {
+  --MDSAccordion-chevron-transition-duration: 200ms;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--MDSAccordion-chevron-transition-duration);
+}
+
+.trigger[data-panel-open] .chevronSlot {
+  transform: rotate(180deg);
+}
+
+/* ---- Trigger states ---- */
+
+.trigger:hover:not([data-disabled]) {
+  --MDSAccordion-trigger-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+
+/* Base UI's Accordion.Trigger does NOT emit `data-pressed` — that attribute
+   only appears on Base UI's standalone Button primitive. Use the native
+   `:active` pseudo-class so the trigger picks up the pressed token while
+   the pointer is down on it. The Figma Pressed state maps to
+   `--mds-colours-interaction-states-pressed-background-pressed`. */
+.trigger:active:not([data-disabled]) {
+  --MDSAccordion-trigger-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+
+.trigger[data-disabled] {
+  --MDSAccordion-trigger-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  --MDSAccordion-trigger-fill: transparent;
+  cursor: not-allowed;
+}
+
+/* ---- Panel ---- */
+
+.panel {
+  --MDSAccordion-panel-height-closed: 0px;
+  /* Animation duration: literal ms value — @mds/tokens has no motion duration tokens yet. */
+  --MDSAccordion-panel-transition-duration: 200ms;
+
+  overflow: hidden;
+  height: var(--accordion-panel-height);
+  transition: height var(--MDSAccordion-panel-transition-duration);
+}
+
+.panel[data-starting-style],
+.panel[data-ending-style] {
+  height: var(--MDSAccordion-panel-height-closed);
+}
+
+/* ---- Focus ---- */
+
+.trigger:focus-visible {
+  outline: var(--MDSAccordion-focus-ring-width) solid var(--MDSAccordion-focus-ring-fill);
+  outline-offset: var(--MDSAccordion-focus-ring-width);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger { transition: none; }
+  .chevronSlot { transition: none; }
+  .panel { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .trigger { border: 1px solid CanvasText; }
+}

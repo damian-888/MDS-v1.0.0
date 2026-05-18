@@ -1,0 +1,147 @@
+/* src/MDSBottomNavigation/MDSBottomNavigation.module.css */
+.MDSBottomNavigation_root {
+  --MDSBottomNavigation-fill: var(--mds-colours-basic-background);
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  background: var(--MDSBottomNavigation-fill);
+}
+.MDSBottomNavigation_root[data-background=secondary] {
+  --MDSBottomNavigation-fill: var(--mds-colours-basic-accent-secondary);
+}
+.MDSBottomNavigation_item {
+  --MDSBottomNavigationItem-text-fill: var(--mds-colours-basic-text);
+  --MDSBottomNavigationItem-accent-fill: var(--mds-colours-basic-accent);
+  --MDSBottomNavigationItem-selection-bar-fill: transparent;
+  --MDSBottomNavigationItem-selection-bar-height: var(--mds-number-ramp-4);
+  --MDSBottomNavigationItem-selection-bar-width: var(--mds-common-component-values-minimum-tappable-area);
+  --MDSBottomNavigationItem-min-size: var(--mds-common-component-values-minimum-tappable-area);
+  --MDSBottomNavigationItem-gap: var(--mds-common-component-values-gap);
+  --MDSBottomNavigationItem-padding: var(--mds-common-component-values-gap);
+  --MDSBottomNavigationItem-badge-size: var(--mds-number-ramp-10);
+  --MDSBottomNavigationItem-badge-fill: var(--mds-colours-basic-accent);
+  --MDSBottomNavigationItem-badge-stroke: var(--mds-colours-basic-background);
+  --MDSBottomNavigationItem-icon-size: var(--mds-number-ramp-24);
+  --MDSBottomNavigationItem-focus-ring-fill: var(--mds-colours-basic-accent);
+  --MDSBottomNavigationItem-focus-ring-width: var(--mds-strokes-2);
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--MDSBottomNavigationItem-gap);
+  padding: var(--MDSBottomNavigationItem-padding);
+  min-height: var(--MDSBottomNavigationItem-min-size);
+  background: transparent;
+  color: var(--MDSBottomNavigationItem-text-fill);
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--mds-typography-microcopy-font-family);
+  font-size: var(--mds-typography-microcopy-font-size);
+  font-weight: var(--mds-typography-microcopy-font-weight);
+  line-height: var(--mds-typography-microcopy-line-height);
+  letter-spacing: var(--mds-typography-microcopy-letter-spacing);
+}
+.MDSBottomNavigation_iconContainer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--mds-number-ramp-4);
+  padding-inline: var(--mds-number-ramp-2);
+  --MDSIcon-size: var(--MDSBottomNavigationItem-icon-size);
+}
+.MDSBottomNavigation_iconSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--MDSBottomNavigationItem-icon-size);
+  height: var(--MDSBottomNavigationItem-icon-size);
+  color: var(--MDSBottomNavigationItem-text-fill);
+}
+.MDSBottomNavigation_badge {
+  position: absolute;
+  top: 0;
+  right: calc(-1 * var(--MDSBottomNavigationItem-badge-size));
+  display: inline-block;
+  width: var(--MDSBottomNavigationItem-badge-size);
+  height: var(--MDSBottomNavigationItem-badge-size);
+  background: var(--MDSBottomNavigationItem-badge-fill);
+  border: var(--mds-strokes-1) solid var(--MDSBottomNavigationItem-badge-stroke);
+  border-radius: var(--mds-radius-full);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+.MDSBottomNavigation_label {
+  text-align: center;
+  white-space: nowrap;
+  color: var(--MDSBottomNavigationItem-text-fill);
+}
+.MDSBottomNavigation_selectionBar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: var(--MDSBottomNavigationItem-selection-bar-height);
+  width: var(--MDSBottomNavigationItem-selection-bar-width);
+  background: var(--MDSBottomNavigationItem-selection-bar-fill);
+  border-radius: var(--mds-radius-full);
+  pointer-events: none;
+}
+.MDSBottomNavigation_item[data-selected] {
+  cursor: default;
+  --MDSBottomNavigationItem-selection-bar-fill: var(--MDSBottomNavigationItem-accent-fill);
+}
+.MDSBottomNavigation_item:hover:not([data-selected]):not(:disabled):not([data-disabled]) {
+  --MDSBottomNavigationItem-selection-bar-fill: var(--mds-colours-interaction-states-hovered-text-hovered);
+  --MDSBottomNavigationItem-text-fill: var(--mds-colours-interaction-states-hovered-text-hovered);
+}
+.MDSBottomNavigation_item[data-selected]:hover:not(:disabled):not([data-disabled]) {
+  --MDSBottomNavigationItem-selection-bar-fill: var(--mds-colours-interaction-states-hovered-accent-hovered);
+}
+.MDSBottomNavigation_item:active:not([data-selected]):not(:disabled):not([data-disabled]) {
+  --MDSBottomNavigationItem-selection-bar-fill: var(--mds-colours-interaction-states-pressed-text-pressed);
+  --MDSBottomNavigationItem-text-fill: var(--mds-colours-interaction-states-pressed-text-pressed);
+}
+.MDSBottomNavigation_item[data-selected]:active:not(:disabled):not([data-disabled]) {
+  --MDSBottomNavigationItem-selection-bar-fill: var(--mds-colours-interaction-states-pressed-accent-pressed);
+}
+.MDSBottomNavigation_item:disabled,
+.MDSBottomNavigation_item[data-disabled] {
+  --MDSBottomNavigationItem-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  cursor: not-allowed;
+}
+.MDSBottomNavigation_item:disabled .MDSBottomNavigation_badge,
+.MDSBottomNavigation_item[data-disabled] .MDSBottomNavigation_badge {
+  --MDSBottomNavigationItem-badge-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+}
+.MDSBottomNavigation_item:focus-visible {
+  outline: var(--MDSBottomNavigationItem-focus-ring-width) solid var(--MDSBottomNavigationItem-focus-ring-fill);
+  outline-offset: calc(-1 * var(--MDSBottomNavigationItem-focus-ring-width));
+}
+@media (prefers-reduced-motion: reduce) {
+  .MDSBottomNavigation_item {
+    transition: none;
+    animation: none;
+  }
+}
+@media (forced-colors: active) {
+  .MDSBottomNavigation_selectionBar {
+    background: CanvasText;
+  }
+  .MDSBottomNavigation_item:focus-visible {
+    outline-color: CanvasText;
+  }
+  .MDSBottomNavigation_badge {
+    background: CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

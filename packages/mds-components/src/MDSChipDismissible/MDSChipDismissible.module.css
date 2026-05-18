@@ -1,0 +1,112 @@
+/* packages/mds-components/src/MDSChipDismissible/MDSChipDismissible.module.css */
+
+/* ---- Base ---- */
+
+.root {
+  --MDSChipDismissible-fill: var(--mds-colours-basic-accent);
+  --MDSChipDismissible-text-fill: var(--mds-colours-basic-text-on-accent);
+  --MDSChipDismissible-corner-radius: var(--mds-radius-full);
+  --MDSChipDismissible-min-height: var(--mds-common-component-values-height-small);
+  --MDSChipDismissible-padding-horizontal: var(--mds-common-component-values-padding);
+  --MDSChipDismissible-padding-with-avatar: var(--mds-number-ramp-4);
+  --MDSChipDismissible-item-spacing: var(--mds-common-component-values-gap);
+  --MDSChipDismissible-avatar-size: var(--mds-number-ramp-40);
+  --MDSChipDismissible-dismiss-size: var(--mds-number-ramp-16);
+  --MDSChipDismissible-dismiss-fill: transparent;
+  --MDSChipDismissible-dismiss-corner-radius: var(--mds-radius-extra-small);
+  --MDSChipDismissible-focus-ring-width: var(--mds-strokes-2);
+  --MDSChipDismissible-focus-ring-fill: var(--mds-colours-basic-accent);
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--MDSChipDismissible-item-spacing);
+  background: var(--MDSChipDismissible-fill);
+  color: var(--MDSChipDismissible-text-fill);
+  border-radius: var(--MDSChipDismissible-corner-radius);
+  min-height: var(--MDSChipDismissible-min-height);
+  padding-inline: var(--MDSChipDismissible-padding-horizontal);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  user-select: none;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--MDSChipDismissible-avatar-size);
+  height: var(--MDSChipDismissible-avatar-size);
+  border-radius: var(--mds-radius-full);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar > * {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--mds-radius-full);
+  object-fit: cover;
+}
+
+.dismiss {
+  --MDSChipDismissible-dismiss-icon-fill: var(--MDSChipDismissible-text-fill);
+
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--MDSChipDismissible-dismiss-size);
+  height: var(--MDSChipDismissible-dismiss-size);
+  background: var(--MDSChipDismissible-dismiss-fill);
+  color: var(--MDSChipDismissible-dismiss-icon-fill);
+  border: 0;
+  border-radius: var(--MDSChipDismissible-dismiss-corner-radius);
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+
+/* Hover / pressed swap the dismiss-button background to a light tint;
+   the X icon must flip to basic-text so it stays visible. */
+.dismiss:hover {
+  --MDSChipDismissible-dismiss-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+  --MDSChipDismissible-dismiss-icon-fill: var(--mds-colours-basic-text);
+}
+
+.dismiss:active {
+  --MDSChipDismissible-dismiss-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+  --MDSChipDismissible-dismiss-icon-fill: var(--mds-colours-basic-text);
+}
+
+/* ---- Avatar mode: tighten left padding so the 40px disc sits flush. ---- */
+
+.root[data-has-avatar] {
+  padding-inline-start: var(--MDSChipDismissible-padding-with-avatar);
+}
+
+/* ---- Focus ---- */
+
+.dismiss:focus-visible {
+  outline: var(--MDSChipDismissible-focus-ring-width) solid var(--MDSChipDismissible-focus-ring-fill);
+  outline-offset: var(--MDSChipDismissible-focus-ring-width);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .dismiss { transition: none; animation: none; }
+}
+
+@media (forced-colors: active) {
+  .root { border: 1px solid CanvasText; }
+}

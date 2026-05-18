@@ -1,0 +1,169 @@
+/* packages/mds-components/src/MDSCheckbox/MDSCheckbox.module.css */
+
+/* ---- Base wrapper (label + box) ---- */
+
+.root {
+  --MDSCheckbox-box-fill: var(--mds-colours-basic-background);
+  --MDSCheckbox-box-stroke: var(--mds-colours-basic-stroke);
+  --MDSCheckbox-box-stroke-width: var(--mds-strokes-1);
+  --MDSCheckbox-box-corner-radius: var(--mds-radius-extra-small);
+  --MDSCheckbox-box-size: var(--mds-number-ramp-32);
+  --MDSCheckbox-indicator-fill: var(--mds-colours-basic-text-on-accent);
+  --MDSCheckbox-text-fill: var(--mds-colours-basic-text);
+  --MDSCheckbox-item-spacing: var(--mds-number-ramp-12);
+  --MDSCheckbox-min-height: var(--mds-common-component-values-height-large);
+  --MDSCheckbox-focus-ring-width: var(--mds-strokes-2);
+  --MDSCheckbox-focus-ring-fill: var(--mds-colours-basic-accent);
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--MDSCheckbox-item-spacing);
+  min-height: var(--MDSCheckbox-min-height);
+  padding-block: var(--mds-number-ramp-8);
+  color: var(--MDSCheckbox-text-fill);
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Icon-only mode — no min-height (just the box's intrinsic size + breathing
+   room) and no block padding. */
+.root[data-icon-only] {
+  min-height: var(--MDSCheckbox-box-size);
+  padding-block: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---- Box (the 32×32 square) ---- */
+
+.box {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--MDSCheckbox-box-size);
+  height: var(--MDSCheckbox-box-size);
+  background: var(--MDSCheckbox-box-fill);
+  border: var(--MDSCheckbox-box-stroke-width) solid var(--MDSCheckbox-box-stroke);
+  border-radius: var(--MDSCheckbox-box-corner-radius);
+  padding: 0;
+  flex-shrink: 0;
+  cursor: inherit;
+  color: var(--MDSCheckbox-indicator-fill);
+  /* Anchor the indicator so its width/height fill the inner area, leaving
+     2 px of breathing room on each side per Figma (32 box – 4 padding = 28). */
+  position: relative;
+}
+
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  /* Hidden by default; the [data-checked] / [data-indeterminate] selectors
+     reveal it. The icon is sized to 24 px (= 32 box − 2×4 padding). */
+  visibility: hidden;
+  --MDSIcon-size: var(--mds-number-ramp-24);
+}
+
+.box[data-checked] .indicator,
+.box[data-indeterminate] .indicator {
+  visibility: visible;
+}
+
+/* ---- Selected / Indeterminate — fill with accent. ---- */
+
+.box[data-checked],
+.box[data-indeterminate] {
+  --MDSCheckbox-box-fill: var(--mds-colours-basic-accent);
+  --MDSCheckbox-box-stroke: var(--mds-colours-basic-accent);
+}
+
+/* ---- Hover / pressed ---- */
+
+.root:hover .box:not([data-disabled]) {
+  --MDSCheckbox-box-fill: var(--mds-colours-interaction-states-hovered-background-hovered);
+}
+
+.root:hover .box[data-checked]:not([data-disabled]),
+.root:hover .box[data-indeterminate]:not([data-disabled]) {
+  --MDSCheckbox-box-fill: var(--mds-colours-interaction-states-hovered-accent-hovered);
+  --MDSCheckbox-box-stroke: var(--mds-colours-interaction-states-hovered-accent-hovered);
+}
+
+.root:active .box:not([data-disabled]) {
+  --MDSCheckbox-box-fill: var(--mds-colours-interaction-states-pressed-background-pressed);
+}
+
+.root:active .box[data-checked]:not([data-disabled]),
+.root:active .box[data-indeterminate]:not([data-disabled]) {
+  --MDSCheckbox-box-fill: var(--mds-colours-interaction-states-pressed-accent-pressed);
+  --MDSCheckbox-box-stroke: var(--mds-colours-interaction-states-pressed-accent-pressed);
+}
+
+/* ---- Error — 4 px stroke in the error scheme (root sets data-scheme="error",
+   which swaps --mds-colours-basic-stroke into the red palette). ---- */
+
+.root[data-error] .box:not([data-checked]):not([data-indeterminate]) {
+  --MDSCheckbox-box-stroke-width: var(--mds-strokes-4);
+}
+
+.root[data-error] .box[data-checked],
+.root[data-error] .box[data-indeterminate] {
+  /* Filled-error: keep the box filled in the active error accent. */
+  --MDSCheckbox-box-fill: var(--mds-colours-basic-accent);
+  --MDSCheckbox-box-stroke: var(--mds-colours-basic-accent);
+}
+
+/* ---- Disabled ---- */
+
+.root .box[data-disabled] {
+  --MDSCheckbox-box-fill: var(--mds-colours-interaction-states-disabled-background-disabled);
+  --MDSCheckbox-box-stroke: var(--mds-colours-interaction-states-disabled-background-disabled);
+  cursor: not-allowed;
+}
+
+.root .box[data-disabled][data-checked],
+.root .box[data-disabled][data-indeterminate] {
+  --MDSCheckbox-indicator-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+}
+
+.root:has(.box[data-disabled]) {
+  --MDSCheckbox-text-fill: var(--mds-colours-interaction-states-disabled-text-disabled);
+  cursor: not-allowed;
+}
+
+/* ---- Label ---- */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--MDSCheckbox-box-size);
+  padding-block: var(--mds-number-ramp-4);
+}
+
+/* ---- Focus ---- */
+
+.box:focus-visible {
+  outline: var(--MDSCheckbox-focus-ring-width) solid var(--MDSCheckbox-focus-ring-fill);
+  outline-offset: var(--MDSCheckbox-focus-ring-width);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .box { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .box { border: 1px solid CanvasText; }
+}

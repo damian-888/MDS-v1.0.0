@@ -1,0 +1,128 @@
+/* packages/mds-components/src/MDSLink/MDSLink.module.css */
+
+/* ---- Base ---- */
+
+.root {
+  --MDSLink-text-fill: var(--mds-colours-basic-link);
+  --MDSLink-text-fill-hovered: var(--mds-colours-interaction-states-hovered-link-hovered);
+  --MDSLink-text-fill-pressed: var(--mds-colours-interaction-states-pressed-link-pressed);
+  --MDSLink-text-fill-visited: var(--mds-colours-interaction-states-visited-link-visited);
+  --MDSLink-min-height: var(--mds-common-component-values-minimum-tappable-area);
+  --MDSLink-min-width: var(--mds-common-component-values-minimum-tappable-area);
+  --MDSLink-gap: var(--mds-number-ramp-4);
+  --MDSLink-underline-thickness: var(--mds-strokes-1);
+  --MDSLink-underline-thickness-hovered: var(--mds-strokes-2);
+  --MDSLink-focus-ring-width: var(--mds-strokes-2);
+  --MDSLink-focus-ring-fill: var(--mds-colours-basic-accent);
+
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--MDSLink-min-height);
+  min-width: var(--MDSLink-min-width);
+  color: var(--MDSLink-text-fill);
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: var(--mds-typography-body-bold-font-family);
+  font-size: var(--mds-typography-body-bold-font-size);
+  font-weight: var(--mds-typography-body-bold-font-weight);
+  line-height: var(--mds-typography-body-bold-line-height);
+  letter-spacing: var(--mds-typography-body-bold-letter-spacing);
+}
+
+/* Alignment — drives the cross-axis position. */
+.root[data-alignment='left']   { align-items: flex-start; }
+.root[data-alignment='center'] { align-items: center; }
+.root[data-alignment='right']  { align-items: flex-end; }
+
+/* ---- Container (label + icon row) ---- */
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--MDSLink-gap);
+}
+
+/* ---- Label — underline is the single source of "linkness" ---- */
+
+.label {
+  text-decoration: underline solid var(--MDSLink-text-fill);
+  text-decoration-thickness: var(--MDSLink-underline-thickness);
+  text-underline-offset: var(--mds-number-ramp-2);
+  white-space: nowrap;
+}
+
+/* ---- Icon slot (16 px) ---- */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--mds-number-ramp-16);
+  height: var(--mds-number-ramp-16);
+  color: inherit;
+  --MDSIcon-size: var(--mds-number-ramp-16);
+}
+
+/* ---- States ----
+   Visited reads first; hover/active override it. The native :visited
+   pseudo-class is colour-only by browser policy, but our colour swap
+   is exactly what Figma asks for. */
+
+.root:visited {
+  color: var(--MDSLink-text-fill-visited);
+}
+.root:visited .label {
+  text-decoration-color: var(--MDSLink-text-fill-visited);
+}
+
+.root:hover:not([aria-disabled='true']) {
+  color: var(--MDSLink-text-fill-hovered);
+}
+.root:hover:not([aria-disabled='true']) .label {
+  text-decoration-color: var(--MDSLink-text-fill-hovered);
+  text-decoration-thickness: var(--MDSLink-underline-thickness-hovered);
+}
+
+.root:active:not([aria-disabled='true']) {
+  color: var(--MDSLink-text-fill-pressed);
+}
+.root:active:not([aria-disabled='true']) .label {
+  text-decoration-color: var(--MDSLink-text-fill-pressed);
+  text-decoration-thickness: var(--MDSLink-underline-thickness-hovered);
+}
+
+/* ---- Disabled — opt-in via aria-disabled (the only standardised
+       inert hint for <a>). ---- */
+
+.root[aria-disabled='true'] {
+  color: var(--mds-colours-interaction-states-disabled-text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.root[aria-disabled='true'] .label {
+  text-decoration-color: var(--mds-colours-interaction-states-disabled-text-disabled);
+}
+
+/* ---- Focus ---- */
+
+.root:focus-visible {
+  outline: var(--MDSLink-focus-ring-width) solid var(--MDSLink-focus-ring-fill);
+  outline-offset: var(--MDSLink-focus-ring-width);
+  border-radius: var(--mds-number-ramp-4);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .root { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .root { color: LinkText; }
+  .root:visited { color: VisitedText; }
+}

@@ -1,0 +1,28 @@
+/* src/MDSDivider/MDSDivider.module.css */
+.MDSDivider_root {
+  --MDSDivider-fill: var(--mds-colours-basic-stroke);
+  --MDSDivider-thickness: var(--mds-strokes-1);
+  --MDSDivider-corner-radius: var(--mds-radius-full);
+  background: var(--MDSDivider-fill);
+  border: 0;
+  margin: 0;
+  border-radius: var(--MDSDivider-corner-radius);
+  flex-shrink: 0;
+}
+.MDSDivider_root[data-orientation=horizontal] {
+  display: block;
+  width: 100%;
+  height: var(--MDSDivider-thickness);
+}
+.MDSDivider_root[data-orientation=vertical] {
+  display: inline-block;
+  width: var(--MDSDivider-thickness);
+  height: 100%;
+  align-self: stretch;
+}
+@media (forced-colors: active) {
+  .MDSDivider_root {
+    background: CanvasText;
+  }
+}
+/*# sourceMappingURL=index.css.map */

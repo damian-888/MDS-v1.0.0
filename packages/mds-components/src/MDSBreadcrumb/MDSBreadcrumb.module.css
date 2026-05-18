@@ -1,0 +1,114 @@
+/* packages/mds-components/src/MDSBreadcrumb/MDSBreadcrumb.module.css */
+
+/* ---- Base ---- */
+
+.root {
+  --MDSBreadcrumb-item-min-size: var(--mds-common-component-values-minimum-tappable-area);
+  --MDSBreadcrumb-text-fill: var(--mds-colours-basic-text-secondary);
+  --MDSBreadcrumb-text-fill-current: var(--mds-colours-basic-text);
+  --MDSBreadcrumb-text-fill-hovered: var(--mds-colours-interaction-states-hovered-text-hovered);
+  --MDSBreadcrumb-text-fill-pressed: var(--mds-colours-interaction-states-pressed-text-pressed);
+  --MDSBreadcrumb-overflow-trigger-corner-radius: var(--mds-radius-full);
+  --MDSBreadcrumb-focus-ring-width: var(--mds-strokes-2);
+  --MDSBreadcrumb-focus-ring-fill: var(--mds-colours-basic-accent);
+
+  /* NOTE: the overflow popup is rendered as an MDSFlyout (portalled to
+     <body> by Base UI's Menu). Its card + item styling lives in
+     MDSFlyout.module.css — not here — because component-scoped vars
+     declared on this .root <nav> never cascade across the portal. */
+
+  display: block;
+}
+
+.list {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.itemCell,
+.separator,
+.overflowCell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--MDSBreadcrumb-item-min-size);
+  min-height: var(--MDSBreadcrumb-item-min-size);
+}
+
+.separator {
+  color: var(--MDSBreadcrumb-text-fill);
+}
+
+/* ---- Item (link + current) ---- */
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--MDSBreadcrumb-text-fill);
+}
+
+/* Figma "Selected=False, State=Hover" does not underline — the affordance
+   is the colour shift alone (basic-text-secondary → hovered-text-hovered).
+   `:active` covers the Pressed state. */
+a.item:hover {
+  color: var(--MDSBreadcrumb-text-fill-hovered);
+}
+
+a.item:active {
+  color: var(--MDSBreadcrumb-text-fill-pressed);
+}
+
+.item[data-current] {
+  color: var(--MDSBreadcrumb-text-fill-current);
+}
+
+/* ---- Overflow trigger ---- */
+
+.overflowTrigger {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--MDSBreadcrumb-item-min-size);
+  min-height: var(--MDSBreadcrumb-item-min-size);
+  color: var(--MDSBreadcrumb-text-fill);
+  border-radius: var(--MDSBreadcrumb-overflow-trigger-corner-radius);
+}
+
+.overflowTrigger:hover {
+  color: var(--MDSBreadcrumb-text-fill-hovered);
+}
+
+.overflowTrigger:active {
+  color: var(--MDSBreadcrumb-text-fill-pressed);
+}
+
+/* ---- Focus ---- */
+
+a.item:focus-visible,
+.overflowTrigger:focus-visible {
+  outline: var(--MDSBreadcrumb-focus-ring-width) solid var(--MDSBreadcrumb-focus-ring-fill);
+  outline-offset: var(--MDSBreadcrumb-focus-ring-width);
+}
+
+/* ---- Cross-cutting ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  a.item,
+  .overflowTrigger { transition: none; animation: none; }
+}
+
+@media (forced-colors: active) {
+  a.item { color: LinkText; }
+  .item[data-current] { color: CanvasText; }
+  .separator { color: GrayText; }
+  .overflowTrigger { color: LinkText; }
+}

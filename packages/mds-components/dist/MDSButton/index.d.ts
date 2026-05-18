@@ -1,4 +1,3 @@
-import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as React from 'react';
 import { Button } from '@base-ui-components/react/button';
 
@@ -22,9 +21,6 @@ type MDSButtonProps = (MDSButtonBaseProps & {
     icon?: React.ReactNode;
     children?: React.ReactNode;
 });
-declare function MDSButton({ variant, size, iconOnly, icon, children, className, ...props }: MDSButtonProps): react_jsx_runtime.JSX.Element;
-declare namespace MDSButton {
-    var displayName: string;
-}
+declare const MDSButton: React.ForwardRefExoticComponent<MDSButtonProps & React.RefAttributes<HTMLButtonElement>>;
 
 export { MDSButton, type MDSButtonProps, type MDSButtonSize, type MDSButtonVariant };

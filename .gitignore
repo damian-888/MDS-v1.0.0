@@ -24,11 +24,16 @@ audit-findings-2026-04-24/
 
 # Smoke-test / agent transients
 .playwright-mcp/
-.claude/
 
 # OS / editor
 .DS_Store
 *.log
+
+# Obsidian per-user UI state (pane sizes, last-opened tabs) — churns on every
+# editor interaction. Shared editor config (app.json, appearance.json,
+# graph.json, core-plugins.json) stays tracked.
+**/.obsidian/workspace.json
+**/.obsidian/workspace-mobile.json
 
 # Secrets — keep out of the repo at every level
 .env

@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{ printf '## MDS Vault (auto-loaded for every prompt)\\n\\n'; printf 'The full vault lives at packages/mds-agents/mds-vault/. The README (navigation map) and _meta/vault-rules.md are below; read the relevant atom file from packages/mds-agents/mds-vault/<folder>/<file>.md for any specific topic per CLAUDE.md Step 1.\\n\\n---\\n\\n'; cat packages/mds-agents/mds-vault/README.md; printf '\\n\\n---\\n\\n'; cat packages/mds-agents/mds-vault/_meta/vault-rules.md; } | jq -Rs '{hookSpecificOutput: {hookEventName: \"UserPromptSubmit\", additionalContext: .}}'",
+            "timeout": 10,
+            "statusMessage": "Loading MDS vault context"
+          }
+        ]
+      }
+    ]
+  }
+}

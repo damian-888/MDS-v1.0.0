@@ -3,12 +3,8 @@
   "version": "0.0.0",
   "description": "MDS LLM context, agent prompts, and design-system knowledge base.",
   "files": [
-    "llms.txt",
     "vault"
   ],
-  "exports": {
-    "./llms.txt": "./llms.txt"
-  },
   "scripts": {
     "build": "echo 'no build step for @mds/agents (static docs only)' && exit 0",
     "clean": "echo 'nothing to clean' && exit 0",
